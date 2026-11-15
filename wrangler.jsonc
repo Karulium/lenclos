@@ -9,5 +9,8 @@
     "not_found_handling": "404-page"
   },
   // Active les aperçus Cloudflare : chaque branche et pull request a sa propre adresse.
-  "previews": {}
+  "previews": {},
+  // Adresses publiques en *.workers.dev : le site principal et un aperçu par branche.
+  "workers_dev": true,
+  "preview_urls": true
 }
