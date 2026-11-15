@@ -24,7 +24,7 @@ export const ui = {
     bookNote: "Calendrier en temps réel, synchronisé avec Airbnb et Booking.",
     hosts: "Vos hôtes : Gaël et Danie · français, anglais, português · réponse en moins d'une heure",
     registration: "Meublé de tourisme · n° d'enregistrement", offeredBy: "Une maison proposée par",
-    langLabel: "Langue",
+    langLabel: "Langue", menu: "Menu",
   },
   en: {
     navHouse: "The house", navAround: "Around", navReviews: "Reviews", navGarden: "The garden", navHistory: "History", navMoments: "In pictures", navFaq: "FAQ",
@@ -39,6 +39,6 @@ export const ui = {
     bookNote: "Live calendar, synced with Airbnb and Booking.",
     hosts: "Your hosts: Gaël and Danie · French, English, Portuguese · reply within an hour",
     registration: "Furnished tourist rental · registration no.", offeredBy: "A house offered by",
-    langLabel: "Language",
+    langLabel: "Language", menu: "Menu",
   },
 } as const;

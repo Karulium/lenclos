@@ -12,6 +12,15 @@ const home = routes.home[lang];
 const canonical = new URL(routes[route][lang], Astro.site);
 const otherLangs = (Object.keys(languages) as Lang[]);
 const company = site.company;
+const navLinks = [
+  { href: `${home}#maison`, label: t.navHouse },
+  { href: `${home}#autour`, label: t.navAround },
+  { href: `${home}#avis`, label: t.navReviews },
+  { href: routes.garden[lang], label: t.navGarden },
+  { href: routes.history[lang], label: t.navHistory },
+  { href: routes.moments[lang], label: t.navMoments },
+  { href: `${home}#faq`, label: t.navFaq },
+];
 ---
 <!doctype html>
 <html lang={lang}>
@@ -39,13 +48,7 @@ const company = site.company;
     <div class="wrap">
       <a class="brand" href={home}>L'Enclos <span>de Vieux-Habitants</span></a>
       <nav class="nav">
-        <a href={`${home}#maison`}>{t.navHouse}</a>
-        <a href={`${home}#autour`}>{t.navAround}</a>
-        <a href={`${home}#avis`}>{t.navReviews}</a>
-        <a href={routes.garden[lang]}>{t.navGarden}</a>
-        <a href={routes.history[lang]}>{t.navHistory}</a>
-        <a href={routes.moments[lang]}>{t.navMoments}</a>
-        <a href={`${home}#faq`}>{t.navFaq}</a>
+        {navLinks.map((l) => <a href={l.href}>{l.label}</a>)}
       </nav>
       <div class="lang" role="group" aria-label={t.langLabel}>
         {otherLangs.map((l) => (
@@ -53,6 +56,19 @@ const company = site.company;
         ))}
       </div>
       <a class="btn" href={`${home}#reserver`}>{t.book}</a>
+      <details class="menu-m">
+        <summary aria-label={t.menu}><span aria-hidden="true"></span></summary>
+        <div class="menu-panel">
+          <nav>
+            {navLinks.map((l) => <a href={l.href}>{l.label}</a>)}
+          </nav>
+          <div class="lang" role="group" aria-label={t.langLabel}>
+            {otherLangs.map((l) => (
+              <a href={routes[route][l]} hreflang={l} lang={l} aria-current={l === lang ? "true" : "false"}>{languages[l]}</a>
+            ))}
+          </div>
+        </div>
+      </details>
     </div>
   </header>}
 
@@ -69,5 +85,13 @@ const company = site.company;
       <span>{t.registration} <Fragment set:html={rich(site.registrationNumber)} /></span>
     </div>
   </footer>}
+  <script>
+    // Menu mobile : se referme quand on choisit une rubrique ou qu'on touche ailleurs.
+    const menu = document.querySelector<HTMLDetailsElement>(".menu-m");
+    if (menu) {
+      menu.addEventListener("click", (e) => { if ((e.target as HTMLElement).closest("a")) menu.open = false; });
+      document.addEventListener("click", (e) => { if (!menu.contains(e.target as Node)) menu.open = false; });
+    }
+  </script>
 </body>
 </html>
