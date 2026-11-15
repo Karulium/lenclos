@@ -61,6 +61,34 @@ content:
                   - { name: where, label: Place or time, type: string }
               - { name: mapsQuery, label: Recherche Google Maps (nom + commune), type: string }
 
+  - name: moments
+    label: En images (photos et vidéos plein écran)
+    type: file
+    path: src/data/moments.json
+    format: json
+    fields:
+      - { name: placeholder, label: Afficher « médias factices » (décocher avec les vrais médias), type: boolean }
+      - name: items
+        label: Photos et vidéos (dans l'ordre du fil)
+        type: object
+        list: true
+        fields:
+          - { name: type, label: Type, type: select, options: { values: [photo, video] } }
+          - { name: src, label: Fichier (photo ou vidéo verticale MP4, 720p, 25 Mo max), type: file, options: { path: public/media/moments } }
+          - { name: poster, label: Image d'attente (vidéos seulement), type: image, options: { path: public/media/moments } }
+          - name: fr
+            label: Français
+            type: object
+            fields:
+              - { name: caption, label: Légende, type: string }
+              - { name: place, label: Lieu, type: string }
+          - name: en
+            label: English
+            type: object
+            fields:
+              - { name: caption, label: Caption, type: string }
+              - { name: place, label: Place, type: string }
+
   - name: fruits
     label: Fruits du jardin
     type: file

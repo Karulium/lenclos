@@ -204,5 +204,33 @@
         }
       ]
     }
+  },
+  "moments": {
+    "fr": {
+      "metaTitle": "En images : la vie à L'Enclos · Vieux-Habitants, Guadeloupe",
+      "metaDescription": "Photos et vidéos de la maison L'Enclos de Vieux-Habitants, de son jardin créole et des alentours : faites défiler pour vous projeter dans votre séjour en Guadeloupe.",
+      "title": "La vie à L'Enclos",
+      "intro": "Faites défiler vers le haut pour voir la suite.",
+      "sound": "Activer le son",
+      "mute": "Couper le son",
+      "share": "Partager",
+      "copied": "Lien copié",
+      "end": "Envie d'y être ?",
+      "endText": "Réservez en direct au meilleur prix.",
+      "placeholder": "Médias factices, en attendant les vraies photos et vidéos."
+    },
+    "en": {
+      "metaTitle": "In pictures: life at L'Enclos · Vieux-Habitants, Guadeloupe",
+      "metaDescription": "Photos and videos of L'Enclos de Vieux-Habitants, its Creole garden and the surroundings: scroll through and picture your stay in Guadeloupe.",
+      "title": "Life at L'Enclos",
+      "intro": "Swipe up to see more.",
+      "sound": "Turn sound on",
+      "mute": "Mute",
+      "share": "Share",
+      "copied": "Link copied",
+      "end": "Wish you were here?",
+      "endText": "Book direct for the best price.",
+      "placeholder": "Placeholder media, until the real photos and videos arrive."
+    }
   }
 }

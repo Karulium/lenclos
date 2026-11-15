@@ -4,8 +4,9 @@ import site from "../data/site.json";
 import { ui, routes, languages, type Lang, type RouteKey } from "../i18n/ui";
 import { rich } from "../lib/text";
 
-interface Props { lang: Lang; route: RouteKey; title: string; description: string }
-const { lang, route, title, description } = Astro.props;
+interface Props { lang: Lang; route: RouteKey; title: string; description: string; immersive?: boolean }
+// immersive : page plein écran (En images), sans en-tête ni pied de page classiques.
+const { lang, route, title, description, immersive = false } = Astro.props;
 const t = ui[lang];
 const home = routes.home[lang];
 const canonical = new URL(routes[route][lang], Astro.site);
@@ -33,8 +34,8 @@ const company = site.company;
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;600&display=swap">
   <slot name="head" />
 </head>
-<body>
-  <header class="top">
+<body class={immersive ? "immersive" : undefined}>
+  {!immersive && <header class="top">
     <div class="wrap">
       <a class="brand" href={home}>L'Enclos <span>de Vieux-Habitants</span></a>
       <nav class="nav">
@@ -43,6 +44,7 @@ const company = site.company;
         <a href={`${home}#avis`}>{t.navReviews}</a>
         <a href={routes.garden[lang]}>{t.navGarden}</a>
         <a href={routes.history[lang]}>{t.navHistory}</a>
+        <a href={routes.moments[lang]}>{t.navMoments}</a>
         <a href={`${home}#faq`}>{t.navFaq}</a>
       </nav>
       <div class="lang" role="group" aria-label={t.langLabel}>
@@ -52,11 +54,11 @@ const company = site.company;
       </div>
       <a class="btn" href={`${home}#reserver`}>{t.book}</a>
     </div>
-  </header>
+  </header>}
 
   <slot />
 
-  <footer>
+  {!immersive && <footer>
     <div class="wrap">
       <span>{site.name} · {site.address}</span>
       <span class="credit">
@@ -66,6 +68,6 @@ const company = site.company;
       </span>
       <span>{t.registration} <Fragment set:html={rich(site.registrationNumber)} /></span>
     </div>
-  </footer>
+  </footer>}
 </body>
 </html>

@@ -6,12 +6,13 @@ export const routes = {
   home: { fr: "/", en: "/en/" },
   garden: { fr: "/jardin/", en: "/en/garden/" },
   history: { fr: "/histoire/", en: "/en/history/" },
+  moments: { fr: "/en-images/", en: "/en/in-pictures/" },
 } as const;
 export type RouteKey = keyof typeof routes;
 
 export const ui = {
   fr: {
-    navHouse: "La maison", navAround: "Autour", navReviews: "Avis", navGarden: "Le jardin", navHistory: "Histoire", navFaq: "FAQ",
+    navHouse: "La maison", navAround: "Autour", navReviews: "Avis", navGarden: "Le jardin", navHistory: "Histoire", navMoments: "En images", navFaq: "FAQ",
     book: "Réserver", bookStay: "Réserver votre séjour", back: "← Retour à la maison",
     facts: { reviews: "avis Airbnb", guests: "voyageurs", rooms: "chambres climatisées", baths: "salles de bain" },
     captionGallery: "La galerie", photoSoon: "Photo à venir",
@@ -26,7 +27,7 @@ export const ui = {
     langLabel: "Langue",
   },
   en: {
-    navHouse: "The house", navAround: "Around", navReviews: "Reviews", navGarden: "The garden", navHistory: "History", navFaq: "FAQ",
+    navHouse: "The house", navAround: "Around", navReviews: "Reviews", navGarden: "The garden", navHistory: "History", navMoments: "In pictures", navFaq: "FAQ",
     book: "Book", bookStay: "Book your stay", back: "← Back to the house",
     facts: { reviews: "Airbnb reviews", guests: "guests", rooms: "air-conditioned bedrooms", baths: "bathrooms" },
     captionGallery: "The veranda", photoSoon: "Photo coming soon",
