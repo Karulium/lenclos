@@ -44,7 +44,7 @@ Créer une carte sur [Google My Maps](https://www.google.com/mymaps), la rendre 
 2. Commande de build : `npm run build` · Commande de déploiement : `npx wrangler deploy` (la config est dans `wrangler.jsonc`).
 3. Ajouter le domaine personnalisé, puis mettre la même adresse dans `site` de `astro.config.mjs` et dans `public/robots.txt`.
 
-Chaque modification sur `main` met le site à jour automatiquement.
+Chaque modification sur `main` met le site à jour automatiquement. Chaque autre branche et chaque pull request obtient sa propre adresse d'aperçu, affichée dans Cloudflare (Workers & Pages > lenclos) et sur la pull request.
 
 ## Développement
 
