@@ -1,0 +1,53 @@
+---
+import site from "../data/site.json";
+import { ui, type Lang } from "../i18n/ui";
+import { rich } from "../lib/text";
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = ui[lang];
+---
+<aside class="book" id="reserver" aria-label={t.book}>
+  <span class="badge">{t.badge}</span>
+  <div class="price"><span>{t.from}</span><strong set:html={rich(site.priceFrom)} /><span>{t.night}</span></div>
+  <form class="fields" id="book-form" data-propid={site.beds24.propId} data-lang={lang}>
+    <label for="d-in"><span>{t.checkin}</span><input type="date" id="d-in" name="checkin" required></label>
+    <label for="d-out"><span>{t.checkout}</span><input type="date" id="d-out" name="checkout" required></label>
+    <label class="full" for="guests"><span>{t.guests}</span>
+      <select id="guests" name="guests">{[1, 2, 3, 4, 5].map((n) => <option selected={n === 2}>{n}</option>)}</select>
+    </label>
+    <button class="btn full" type="submit">{t.check}</button>
+  </form>
+  <small>{t.bookNote}</small>
+  <div class="contact">
+    <span>{t.hosts}</span>
+    <span>WhatsApp : <a href={`https://wa.me/${site.whatsapp.replace(/\D/g, "")}`}>{site.whatsapp}</a></span>
+    <span>E-mail : <Fragment set:html={rich(site.email)} /></span>
+  </div>
+</aside>
+
+<script>
+  // Ouvre le moteur de réservation Beds24 avec les dates et le nombre de voyageurs choisis.
+  const form = document.getElementById("book-form") as HTMLFormElement | null;
+  if (form) {
+    const inEl = form.querySelector<HTMLInputElement>("#d-in")!;
+    const outEl = form.querySelector<HTMLInputElement>("#d-out")!;
+    const iso = (d: Date) => d.toISOString().slice(0, 10);
+    const a = new Date(); a.setDate(a.getDate() + 21);
+    const b = new Date(a); b.setDate(b.getDate() + 7);
+    inEl.min = iso(new Date());
+    if (!inEl.value) inEl.value = iso(a);
+    if (!outEl.value) outEl.value = iso(b);
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const nights = Math.max(1, Math.round((+new Date(outEl.value) - +new Date(inEl.value)) / 864e5));
+      const params = new URLSearchParams({
+        propid: form.dataset.propid!,
+        checkin: inEl.value,
+        numnight: String(nights),
+        numadult: (form.querySelector<HTMLSelectElement>("#guests")!).value,
+        lang: form.dataset.lang!,
+      });
+      location.href = "https://beds24.com/booking2.php?" + params.toString();
+    });
+  }
+</script>

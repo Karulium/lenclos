@@ -1,0 +1,19 @@
+{
+  "name": "lenclos",
+  "private": true,
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Site de réservation directe de L'Enclos de Vieux-Habitants (Guadeloupe)",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "test": "astro build && node tests/check-site.mjs"
+  },
+  "dependencies": {
+    "astro": "7.4.7"
+  },
+  "engines": {
+    "node": ">=22.23.4"
+  }
+}

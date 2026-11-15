@@ -1,0 +1,27 @@
+---
+import Base from "../layouts/Base.astro";
+import pages from "../data/pages.json";
+import { ui, routes, type Lang } from "../i18n/ui";
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = ui[lang];
+const p = pages.history[lang];
+---
+<Base lang={lang} route="history" title={p.metaTitle} description={p.metaDescription}>
+  <main id="top">
+    <article class="wrap page">
+      <a class="back" href={routes.home[lang]}>{t.back}</a>
+      <span class="eyebrow">{p.eyebrow}</span>
+      <h1>{p.title}</h1>
+      <p class="lead">{p.intro}</p>
+      {p.sections.map((s) => (
+        <section>
+          <h2>{s.title}</h2>
+          {s.text.map((para) => <p>{para}</p>)}
+        </section>
+      ))}
+      <a class="btn" href={`${routes.home[lang]}#reserver`}>{t.bookStay}</a>
+    </article>
+  </main>
+</Base>

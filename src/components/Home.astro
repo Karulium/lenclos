@@ -1,0 +1,162 @@
+---
+import Base from "../layouts/Base.astro";
+import BookingCard from "./BookingCard.astro";
+import site from "../data/site.json";
+import pages from "../data/pages.json";
+import maison from "../data/maison.json";
+import autour from "../data/autour.json";
+import faq from "../data/faq.json";
+import { ui, routes, type Lang } from "../i18n/ui";
+import { rich, plain } from "../lib/text";
+import { hasImage } from "../lib/images";
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = ui[lang];
+const p = pages.home[lang];
+
+// Photos principales : public/img/photo1.jpg à photo5.jpg
+const photos = [1, 2, 3, 4, 5].map((n) => ({ src: `/img/photo${n}.jpg`, ok: hasImage(`img/photo${n}.jpg`) }));
+
+const ld = {
+  "@context": "https://schema.org",
+  "@type": "VacationRental",
+  name: site.name,
+  description: plain(p.metaDescription),
+  address: { "@type": "PostalAddress", streetAddress: "186 route de Grand-Croix", postalCode: "97119", addressLocality: "Vieux-Habitants", addressRegion: "Guadeloupe", addressCountry: "FR" },
+  geo: { "@type": "GeoCoordinates", latitude: site.geo.lat, longitude: site.geo.lng },
+  telephone: site.whatsapp,
+  containsPlace: { "@type": "Accommodation", additionalType: "EntirePlace", numberOfBedrooms: 2, numberOfBathroomsTotal: 2, occupancy: { "@type": "QuantitativeValue", maxValue: 5 }, floorSize: { "@type": "QuantitativeValue", value: 114, unitCode: "MTK" } },
+  aggregateRating: { "@type": "AggregateRating", ratingValue: site.rating.airbnb.replace(",", "."), bestRating: 5, ratingCount: site.rating.airbnbCount },
+};
+---
+<Base lang={lang} route="home" title={p.metaTitle} description={p.metaDescription}>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(ld)} />
+  <main id="top">
+    <div class="wrap hero">
+      <div class="hero-head">
+        <span class="eyebrow">{p.eyebrow}</span>
+        <h1>{p.title}</h1>
+        <p class="hero-sub">{p.intro}</p>
+        <ul class="facts">
+          <li><span class="star">★</span><b>{site.rating.airbnb}</b> <span>· {site.rating.airbnbCount} {t.facts.reviews}</span></li>
+          <li><b>5</b> <span>{t.facts.guests}</span></li>
+          <li><b>2</b> <span>{t.facts.rooms}</span></li>
+          <li><b>2</b> <span>{t.facts.baths}</span></li>
+          <li><b>114</b> m²</li>
+        </ul>
+      </div>
+      <div class="mosaic" aria-label="Photos">
+        {photos.map((ph, i) => (
+          <figure class:list={["ph", { empty: !ph.ok }]} data-label={t.photoSoon}>
+            {ph.ok && <img src={ph.src} alt={i === 0 ? t.captionGallery : ""} loading={i === 0 ? "eager" : "lazy"} />}
+            {i === 0 && ph.ok && <figcaption>{t.captionGallery}</figcaption>}
+          </figure>
+        ))}
+      </div>
+    </div>
+
+    <div class="wrap main">
+      <div class="story">
+        <section id="direct">
+          <span class="eyebrow">{p.directEyebrow}</span>
+          <h2>{p.directTitle}</h2>
+          <div class="direct">
+            {p.direct.map((d) => <div><strong>{d.big}</strong><span>{d.text}</span></div>)}
+          </div>
+        </section>
+
+        <section id="maison">
+          <span class="eyebrow">{p.houseEyebrow}</span>
+          <h2>{p.houseTitle}</h2>
+          <p class="lead">{p.houseText}</p>
+          <div class="rooms">
+            {maison.rooms.map((r) => <div class="room"><h3>{r[lang].title}</h3><p>{r[lang].text}</p></div>)}
+          </div>
+          <a class="more" href={routes.garden[lang]}>{t.gardenLink}</a>
+          <ul class="amen">
+            {maison.amenities.map((a) => <li set:html={rich(a[lang])} />)}
+          </ul>
+        </section>
+
+        <section id="autour">
+          <span class="eyebrow">{p.aroundEyebrow}</span>
+          <h2>{p.aroundTitle}</h2>
+          <p>{p.aroundText}</p>
+          <div class="tabs" role="tablist" aria-label={t.navAround}>
+            {autour.tabs.map((tab, i) => (
+              <button type="button" role="tab" id={`tab-${tab.id}`} aria-controls={`panel-${tab.id}`} aria-selected={i === 0 ? "true" : "false"}>{tab[lang]}</button>
+            ))}
+          </div>
+          {autour.tabs.map((tab, i) => (
+            <ul class="around" role="tabpanel" id={`panel-${tab.id}`} aria-labelledby={`tab-${tab.id}`} hidden={i !== 0}>
+              {tab.places.map((pl) => (
+                <li>
+                  <b set:html={rich(pl[lang].name)} />
+                  <small set:html={rich(pl[lang].text)} />
+                  <em set:html={rich(pl[lang].where)} />
+                  {pl.mapsQuery && (
+                    <a class="go" target="_blank" rel="noopener" href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(pl.mapsQuery)}`}>{t.mapLink}</a>
+                  )}
+                </li>
+              ))}
+            </ul>
+          ))}
+          <div class="mapbox">
+            {site.myMapsId ? (
+              <iframe src={`https://www.google.com/maps/d/embed?mid=${encodeURIComponent(site.myMapsId)}`} title={t.mapTitle} loading="lazy"></iframe>
+            ) : (
+              <div class="mapph">
+                <strong>{t.mapTitle}</strong>
+                <span>{t.mapText}</span>
+                <a class="btn" target="_blank" rel="noopener" href={`https://www.google.com/maps/search/?api=1&query=${site.geo.lat},${site.geo.lng}`}>{t.mapButton}</a>
+              </div>
+            )}
+          </div>
+        </section>
+
+        <section id="patrimoine">
+          <span class="eyebrow">{p.heritageEyebrow}</span>
+          <h2>{p.heritageTitle}</h2>
+          <p>{p.heritageText}</p>
+          <a class="more" href={routes.history[lang]}>{t.historyLink}</a>
+        </section>
+
+        <section id="avis">
+          <span class="eyebrow">{p.reviewsEyebrow}</span>
+          <h2><span class="star">★</span> {site.rating.airbnb} <span class="muted">{t.reviewsOn} {site.rating.airbnbCount} {t.facts.reviews}</span></h2>
+          <div class="scores">
+            {site.scores.map((s) => (
+              <div class="score"><div><span>{s[lang]}</span><b>{lang === "fr" ? String(s.value).replace(".", ",") : s.value}</b></div><div class="bar"><i style={`width:${(s.value / 5) * 100}%`}></i></div></div>
+            ))}
+          </div>
+          <p>{t.reviewsAlso(site.rating.booking, site.rating.tripcom, site.rating.tripcomCount)}</p>
+          <p>{p.reviewsText}</p>
+        </section>
+
+        <section id="faq">
+          <span class="eyebrow">FAQ</span>
+          <h2>{p.faqTitle}</h2>
+          <div>
+            {faq.items.map((f) => (
+              <details><summary>{f[lang].q}</summary><p set:html={rich(f[lang].a)} /></details>
+            ))}
+          </div>
+        </section>
+      </div>
+
+      <BookingCard lang={lang} />
+    </div>
+  </main>
+</Base>
+
+<script>
+  // Onglets de la rubrique « Autour »
+  const tabs = document.querySelectorAll<HTMLButtonElement>('[role="tab"]');
+  tabs.forEach((tab) => tab.addEventListener("click", () => {
+    tabs.forEach((o) => {
+      o.setAttribute("aria-selected", String(o === tab));
+      document.getElementById(o.getAttribute("aria-controls")!)!.hidden = o !== tab;
+    });
+  }));
+</script>

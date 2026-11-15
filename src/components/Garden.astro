@@ -1,0 +1,59 @@
+---
+import Base from "../layouts/Base.astro";
+import pages from "../data/pages.json";
+import fruits from "../data/fruits.json";
+import { ui, routes, type Lang } from "../i18n/ui";
+import { rich } from "../lib/text";
+import { hasImage } from "../lib/images";
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = ui[lang];
+const p = pages.garden[lang];
+const months = Array.from({ length: 12 }, (_, i) => i + 1);
+---
+<Base lang={lang} route="garden" title={p.metaTitle} description={p.metaDescription}>
+  <main id="top">
+    <article class="wrap page">
+      <a class="back" href={routes.home[lang]}>{t.back}</a>
+      <span class="eyebrow">{p.eyebrow}</span>
+      <h1>{p.title}</h1>
+      <p class="lead">{p.intro}</p>
+      <p class="legend"><span class="months" aria-hidden="true"><i class="on"></i></span> {p.legend}</p>
+      <div class="fruits">
+        {fruits.fruits.map((f) => {
+          const img = `img/fruits/${f.slug}.jpg`;
+          const ok = hasImage(img);
+          return (
+            <div class="fruit" style={`--fc:${f.color}`}>
+              <figure class:list={["ph", "fimg", { empty: !ok }]} data-label={t.photoSoon}>
+                {ok && <img src={`/${img}`} alt={f[lang].name} loading="lazy" />}
+              </figure>
+              <h3>{f[lang].name}</h3>
+              <p>{f[lang].text}</p>
+              <div class="season">
+                {f.months.length > 0 && (
+                  <span class="months" aria-hidden="true">
+                    {months.map((m) => <i class:list={{ on: f.months.includes(m) }} data-m={m}></i>)}
+                  </span>
+                )}
+                <span set:html={rich(f[lang].season)} />
+              </div>
+            </div>
+          );
+        })}
+      </div>
+      <section>
+        <h2>{p.extraTitle}</h2>
+        <p>{p.extraText}</p>
+      </section>
+      <a class="btn" href={`${routes.home[lang]}#reserver`}>{t.bookStay}</a>
+    </article>
+  </main>
+</Base>
+
+<script>
+  // Entoure le mois en cours sur le calendrier des fruits
+  const m = new Date().getMonth() + 1;
+  document.querySelectorAll(`.months i[data-m="${m}"]`).forEach((i) => i.classList.add("now"));
+</script>
