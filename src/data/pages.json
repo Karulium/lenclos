@@ -78,9 +78,10 @@
       "eyebrow": "Le jardin",
       "title": "Un jardin créole, en libre-service",
       "intro": "Tout autour de la maison poussent des dizaines d'arbres fruitiers. Les fruits sont offerts à votre arrivée, puis vous pouvez cueillir ce qui est mûr pendant tout le séjour. Ce qu'on trouve dépend de la saison : demandez à Gaël ou Danie ce qui est bon à cueillir.",
-      "legend": "Période de récolte, à titre indicatif. Le mois en cours est entouré.",
+      "legend": "Les périodes de récolte sont données à titre indicatif : on ne contrôle pas la nature ! Selon la pluie et le soleil de l'année, un fruit peut arriver en avance, en retard, ou se faire rare pendant votre séjour.",
       "extraTitle": "Vanille, café et cacao",
-      "extraText": "Le jardin abrite aussi de la vanille, des caféiers et des cacaoyers, les cultures qui ont fait l'histoire de Vieux-Habitants. On y trouve encore des herbes, des fleurs et des plantes, dont certaines se mangent, et un calebassier dont le fruit, lui, ne se mange pas."
+      "extraText": "Le jardin abrite aussi de la vanille, des caféiers et des cacaoyers, les cultures qui ont fait l'histoire de Vieux-Habitants. On y trouve encore des herbes, des fleurs et des plantes, dont certaines se mangent, et un calebassier dont le fruit, lui, ne se mange pas.",
+      "nowBadge": "De saison ce mois-ci"
     },
     "en": {
       "metaTitle": "The Creole garden · L'Enclos de Vieux-Habitants",
@@ -88,10 +89,63 @@
       "eyebrow": "The garden",
       "title": "A Creole garden, help yourselves",
       "intro": "Dozens of fruit trees grow all around the house. Fruit is offered on arrival, then you can pick whatever is ripe throughout your stay. What you find depends on the season: ask Gaël or Danie what is ready to pick.",
-      "legend": "Harvest period, as a guide. The current month is circled.",
+      "legend": "Harvest periods are only a guide: we don't control nature! Depending on the year's rain and sunshine, a fruit may come early, late, or be scarce during your stay.",
       "extraTitle": "Vanilla, coffee and cocoa",
-      "extraText": "The garden also has vanilla, coffee and cocoa plants, the crops that shaped Vieux-Habitants' history. You will also find herbs, flowers and plants, some of them edible, and a calabash tree whose fruit is not."
-    }
+      "extraText": "The garden also has vanilla, coffee and cocoa plants, the crops that shaped Vieux-Habitants' history. You will also find herbs, flowers and plants, some of them edible, and a calabash tree whose fruit is not.",
+      "nowBadge": "In season this month"
+    },
+    "seasons": [
+      {
+        "id": "careme",
+        "months": [
+          12,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "fr": {
+          "title": "Carême · décembre à mai",
+          "text": "La saison sèche : du soleil, des alizés et moins de pluie."
+        },
+        "en": {
+          "title": "Dry season (carême) · December to May",
+          "text": "Sunshine, trade winds and less rain."
+        }
+      },
+      {
+        "id": "hivernage",
+        "months": [
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "fr": {
+          "title": "Hivernage · juin à novembre",
+          "text": "La saison humide et chaude, la plus généreuse pour les fruits."
+        },
+        "en": {
+          "title": "Wet season (hivernage) · June to November",
+          "text": "Hot and humid, the most generous time for fruit."
+        }
+      },
+      {
+        "id": "annee",
+        "months": [],
+        "fr": {
+          "title": "Toute l'année",
+          "text": "Des fruits qu'on trouve presque à chaque séjour, ou qui donnent plusieurs fois par an."
+        },
+        "en": {
+          "title": "All year round",
+          "text": "Fruit you will find on almost every stay, or that crops several times a year."
+        }
+      }
+    ]
   },
   "history": {
     "fr": {
