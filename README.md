@@ -40,8 +40,8 @@ Créer une carte sur [Google My Maps](https://www.google.com/mymaps), la rendre 
 
 ## Mise en ligne (Cloudflare Pages, gratuit)
 
-1. Cloudflare > Workers & Pages > Créer > Pages > Connecter à Git > choisir ce dépôt.
-2. Commande de build : `npm run build` · Dossier de sortie : `dist`.
+1. Cloudflare > Workers & Pages > Créer > importer le dépôt GitHub `lenclos`.
+2. Commande de build : `npm run build` · Commande de déploiement : `npx wrangler deploy` (la config est dans `wrangler.jsonc`).
 3. Ajouter le domaine personnalisé, puis mettre la même adresse dans `site` de `astro.config.mjs` et dans `public/robots.txt`.
 
 Chaque modification sur `main` met le site à jour automatiquement.

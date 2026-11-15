@@ -1,0 +1,11 @@
+// Configuration Cloudflare : le site est un ensemble de fichiers statiques construits dans dist/.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "lenclos",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./dist",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+}
