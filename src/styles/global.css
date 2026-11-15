@@ -14,6 +14,11 @@
   --bg:#0F1814; --surface:#16231D; --ink:#E7EFE9; --muted:#9DB0A6; --line:#2A3B33;
   --leaf:#4FB58A; --leaf-ink:#0B1410; --sea:#5DB3D3; --mango:#F0B254; --ph:#22342B; color-scheme:dark}
 *{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0}
+figure{margin:0}
+img{max-width:100%;display:block}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 [hidden]{display:none!important}
 body{background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--body)}
 .wrap{max-width:1160px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
