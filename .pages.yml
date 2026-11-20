@@ -1,0 +1,178 @@
+# Configuration de Pages CMS (https://pagescms.org) : formulaires pour modifier le contenu sans toucher au code.
+# Astuce : écrire un texte entre [[doubles crochets]] le fait apparaître surligné « à compléter » sur le site.
+media:
+  input: public/img
+  output: /img
+
+content:
+  - name: site
+    label: Infos générales (contact, prix, Beds24, carte)
+    type: file
+    path: src/data/site.json
+    format: json
+    fields:
+      - { name: name, label: Nom, type: string }
+      - { name: address, label: Adresse, type: string }
+      - { name: whatsapp, label: WhatsApp, type: string }
+      - { name: email, label: E-mail, type: string }
+      - { name: priceFrom, label: Prix « à partir de », type: string }
+      - { name: registrationNumber, label: N° d'enregistrement du meublé, type: string }
+      - name: company
+        label: Entreprise
+        type: object
+        fields:
+          - { name: name, label: Nom, type: string }
+          - { name: legal, label: Forme juridique et SIRET, type: string }
+          - { name: url, label: Site web, type: string }
+      - { name: myMapsId, label: Identifiant de la carte Google My Maps (mid=…), type: string }
+
+  - name: autour
+    label: Autour (onglets et adresses)
+    type: file
+    path: src/data/autour.json
+    format: json
+    fields:
+      - name: tabs
+        label: Onglets
+        type: object
+        list: true
+        fields:
+          - { name: id, label: Identifiant (sans espace ni accent), type: string }
+          - { name: fr, label: Titre FR, type: string }
+          - { name: en, label: Titre EN, type: string }
+          - { name: color, label: Couleur sur la carte (ex. #1E6A4E), type: string }
+          - name: places
+            label: Adresses
+            type: object
+            list: true
+            fields:
+              - name: fr
+                label: Français
+                type: object
+                fields:
+                  - { name: name, label: Nom, type: string }
+                  - { name: text, label: Description, type: string }
+                  - { name: where, label: Lieu ou durée, type: string }
+              - name: en
+                label: English
+                type: object
+                fields:
+                  - { name: name, label: Name, type: string }
+                  - { name: text, label: Description, type: string }
+                  - { name: where, label: Place or time, type: string }
+              - { name: mapsQuery, label: Recherche Google Maps (nom + commune), type: string }
+              - { name: lat, label: Latitude (ex. 16.0514), type: number }
+              - { name: lng, label: Longitude (ex. -61.7423), type: number }
+
+  - name: moments
+    label: En images (photos et vidéos plein écran)
+    type: file
+    path: src/data/moments.json
+    format: json
+    fields:
+      - { name: placeholder, label: Afficher « médias factices » (décocher avec les vrais médias), type: boolean }
+      - name: items
+        label: Photos et vidéos (dans l'ordre du fil)
+        type: object
+        list: true
+        fields:
+          - { name: type, label: Type, type: select, options: { values: [photo, video] } }
+          - { name: src, label: Fichier (photo ou vidéo verticale MP4, 720p, 25 Mo max), type: file, options: { path: public/media/moments } }
+          - { name: poster, label: Image d'attente (vidéos seulement), type: image, options: { path: public/media/moments } }
+          - name: fr
+            label: Français
+            type: object
+            fields:
+              - { name: caption, label: Légende, type: string }
+              - { name: place, label: Lieu, type: string }
+          - name: en
+            label: English
+            type: object
+            fields:
+              - { name: caption, label: Caption, type: string }
+              - { name: place, label: Place, type: string }
+
+  - name: fruits
+    label: Fruits du jardin
+    type: file
+    path: src/data/fruits.json
+    format: json
+    fields:
+      - name: fruits
+        label: Fruits
+        type: object
+        list: true
+        fields:
+          - { name: slug, label: "Nom de la photo (ex. mangues → public/img/fruits/mangues.jpg)", type: string }
+          - { name: color, label: "Couleur (ex. #E8A33D)", type: string }
+          - { name: months, label: "Mois de récolte (1 = janvier … 12 = décembre)", type: number, list: true }
+          - name: fr
+            label: Français
+            type: object
+            fields:
+              - { name: name, label: Nom, type: string }
+              - { name: text, label: Description, type: string }
+              - { name: season, label: Saison (texte), type: string }
+          - name: en
+            label: English
+            type: object
+            fields:
+              - { name: name, label: Name, type: string }
+              - { name: text, label: Description, type: string }
+              - { name: season, label: Season (text), type: string }
+
+  - name: faq
+    label: Questions fréquentes
+    type: file
+    path: src/data/faq.json
+    format: json
+    fields:
+      - name: items
+        label: Questions
+        type: object
+        list: true
+        fields:
+          - name: fr
+            label: Français
+            type: object
+            fields:
+              - { name: q, label: Question, type: string }
+              - { name: a, label: Réponse, type: text }
+          - name: en
+            label: English
+            type: object
+            fields:
+              - { name: q, label: Question, type: string }
+              - { name: a, label: Answer, type: text }
+
+  - name: maison
+    label: La maison (chambres et équipements)
+    type: file
+    path: src/data/maison.json
+    format: json
+    fields:
+      - name: rooms
+        label: Chambres
+        type: object
+        list: true
+        fields:
+          - name: fr
+            label: Français
+            type: object
+            fields:
+              - { name: title, label: Titre, type: string }
+              - { name: text, label: Détail, type: string }
+          - name: en
+            label: English
+            type: object
+            fields:
+              - { name: title, label: Title, type: string }
+              - { name: text, label: Details, type: string }
+      - name: amenities
+        label: Équipements
+        type: object
+        list: true
+        fields:
+          - { name: fr, label: Français, type: string }
+          - { name: en, label: English, type: string }
+

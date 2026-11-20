@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lenclos-guadeloupe.com/sitemap.xml

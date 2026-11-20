@@ -1,0 +1,460 @@
+{
+  "home": {
+    "fr": {
+      "metaTitle": "L'Enclos de Vieux-Habitants · Maison vue mer en Guadeloupe",
+      "metaDescription": "Maison de 114 m² avec vue mer et montagne à Vieux-Habitants, Basse-Terre, Guadeloupe. 2 chambres climatisées avec salle de bain, jardin fruitier. Réservez en direct au meilleur prix.",
+      "eyebrow": "Basse-Terre · Guadeloupe",
+      "title": "Une maison au calme, entre la mer et la montagne",
+      "intro": "114 m² rien que pour vous, une galerie face à la mer des Caraïbes et un jardin plein d'arbres fruitiers, sur la côte sous le vent.",
+      "directEyebrow": "Pourquoi réserver ici",
+      "directTitle": "Le meilleur prix, directement avec nous",
+      "direct": [
+        {
+          "big": "−10 %",
+          "text": "par rapport aux prix affichés sur Airbnb et Booking"
+        },
+        {
+          "big": "0 €",
+          "text": "de frais de service ajoutés au moment de payer"
+        },
+        {
+          "big": "Direct",
+          "text": "vous échangez avec l'hôte, sans intermédiaire"
+        }
+      ],
+      "houseEyebrow": "La maison",
+      "houseTitle": "Indépendante, spacieuse, chambres climatisées",
+      "houseText": "Toute la maison est à vous. Depuis la galerie, la vue porte sur la mer, la montagne et plusieurs communes de Basse-Terre. Le jardin, en accès libre, est planté d'arbres fruitiers, et ses fruits sont à vous pendant tout le séjour. Chaque chambre a sa propre salle de bain, ce qui est pratique pour deux couples ou une famille.",
+      "aroundEyebrow": "Autour de la maison",
+      "aroundTitle": "La côte sous le vent, côté calme de la Guadeloupe",
+      "aroundText": "Nos adresses à Vieux-Habitants et aux alentours. Les durées sont indicatives, en voiture.",
+      "heritageEyebrow": "Un lieu chargé d'histoire",
+      "heritageTitle": "Sur les terres d'une ancienne caféière",
+      "heritageText": "La maison fait partie de L'Enclos, une ancienne habitation caféière citée dès 1764. Le domaine abrite les vestiges de la maison d'habitation et un petit cimetière familial du XIXe siècle en pierre de taille, recensés à l'Inventaire général du patrimoine. Le cimetière se trouve dans le jardin, à une vingtaine de mètres de la maison, et on l'aperçoit en partie depuis la maison. Nous serons heureux de vous les faire découvrir.",
+      "reviewsEyebrow": "Ce qu'en disent les voyageurs",
+      "reviewsText": "Les voyageurs parlent surtout de la vue, du calme, des espaces extérieurs et de l'accueil chaleureux.",
+      "faqTitle": "Questions fréquentes"
+    },
+    "en": {
+      "metaTitle": "L'Enclos de Vieux-Habitants · Sea-view house in Guadeloupe",
+      "metaDescription": "114 m² house with sea and mountain views in Vieux-Habitants, Basse-Terre, Guadeloupe. 2 air-conditioned bedrooms with bathrooms, fruit garden. Book direct for the best price.",
+      "eyebrow": "Basse-Terre · Guadeloupe",
+      "title": "A quiet house between the sea and the mountains",
+      "intro": "114 m² all to yourselves, a veranda facing the Caribbean Sea and a garden full of fruit trees, on Guadeloupe's sheltered west coast.",
+      "directEyebrow": "Why book here",
+      "directTitle": "The best price, directly with us",
+      "direct": [
+        {
+          "big": "−10 %",
+          "text": "compared with prices on Airbnb and Booking"
+        },
+        {
+          "big": "0 €",
+          "text": "service fees added at checkout"
+        },
+        {
+          "big": "Direct",
+          "text": "you talk to the host, no middleman"
+        }
+      ],
+      "houseEyebrow": "The house",
+      "houseTitle": "Private and spacious, with air-conditioned bedrooms",
+      "houseText": "The whole house is yours. From the veranda you look out over the sea, the mountains and several towns of Basse-Terre. The garden is open to you and planted with fruit trees, and their fruit is yours to pick during your stay. Each bedroom has its own bathroom, which suits two couples or a family.",
+      "aroundEyebrow": "Around the house",
+      "aroundTitle": "The leeward coast, Guadeloupe's quiet side",
+      "aroundText": "Our favourite places in and around Vieux-Habitants. Times are approximate, by car.",
+      "heritageEyebrow": "A place with a past",
+      "heritageTitle": "On the grounds of a former coffee estate",
+      "heritageText": "The house is part of L'Enclos, a former coffee estate recorded as early as 1764. The grounds hold the remains of the planter's house and a small 19th-century family cemetery in dressed stone, both listed in France's national heritage inventory. The cemetery stands in the garden, about 20 metres from the house, and can be partly seen from the house. We will be glad to show them to you.",
+      "reviewsEyebrow": "What guests say",
+      "reviewsText": "Guests mention the view, the quiet, the outdoor spaces and the warm welcome most often.",
+      "faqTitle": "Frequently asked questions"
+    }
+  },
+  "garden": {
+    "fr": {
+      "metaTitle": "Le jardin créole · L'Enclos de Vieux-Habitants",
+      "metaDescription": "Mangues, quenettes, corossols, pitayas… les fruits du jardin de L'Enclos, offerts à nos voyageurs, et leur saison.",
+      "eyebrow": "Le jardin",
+      "title": "Un jardin créole, en libre-service",
+      "intro": "Tout autour de la maison poussent des dizaines d'arbres fruitiers. Les fruits sont offerts à votre arrivée, puis vous pouvez cueillir ce qui est mûr pendant tout le séjour. Ce qu'on trouve dépend de la saison : demandez à Gaël ou Danie ce qui est bon à cueillir.",
+      "legend": "Les périodes de récolte sont données à titre indicatif : on ne contrôle pas la nature ! Selon la pluie et le soleil de l'année, un fruit peut arriver en avance, en retard, ou se faire rare pendant votre séjour.",
+      "extraTitle": "Vanille, café et cacao",
+      "extraText": "Le jardin abrite aussi de la vanille, des caféiers et des cacaoyers, les cultures qui ont fait l'histoire de Vieux-Habitants. On y trouve encore des herbes, des fleurs et des plantes, dont certaines se mangent, et un calebassier dont le fruit, lui, ne se mange pas.",
+      "nowBadge": "De saison ce mois-ci"
+    },
+    "en": {
+      "metaTitle": "The Creole garden · L'Enclos de Vieux-Habitants",
+      "metaDescription": "Mangoes, quenettes, soursops, dragon fruit… the fruit of L'Enclos' garden, free for our guests, and when it is in season.",
+      "eyebrow": "The garden",
+      "title": "A Creole garden, help yourselves",
+      "intro": "Dozens of fruit trees grow all around the house. Fruit is offered on arrival, then you can pick whatever is ripe throughout your stay. What you find depends on the season: ask Gaël or Danie what is ready to pick.",
+      "legend": "Harvest periods are only a guide: we don't control nature! Depending on the year's rain and sunshine, a fruit may come early, late, or be scarce during your stay.",
+      "extraTitle": "Vanilla, coffee and cocoa",
+      "extraText": "The garden also has vanilla, coffee and cocoa plants, the crops that shaped Vieux-Habitants' history. You will also find herbs, flowers and plants, some of them edible, and a calabash tree whose fruit is not.",
+      "nowBadge": "In season this month"
+    },
+    "seasons": [
+      {
+        "id": "careme",
+        "months": [
+          12,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "fr": {
+          "title": "Carême · décembre à mai",
+          "text": "La saison sèche : du soleil, des alizés et moins de pluie."
+        },
+        "en": {
+          "title": "Dry season (carême) · December to May",
+          "text": "Sunshine, trade winds and less rain."
+        }
+      },
+      {
+        "id": "hivernage",
+        "months": [
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "fr": {
+          "title": "Hivernage · juin à novembre",
+          "text": "La saison humide et chaude, la plus généreuse pour les fruits."
+        },
+        "en": {
+          "title": "Wet season (hivernage) · June to November",
+          "text": "Hot and humid, the most generous time for fruit."
+        }
+      },
+      {
+        "id": "annee",
+        "months": [],
+        "fr": {
+          "title": "Toute l'année",
+          "text": "Des fruits qu'on trouve presque à chaque séjour, ou qui donnent plusieurs fois par an."
+        },
+        "en": {
+          "title": "All year round",
+          "text": "Fruit you will find on almost every stay, or that crops several times a year."
+        }
+      }
+    ]
+  },
+  "history": {
+    "fr": {
+      "metaTitle": "L'histoire du domaine · L'Enclos de Vieux-Habitants",
+      "metaDescription": "L'Enclos, ancienne habitation caféière de Vieux-Habitants citée dès 1764, et son cimetière familial du XIXe siècle : chronologie, photos et sources (Inventaire général du patrimoine).",
+      "eyebrow": "L'histoire du domaine",
+      "title": "L'Enclos, une ancienne caféière de la côte sous le vent",
+      "intro": "La maison est construite sur les terres de L'Enclos, une habitation caféière signalée dès les années 1760 au lieu-dit Le Tuf, sur la section Cousinière de Vieux-Habitants. On l'appelait alors « Moulin à Bœuf ». Voici ce que racontent les archives, avec leurs sources en bas de page.",
+      "heroImage": {
+        "src": "/img/histoire/cimetiere-vue-1.jpg",
+        "alt": "Les tombes en pierre de taille du cimetière familial, avec le caveau à l'arrière-plan",
+        "caption": "Le cimetière familial : tombes « en coffre » et, au fond, le caveau de la famille Renoir."
+      },
+      "timelineTitle": "Deux siècles et demi en quelques dates",
+      "timeline": [
+        {
+          "year": "1764–1768",
+          "text": "La carte des Ingénieurs du Roi signale la propriété de M. Leborgne : Pierre Nicolas Leborgne Montplaisir (1737–1808). C'est une exploitation de taille moyenne, probablement déjà une caféière.",
+          "source": 1
+        },
+        {
+          "year": "Révolution",
+          "text": "La caféière, où travaillent 23 cultivateurs, n'est pas mise sous séquestre.",
+          "source": 1
+        },
+        {
+          "year": "1808",
+          "text": "Louis Butel de Montgaï, neveu de Leborgne et président du Conseil supérieur de la Guadeloupe, hérite du domaine.",
+          "source": 1
+        },
+        {
+          "year": "1822",
+          "text": "L'inventaire de succession décrit deux maisons principales, une ancienne et une neuve. Seize personnes réduites en esclavage cultivent le manioc, la banane, le café et des vivres. Le domaine est estimé à 88 000 livres.",
+          "source": 1
+        },
+        {
+          "year": "1827",
+          "text": "Lors de sa mise en location, on décrit une maison en maçonnerie aux fenêtres à jalousies, une case à farine de manioc, un moulin à café et un moulin à piler, une cuisine en maçonnerie, une case à coups de vent et six cases où logeaient les esclaves.",
+          "source": 1
+        },
+        {
+          "year": "1828",
+          "text": "Pierre Plantin et Élisabeth Lemaître achètent les habitations « Moulin à Bœufs » (21 carrés) et « Parnasse » (36 carrés) pour 50 000 francs.",
+          "source": 1
+        },
+        {
+          "year": "1836",
+          "text": "Charles Saint-Marc rachète les bâtiments. Une terrasse pour sécher le café est construite et l'habitation est rebaptisée « L'Enclos ».",
+          "source": 1
+        },
+        {
+          "year": "1847",
+          "text": "Charles Saint-Marc vend L'Enclos à son neveu Auguste Renoir, époux de Gabrielle Sevray, qui s'installe à nouveau dans la maison.",
+          "source": 1
+        },
+        {
+          "year": "1900",
+          "text": "On y cultive le roucou.",
+          "source": 1
+        },
+        {
+          "year": "1928 et 1964",
+          "text": "Deux cyclones arrachent la toiture. La maison sert ensuite de hangar.",
+          "source": 1
+        },
+        {
+          "year": "2000",
+          "text": "La maison et le cimetière sont étudiés et recensés à l'Inventaire général du patrimoine culturel.",
+          "source": 1
+        }
+      ],
+      "sections": [
+        {
+          "title": "La vie d'une caféière",
+          "text": [
+            "Sur les pentes de Vieux-Habitants, le café a longtemps été la grande culture. L'eau de la rivière du Plessis faisait tourner une roue hydraulique verticale, grâce à un canal aujourd'hui à sec. On y séchait les grains sur une terrasse, avant de les décortiquer, de les piler et de les vanner au moulin.",
+            "Comme toutes les habitations de l'époque, L'Enclos reposait sur le travail de femmes et d'hommes réduits en esclavage, jusqu'à l'abolition de 1848. Les archives en citent 23 pendant la Révolution et 16 en 1822. Ils n'ont laissé ni nom ni tombe sur le domaine, mais cette histoire est aussi la leur."
+          ],
+          "source": 1
+        },
+        {
+          "title": "Le cimetière familial",
+          "text": [
+            "Les « habitants » avaient coutume d'inhumer leurs défunts dans des caveaux ou des cimetières familiaux, sur leurs terres. Celui de L'Enclos date de la seconde moitié du XIXe siècle. Il réunit un caveau et six tombes des familles Duc, Sevray et Renoir.",
+            "Cinq tombes ont une forme de coffre, typique de cette époque. La sixième, coiffée d'une grande plaque de marbre inclinée, est plus tardive. Les entourages et les corniches en pierre de taille (de l'andésite, une pierre volcanique) sont très soignés : de petites cuvettes aux angles accueillaient des statuettes ou des bougeoirs, et des croix en fonte surmontaient les tombes. Le caveau de la famille Renoir est entièrement appareillé en pierre de taille. Un mur entourait sans doute le cimetière.",
+            "Les inscriptions racontent une histoire de famille. La plus ancienne tombe est celle de Marie Catherine Demion, née en 1790 et décédée en 1854. En décembre 1865, l'épidémie de choléra emporte à deux jours d'intervalle Pierre Marie Alfred Duc, puis sa mère, Mme Darius Duc, née Sevray.",
+            "L'Auguste Renoir qui a fait construire le caveau était un planteur de la commune, et non le peintre."
+          ],
+          "images": [
+            {
+              "src": "/img/histoire/caveau-renoir.jpg",
+              "alt": "Façade du caveau de la famille Renoir, en pierre de taille, avec sa niche",
+              "caption": "Le caveau de la famille Renoir."
+            },
+            {
+              "src": "/img/histoire/croix-fonte.jpg",
+              "alt": "Tombe en forme de coffre surmontée d'une croix en fonte, avec la mer au loin",
+              "caption": "Une tombe en coffre et sa croix en fonte, face à la mer."
+            }
+          ],
+          "source": 2
+        },
+        {
+          "title": "Aujourd'hui",
+          "text": [
+            "Le cimetière se trouve dans le jardin, à une vingtaine de mètres de la maison. On l'aperçoit en partie depuis la maison. Il est privé et n'est pas classé monument historique, mais il est recensé à l'Inventaire général. C'est un lieu de mémoire, calme, que nous vous demandons de respecter.",
+            "Des anciens bâtiments, il reste des vestiges : un pan de mur de la case à manioc et une déceriseuse à café. Les murs en pierre de l'ancienne maison ont été englobés dans la maison voisine, où habitent Gaël et Danie. Ils seront heureux de vous faire découvrir le domaine et son histoire."
+          ],
+          "images": [
+            {
+              "src": "/img/histoire/cimetiere-vue-2.jpg",
+              "alt": "Tombes envahies par la végétation, avec la mer des Caraïbes en arrière-plan",
+              "caption": "Le cimetière et, au loin, la mer des Caraïbes."
+            },
+            {
+              "src": "/img/histoire/alignement-tombes.jpg",
+              "alt": "Alignement de tombes en pierre, le caveau au fond",
+              "caption": "L'alignement des tombes vers le caveau."
+            }
+          ]
+        }
+      ],
+      "sourcesTitle": "Sources",
+      "sourcesIntro": "Cette page s'appuie sur deux études. Nous avons repris leurs informations sans les modifier ; certains points restent incertains, comme elles le signalent elles-mêmes.",
+      "sources": [
+        "Inventaire général du patrimoine culturel, Région Guadeloupe : dossier IA97100049 « Maison d'habitation Moulin à Bœuf ou L'Enclos » et sous-dossier IA97100050 « Cimetière », enquête de 2000, par Marie-Emmanuelle Desmoulins, Denise Parisis et Henri Parisis. Notices consultables dans la base Mérimée du ministère de la Culture (plateforme POP). Ce dossier cite lui-même la carte des Ingénieurs du Roi (1764–1768), les actes de succession de 1822, de location de 1827 et de vente de 1828, 1836 et 1847.",
+        "Mission archéologique du Conseil régional de la Guadeloupe, « Commune de Vieux-Habitants, section Cousinière : cimetière familial d'habitation, propriété Tendon » (dossier non daté) : inscriptions relevées sur les tombes, intérêt historique et architectural."
+      ],
+      "photoCredit": "Photos : dossier de la Mission archéologique du Conseil régional de la Guadeloupe."
+    },
+    "en": {
+      "metaTitle": "The estate's history · L'Enclos de Vieux-Habitants",
+      "metaDescription": "L'Enclos, a former coffee estate in Vieux-Habitants recorded as early as 1764, and its 19th-century family cemetery: timeline, photos and sources (French heritage inventory).",
+      "eyebrow": "The estate's history",
+      "title": "L'Enclos, a former coffee estate on the leeward coast",
+      "intro": "The house stands on the land of L'Enclos, a coffee estate recorded as early as the 1760s at Le Tuf, in the Cousinière area of Vieux-Habitants. It was then called \"Moulin à Bœuf\" (\"Ox Mill\"). Here is what the archives tell us, with their sources at the bottom of the page.",
+      "heroImage": {
+        "src": "/img/histoire/cimetiere-vue-1.jpg",
+        "alt": "The dressed-stone graves of the family cemetery, with the vault in the background",
+        "caption": "The family cemetery: chest-shaped graves and, at the back, the Renoir family vault."
+      },
+      "timelineTitle": "Two and a half centuries in a few dates",
+      "timeline": [
+        {
+          "year": "1764–1768",
+          "text": "The King's Engineers' map shows the property of Mr Leborgne: Pierre Nicolas Leborgne Montplaisir (1737–1808). It is a medium-sized estate, probably already growing coffee.",
+          "source": 1
+        },
+        {
+          "year": "Revolution",
+          "text": "The coffee estate, worked by 23 labourers, is not confiscated.",
+          "source": 1
+        },
+        {
+          "year": "1808",
+          "text": "Louis Butel de Montgaï, Leborgne's nephew and president of Guadeloupe's Superior Council, inherits the estate.",
+          "source": 1
+        },
+        {
+          "year": "1822",
+          "text": "The probate inventory describes two main houses, an old one and a new one. Sixteen enslaved people grow cassava, bananas, coffee and food crops. The estate is valued at 88,000 livres.",
+          "source": 1
+        },
+        {
+          "year": "1827",
+          "text": "When it is let, the records describe a masonry house with louvred windows, a cassava-flour house, a coffee mill and a pounding mill, a masonry kitchen, a hurricane shelter and six huts where the enslaved workers lived.",
+          "source": 1
+        },
+        {
+          "year": "1828",
+          "text": "Pierre Plantin and Élisabeth Lemaître buy the \"Moulin à Bœufs\" (21 carrés) and \"Parnasse\" (36 carrés) estates for 50,000 francs.",
+          "source": 1
+        },
+        {
+          "year": "1836",
+          "text": "Charles Saint-Marc buys the buildings. A terrace for drying coffee is built and the estate is renamed \"L'Enclos\".",
+          "source": 1
+        },
+        {
+          "year": "1847",
+          "text": "Charles Saint-Marc sells L'Enclos to his nephew Auguste Renoir, husband of Gabrielle Sevray, who moves back into the house.",
+          "source": 1
+        },
+        {
+          "year": "1900",
+          "text": "Annatto (roucou) is grown on the estate.",
+          "source": 1
+        },
+        {
+          "year": "1928 and 1964",
+          "text": "Two hurricanes tear off the roof. The house is then used as a shed.",
+          "source": 1
+        },
+        {
+          "year": "2000",
+          "text": "The house and the cemetery are surveyed and listed in France's national heritage inventory.",
+          "source": 1
+        }
+      ],
+      "sections": [
+        {
+          "title": "Life on a coffee estate",
+          "text": [
+            "Coffee was long the main crop on the slopes of Vieux-Habitants. Water from the Plessis river turned a vertical water wheel, through a channel that is now dry. The beans were dried on a terrace, then hulled, pounded and winnowed at the mill.",
+            "Like every estate of its time, L'Enclos relied on the labour of enslaved women and men, until slavery was abolished in 1848. The archives record 23 of them during the Revolution and 16 in 1822. They left neither names nor graves on the estate, but this history is theirs too."
+          ],
+          "source": 1
+        },
+        {
+          "title": "The family cemetery",
+          "text": [
+            "Planter families used to bury their dead in vaults or family cemeteries on their own land. The one at L'Enclos dates from the second half of the 19th century. It holds a vault and six graves of the Duc, Sevray and Renoir families.",
+            "Five graves are chest-shaped, typical of that period. The sixth, topped with a large sloping marble slab, is later. The surrounds and cornices in dressed stone (andesite, a volcanic stone) are finely made: small hollows at the corners held statuettes or candlesticks, and cast-iron crosses topped the graves. The Renoir family vault is built entirely of dressed stone. A wall probably once enclosed the cemetery.",
+            "The inscriptions tell a family story. The oldest grave belongs to Marie Catherine Demion, born in 1790, who died in 1854. In December 1865, the cholera epidemic took Pierre Marie Alfred Duc and then, two days later, his mother, Mrs Darius Duc, née Sevray.",
+            "The Auguste Renoir who built the vault was a local planter, not the painter."
+          ],
+          "images": [
+            {
+              "src": "/img/histoire/caveau-renoir.jpg",
+              "alt": "Front of the Renoir family vault, in dressed stone, with its niche",
+              "caption": "The Renoir family vault."
+            },
+            {
+              "src": "/img/histoire/croix-fonte.jpg",
+              "alt": "Chest-shaped grave topped by a cast-iron cross, with the sea in the distance",
+              "caption": "A chest-shaped grave and its cast-iron cross, facing the sea."
+            }
+          ],
+          "source": 2
+        },
+        {
+          "title": "Today",
+          "text": [
+            "The cemetery is in the garden, about 20 metres from the house, and can be partly seen from the house. It is private and not a listed monument, but it is recorded in the national heritage inventory. It is a quiet place of remembrance, and we ask you to respect it.",
+            "Some remains of the old buildings survive: part of a wall of the cassava house and a coffee pulper. The stone walls of the old house are now part of the house next door, where Gaël and Danie live. They will be glad to show you the estate and its history."
+          ],
+          "images": [
+            {
+              "src": "/img/histoire/cimetiere-vue-2.jpg",
+              "alt": "Graves among the vegetation, with the Caribbean Sea in the background",
+              "caption": "The cemetery and, in the distance, the Caribbean Sea."
+            },
+            {
+              "src": "/img/histoire/alignement-tombes.jpg",
+              "alt": "A row of stone graves, with the vault at the back",
+              "caption": "The row of graves leading to the vault."
+            }
+          ]
+        }
+      ],
+      "sourcesTitle": "Sources",
+      "sourcesIntro": "This page is based on two studies. We have used their information as it stands; some points remain uncertain, as the studies themselves note.",
+      "sources": [
+        "Inventaire général du patrimoine culturel (French national heritage inventory), Guadeloupe Region: file IA97100049 \"Maison d'habitation Moulin à Bœuf ou L'Enclos\" and sub-file IA97100050 \"Cimetière\", 2000 survey by Marie-Emmanuelle Desmoulins, Denise Parisis and Henri Parisis. Records available in the Ministry of Culture's Mérimée database (POP platform). The file itself cites the King's Engineers' map (1764–1768) and the deeds of 1822 (probate), 1827 (lease), 1828, 1836 and 1847 (sales).",
+        "Mission archéologique du Conseil régional de la Guadeloupe (Guadeloupe Regional Council archaeology unit), \"Commune de Vieux-Habitants, section Cousinière : cimetière familial d'habitation, propriété Tendon\" (undated report): grave inscriptions, historical and architectural interest."
+      ],
+      "photoCredit": "Photos: report of the Mission archéologique du Conseil régional de la Guadeloupe."
+    }
+  },
+  "moments": {
+    "fr": {
+      "metaTitle": "En images : la vie à L'Enclos · Vieux-Habitants, Guadeloupe",
+      "metaDescription": "Photos et vidéos de la maison L'Enclos de Vieux-Habitants, de son jardin créole et des alentours : faites défiler pour vous projeter dans votre séjour en Guadeloupe.",
+      "title": "La vie à L'Enclos",
+      "intro": "Faites défiler vers le haut pour voir la suite.",
+      "sound": "Activer le son",
+      "mute": "Couper le son",
+      "share": "Partager",
+      "copied": "Lien copié",
+      "end": "Envie d'y être ?",
+      "endText": "Réservez en direct au meilleur prix.",
+      "placeholder": "Médias factices, en attendant les vraies photos et vidéos."
+    },
+    "en": {
+      "metaTitle": "In pictures: life at L'Enclos · Vieux-Habitants, Guadeloupe",
+      "metaDescription": "Photos and videos of L'Enclos de Vieux-Habitants, its Creole garden and the surroundings: scroll through and picture your stay in Guadeloupe.",
+      "title": "Life at L'Enclos",
+      "intro": "Swipe up to see more.",
+      "sound": "Turn sound on",
+      "mute": "Mute",
+      "share": "Share",
+      "copied": "Link copied",
+      "end": "Wish you were here?",
+      "endText": "Book direct for the best price.",
+      "placeholder": "Placeholder media, until the real photos and videos arrive."
+    }
+  },
+  "map": {
+    "fr": {
+      "metaTitle": "Carte des bonnes adresses autour de L'Enclos · Vieux-Habitants",
+      "metaDescription": "Plages, rivières, restaurants, marchés, randonnées et adresses pratiques autour de la maison L'Enclos, à Vieux-Habitants en Guadeloupe, sur une carte interactive.",
+      "title": "Nos adresses sur la carte",
+      "intro": "Tout ce que nous vous conseillons autour de la maison. Touchez un lieu pour le voir sur la carte et obtenir l'itinéraire.",
+      "all": "Tout",
+      "house": "La maison",
+      "route": "Itinéraire ↗",
+      "notOnMap": "Bientôt sur la carte",
+      "listLabel": "Liste des lieux"
+    },
+    "en": {
+      "metaTitle": "Map of our favourite places around L'Enclos · Vieux-Habitants",
+      "metaDescription": "Beaches, rivers, restaurants, markets, hikes and practical addresses around L'Enclos in Vieux-Habitants, Guadeloupe, on an interactive map.",
+      "title": "Our places on the map",
+      "intro": "Everything we recommend around the house. Tap a place to see it on the map and get directions.",
+      "all": "All",
+      "house": "The house",
+      "route": "Directions ↗",
+      "notOnMap": "Coming soon on the map",
+      "listLabel": "List of places"
+    }
+  }
+}

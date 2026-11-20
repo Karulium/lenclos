@@ -1,0 +1,140 @@
+---
+// Page « Carte » : tous les lieux de la rubrique Autour sur une carte OpenStreetMap (Leaflet).
+// Les lieux et leurs coordonnées (lat, lng) se modifient dans src/data/autour.json ou dans Pages CMS.
+import Base from "../layouts/Base.astro";
+import pages from "../data/pages.json";
+import autour from "../data/autour.json";
+import site from "../data/site.json";
+import { ui, routes, type Lang } from "../i18n/ui";
+import { rich, plain } from "../lib/text";
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = ui[lang];
+const p = pages.map[lang];
+const gmaps = (q: string) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
+
+const places = autour.tabs.flatMap((tab) =>
+  tab.places
+    .filter((pl) => pl[lang].name && (pl.mapsQuery || pl.lat != null))
+    .map((pl) => ({
+      cat: tab.id,
+      color: tab.color,
+      name: pl[lang].name,
+      text: pl[lang].text,
+      where: pl[lang].where,
+      plainName: plain(pl[lang].name),
+      plainText: plain(pl[lang].text),
+      plainWhere: plain(pl[lang].where),
+      lat: pl.lat,
+      lng: pl.lng,
+      url: pl.lat != null && pl.lng != null ? gmaps(`${pl.lat},${pl.lng}`) : pl.mapsQuery ? gmaps(pl.mapsQuery) : "",
+    })),
+);
+const mapData = {
+  house: { lat: site.geo.lat, lng: site.geo.lng, name: site.name, label: p.house, url: gmaps(`${site.geo.lat},${site.geo.lng}`) },
+  places: places.map((pl, i) => ({ ...pl, id: i })),
+
+  route: p.route,
+};
+---
+<Base lang={lang} route="map" title={p.metaTitle} description={p.metaDescription}>
+  <main id="top" class="mappage">
+    <div class="mp-side">
+      <div class="mp-head">
+        <a class="back" href={routes.home[lang]}>{t.back}</a>
+        <h1>{p.title}</h1>
+        <p>{p.intro}</p>
+        <div class="mp-chips" role="group" aria-label={p.listLabel}>
+          <button type="button" class="chip" aria-pressed="true" data-cat="all">{p.all}</button>
+          {autour.tabs.map((tab) => (
+            <button type="button" class="chip" aria-pressed="false" data-cat={tab.id} style={`--c:${tab.color}`}>{tab[lang]}</button>
+          ))}
+        </div>
+      </div>
+      <ol class="mp-list" aria-label={p.listLabel}>
+        {mapData.places.map((pl) => (
+          <li data-cat={pl.cat} data-id={pl.id} style={`--c:${pl.color}`}>
+            <button type="button" class="mp-item" disabled={pl.lat == null}>
+              <span class="mp-dot" aria-hidden="true"></span>
+              <span class="mp-txt">
+                <strong set:html={rich(pl.name)} />
+                <span set:html={rich(pl.text)} />
+                <small><Fragment set:html={rich(pl.where)} />{pl.lat == null && <> · {p.notOnMap}</>}</small>
+              </span>
+            </button>
+            {pl.url && <a class="mp-go" href={pl.url} target="_blank" rel="noopener">{p.route}</a>}
+          </li>
+        ))}
+      </ol>
+    </div>
+    <div class="mp-map" id="map" role="region" aria-label={t.mapTitle}></div>
+    <script type="application/json" id="map-data" set:html={JSON.stringify({ ...mapData, places: mapData.places.map(({ name, text, where, plainName, plainText, plainWhere, ...rest }) => ({ ...rest, name: plainName, text: plainText, where: plainWhere })) }).replace(/</g, "\\u003c")} />
+  </main>
+</Base>
+
+<script>
+  import L from "leaflet";
+  import "leaflet/dist/leaflet.css";
+
+  type Place = { id: number; cat: string; color: string; name: string; text: string; where: string; lat: number | null; lng: number | null; url: string };
+  const data = JSON.parse(document.getElementById("map-data")!.textContent!);
+  const esc = (s: string) => s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!);
+
+  const map = L.map("map", { scrollWheelZoom: true, zoomControl: true }).setView([data.house.lat, data.house.lng], 12);
+  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+  }).addTo(map);
+
+  const pin = (color: string, cls = "") => L.divIcon({ className: `mp-pin ${cls}`, html: `<span style="--c:${color}"></span>`, iconSize: [26, 26], iconAnchor: [13, 26], popupAnchor: [0, -24] });
+
+  const house = L.marker([data.house.lat, data.house.lng], { icon: pin("#14231C", "mp-house"), zIndexOffset: 1000, title: data.house.name })
+    .bindPopup(`<strong>${esc(data.house.name)}</strong><br><span>${esc(data.house.label)}</span><br><a href="${data.house.url}" target="_blank" rel="noopener">${esc(data.route)}</a>`)
+    .addTo(map);
+
+  const markers = new Map<number, L.Marker>();
+  (data.places as Place[]).forEach((pl) => {
+    if (pl.lat == null || pl.lng == null) return;
+    const m = L.marker([pl.lat, pl.lng], { icon: pin(pl.color), title: pl.name })
+      .bindPopup(`<strong>${esc(pl.name)}</strong><br><span>${esc(pl.text)}</span><br><small>${esc(pl.where)}</small>${pl.url ? `<br><a href="${pl.url}" target="_blank" rel="noopener">${esc(data.route)}</a>` : ""}`);
+    m.addTo(map);
+    (m as any).cat = pl.cat;
+    markers.set(pl.id, m);
+  });
+
+  function fit(cat: string) {
+    const pts: L.LatLngExpression[] = [[data.house.lat, data.house.lng]];
+    markers.forEach((m) => { if (cat === "all" || (m as any).cat === cat) pts.push(m.getLatLng()); });
+    if (pts.length > 1) map.fitBounds(L.latLngBounds(pts), { padding: [40, 40], maxZoom: 14 });
+    else map.setView([data.house.lat, data.house.lng], 12);
+  }
+  fit("all");
+
+  // Filtres par catégorie : la liste et les repères suivent.
+  const chips = document.querySelectorAll<HTMLButtonElement>(".chip");
+  chips.forEach((c) => c.addEventListener("click", () => {
+    const cat = c.dataset.cat!;
+    chips.forEach((o) => o.setAttribute("aria-pressed", String(o === c)));
+    document.querySelectorAll<HTMLLIElement>(".mp-list li").forEach((li) => (li.hidden = cat !== "all" && li.dataset.cat !== cat));
+    markers.forEach((m) => {
+      const show = cat === "all" || (m as any).cat === cat;
+      if (show && !map.hasLayer(m)) m.addTo(map);
+      if (!show && map.hasLayer(m)) m.remove();
+    });
+    map.closePopup();
+    fit(cat);
+  }));
+
+  // Toucher un lieu de la liste : la carte le montre.
+  document.querySelector(".mp-list")!.addEventListener("click", (e) => {
+    const li = (e.target as HTMLElement).closest<HTMLLIElement>("li");
+    if (!li || (e.target as HTMLElement).closest("a")) return;
+    const m = markers.get(Number(li.dataset.id));
+    if (!m) return;
+    map.flyTo(m.getLatLng(), Math.max(map.getZoom(), 14), { duration: 0.6 });
+    m.openPopup();
+    if (matchMedia("(max-width:860px)").matches) document.getElementById("map")!.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+  house.openPopup();
+</script>

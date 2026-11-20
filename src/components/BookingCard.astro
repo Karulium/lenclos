@@ -1,0 +1,234 @@
+---
+import site from "../data/site.json";
+import { ui, type Lang } from "../i18n/ui";
+import { rich } from "../lib/text";
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = ui[lang];
+const minNights = site.beds24.minNights ?? 2;
+// Textes utilisés par le calendrier (côté navigateur).
+const i18n = {
+  locale: lang === "fr" ? "fr-FR" : "en-GB",
+  chooseIn: t.chooseIn,
+  chooseOut: t.chooseOut,
+  min: t.minNights(minNights),
+  one: t.nights(1).replace(/^1\s*/, ""),
+  many: t.nights(2).replace(/^2\s*/, ""),
+  pick: t.pickDates,
+};
+---
+<aside class="book" id="reserver" aria-label={t.book}>
+  <span class="badge">{t.badge}</span>
+  <div class="price"><span>{t.from}</span><strong set:html={rich(site.priceFrom)} /><span>{t.night}</span></div>
+  <form class="fields" id="book-form" data-propid={site.beds24.propId} data-lang={lang} data-min={minNights} data-i18n={JSON.stringify(i18n)}>
+    <input type="hidden" name="checkin" id="d-in">
+    <input type="hidden" name="checkout" id="d-out">
+    <div class="full dp">
+      <button type="button" class="dp-trigger" id="dp-trigger" aria-haspopup="dialog" aria-expanded="false" aria-controls="dp-pop">
+        <span class="dp-col"><span class="dp-lbl">{t.checkin}</span><span class="dp-val" id="dp-in">–</span></span>
+        <span class="dp-arrow" aria-hidden="true">→</span>
+        <span class="dp-col"><span class="dp-lbl">{t.checkout}</span><span class="dp-val" id="dp-out">–</span></span>
+      </button>
+      <div class="dp-backdrop" hidden></div>
+      <div class="dp-pop" id="dp-pop" role="dialog" aria-modal="true" aria-label={t.dates} hidden>
+        <div class="dp-head">
+          <strong id="dp-msg">{t.chooseIn}</strong>
+          <span class="dp-sub">{t.minNights(minNights)}</span>
+        </div>
+        <div class="dp-nav">
+          <button type="button" class="dp-prev" aria-label={t.prevMonth}>‹</button>
+          <button type="button" class="dp-next" aria-label={t.nextMonth}>›</button>
+        </div>
+        <div class="dp-months" id="dp-months"></div>
+        <div class="dp-foot">
+          <button type="button" class="dp-clear">{t.clear}</button>
+          <span class="dp-count" id="dp-count"></span>
+          <button type="button" class="btn dp-done">{t.done}</button>
+        </div>
+      </div>
+    </div>
+    <label class="full" for="guests"><span>{t.guests}</span>
+      <select id="guests" name="guests">{[1, 2, 3, 4, 5].map((n) => <option selected={n === 2}>{n}</option>)}</select>
+    </label>
+    <button class="btn full" type="submit">{t.check}</button>
+  </form>
+  <small>{t.bookNote}</small>
+  <div class="contact">
+    <span>{t.hosts}</span>
+    <span>WhatsApp : <a href={`https://wa.me/${site.whatsapp.replace(/\D/g, "")}`}>{site.whatsapp}</a></span>
+    <span>E-mail : <Fragment set:html={rich(site.email)} /></span>
+  </div>
+</aside>
+
+<script>
+  // Calendrier de réservation : on choisit l'arrivée puis le départ sur un même calendrier.
+  // Jours passés grisés, séjour minimum respecté, nombre de nuits affiché, puis ouverture de Beds24.
+  const form = document.getElementById("book-form") as HTMLFormElement | null;
+  if (form) {
+    const L = JSON.parse(form.dataset.i18n!);
+    const MIN = Number(form.dataset.min) || 2;
+    const $ = <T extends HTMLElement>(s: string) => form.querySelector<T>(s)!;
+    const inEl = $<HTMLInputElement>("#d-in"), outEl = $<HTMLInputElement>("#d-out");
+    const trigger = $<HTMLButtonElement>("#dp-trigger"), pop = $<HTMLDivElement>("#dp-pop");
+    const backdrop = $<HTMLDivElement>(".dp-backdrop");
+    const monthsEl = $<HTMLDivElement>("#dp-months"), msg = $<HTMLElement>("#dp-msg"), count = $<HTMLElement>("#dp-count");
+
+    const DAY = 864e5;
+    const atNoon = (d: Date) => new Date(d.getFullYear(), d.getMonth(), d.getDate(), 12);
+    const iso = (d: Date) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+    const parse = (s: string) => { const [y, m, d] = s.split("-").map(Number); return new Date(y, m - 1, d, 12); };
+    const addDays = (d: Date, n: number) => new Date(d.getTime() + n * DAY);
+    const nightsBetween = (a: Date, b: Date) => Math.round((b.getTime() - a.getTime()) / DAY);
+    const today = atNoon(new Date());
+    const lastDay = addDays(today, 540);
+    const fmtShort = new Intl.DateTimeFormat(L.locale, { weekday: "short", day: "numeric", month: "short" });
+    const fmtMonth = new Intl.DateTimeFormat(L.locale, { month: "long", year: "numeric" });
+    const fmtLong = new Intl.DateTimeFormat(L.locale, { weekday: "long", day: "numeric", month: "long", year: "numeric" });
+    const weekdays = Array.from({ length: 7 }, (_, i) => new Intl.DateTimeFormat(L.locale, { weekday: "narrow" }).format(new Date(2024, 0, 1 + i)));
+    const nightsLabel = (n: number) => `${n} ${n > 1 ? L.many : L.one}`;
+
+    // Dates proposées par défaut : dans 3 semaines, pour 7 nuits.
+    let start: Date | null = addDays(today, 21);
+    let end: Date | null = addDays(start, 7);
+    let hover: Date | null = null;
+    let view = new Date(today.getFullYear(), today.getMonth(), 1, 12);
+
+    const monthsShown = () => (matchMedia("(min-width:700px)").matches ? 2 : 1);
+
+    function sync() {
+      inEl.value = start ? iso(start) : "";
+      outEl.value = end ? iso(end) : "";
+      $("#dp-in").textContent = start ? fmtShort.format(start) : "–";
+      $("#dp-out").textContent = end ? fmtShort.format(end) : "–";
+      count.textContent = start && end ? nightsLabel(nightsBetween(start, end)) : "";
+      msg.textContent = start && !end ? L.chooseOut : start && end ? `${fmtShort.format(start)} → ${fmtShort.format(end)}` : L.chooseIn;
+    }
+
+    function render() {
+      monthsEl.innerHTML = "";
+      const n = monthsShown();
+      for (let k = 0; k < n; k++) {
+        const first = new Date(view.getFullYear(), view.getMonth() + k, 1, 12);
+        const wrap = document.createElement("div");
+        wrap.className = "dp-month";
+        wrap.innerHTML = `<div class="dp-title">${fmtMonth.format(first)}</div>`;
+        const grid = document.createElement("div");
+        grid.className = "dp-grid";
+        grid.setAttribute("role", "grid");
+        weekdays.forEach((w) => { const s = document.createElement("span"); s.className = "dp-wd"; s.textContent = w; grid.append(s); });
+        const offset = (first.getDay() + 6) % 7; // semaine commençant le lundi
+        for (let i = 0; i < offset; i++) grid.append(document.createElement("span"));
+        const days = new Date(first.getFullYear(), first.getMonth() + 1, 0).getDate();
+        for (let d = 1; d <= days; d++) {
+          const date = new Date(first.getFullYear(), first.getMonth(), d, 12);
+          const b = document.createElement("button");
+          b.type = "button";
+          b.className = "dp-day";
+          b.textContent = String(d);
+          b.dataset.date = iso(date);
+          b.setAttribute("aria-label", fmtLong.format(date));
+          if (iso(date) === iso(today)) b.classList.add("dp-today");
+          grid.append(b);
+        }
+        wrap.append(grid);
+        monthsEl.append(wrap);
+      }
+      $<HTMLButtonElement>(".dp-prev").disabled = view <= new Date(today.getFullYear(), today.getMonth(), 1, 12);
+      paint();
+    }
+
+    // Met à jour l'état de chaque jour (sélection, plage, jours impossibles) sans redessiner le calendrier.
+    function paint() {
+      const rangeEnd = end ?? (hover && start && hover > start ? hover : null);
+      monthsEl.querySelectorAll<HTMLButtonElement>(".dp-day").forEach((b) => {
+        const date = parse(b.dataset.date!);
+        const tooShort = !!(start && !end && date > start && nightsBetween(start, date) < MIN);
+        b.disabled = date < today || date > lastDay || tooShort;
+        b.title = tooShort ? L.min : "";
+        const isStart = !!start && iso(date) === iso(start);
+        const isEnd = !!rangeEnd && iso(date) === iso(rangeEnd);
+        b.classList.toggle("dp-short", tooShort);
+        b.classList.toggle("dp-start", isStart);
+        b.classList.toggle("dp-solo", isStart && !rangeEnd);
+        b.classList.toggle("dp-end", isEnd);
+        b.classList.toggle("dp-in", !!(start && rangeEnd && date > start && date < rangeEnd));
+        b.setAttribute("aria-pressed", String(isStart || isEnd));
+      });
+    }
+
+    function pick(date: Date) {
+      if (!start || end || date <= start) { start = date; end = null; }
+      else end = date;
+      sync(); paint();
+    }
+
+    function open() {
+      pop.hidden = false;
+      backdrop.hidden = false;
+      document.documentElement.classList.add("dp-lock");
+      trigger.setAttribute("aria-expanded", "true");
+      if (start) view = new Date(start.getFullYear(), start.getMonth(), 1, 12);
+      render();
+      (pop.querySelector<HTMLButtonElement>(".dp-start") ?? pop.querySelector<HTMLButtonElement>(".dp-day:not(:disabled)"))?.focus({ preventScroll: true });
+    }
+    function close() {
+      // Départ non choisi : on propose automatiquement le séjour minimum.
+      if (start && !end) { end = addDays(start, MIN); sync(); }
+      pop.hidden = true;
+      backdrop.hidden = true;
+      document.documentElement.classList.remove("dp-lock");
+      trigger.setAttribute("aria-expanded", "false");
+    }
+
+    trigger.addEventListener("click", () => (pop.hidden ? open() : close()));
+    monthsEl.addEventListener("click", (e) => {
+      const b = (e.target as HTMLElement).closest<HTMLButtonElement>(".dp-day");
+      if (b && !b.disabled) {
+        pick(parse(b.dataset.date!));
+        monthsEl.querySelector<HTMLButtonElement>(`[data-date="${b.dataset.date}"]`)?.focus();
+      }
+    });
+    monthsEl.addEventListener("mouseover", (e) => {
+      if (!start || end) return;
+      const b = (e.target as HTMLElement).closest<HTMLButtonElement>(".dp-day");
+      const d = b && !b.disabled ? parse(b.dataset.date!) : null;
+      if (d?.getTime() !== hover?.getTime()) { hover = d; paint(); }
+    });
+    monthsEl.addEventListener("keydown", (e) => {
+      const b = (e.target as HTMLElement).closest<HTMLButtonElement>(".dp-day");
+      const step = ({ ArrowLeft: -1, ArrowRight: 1, ArrowUp: -7, ArrowDown: 7 } as Record<string, number>)[e.key];
+      if (!b || !step) return;
+      e.preventDefault();
+      const next = addDays(parse(b.dataset.date!), step);
+      const lastShown = new Date(view.getFullYear(), view.getMonth() + monthsShown(), 0, 12);
+      if (next < view) view = new Date(view.getFullYear(), view.getMonth() - 1, 1, 12);
+      if (next > lastShown) view = new Date(view.getFullYear(), view.getMonth() + 1, 1, 12);
+      render();
+      monthsEl.querySelector<HTMLButtonElement>(`[data-date="${iso(next)}"]`)?.focus();
+    });
+    $(".dp-prev").addEventListener("click", () => { view = new Date(view.getFullYear(), view.getMonth() - 1, 1, 12); render(); });
+    $(".dp-next").addEventListener("click", () => { view = new Date(view.getFullYear(), view.getMonth() + 1, 1, 12); render(); });
+    $(".dp-clear").addEventListener("click", () => { start = end = hover = null; sync(); paint(); });
+    $(".dp-done").addEventListener("click", () => { close(); trigger.focus(); });
+    // composedPath : le jour cliqué est redessiné (donc retiré de la page) avant que ce gestionnaire ne s'exécute.
+    const dpEl = form.querySelector(".dp")!;
+    document.addEventListener("click", (e) => { if (!pop.hidden && (!e.composedPath().includes(dpEl) || e.target === backdrop)) close(); });
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !pop.hidden) { close(); trigger.focus(); } });
+    addEventListener("resize", () => { if (!pop.hidden) render(); });
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      if (!start || !end) { open(); return; }
+      const params = new URLSearchParams({
+        propid: form.dataset.propid!,
+        checkin: iso(start),
+        numnight: String(nightsBetween(start, end)),
+        numadult: $<HTMLSelectElement>("#guests").value,
+        lang: form.dataset.lang!,
+      });
+      location.href = "https://beds24.com/booking2.php?" + params.toString();
+    });
+
+    sync();
+  }
+</script>

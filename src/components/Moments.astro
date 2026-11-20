@@ -1,0 +1,134 @@
+---
+// Page « En images » : photos et vidéos plein écran, qu'on fait défiler comme sur TikTok.
+// Le contenu se modifie dans src/data/moments.json (ou dans Pages CMS, rubrique « En images »).
+import Base from "../layouts/Base.astro";
+import pages from "../data/pages.json";
+import moments from "../data/moments.json";
+import { ui, routes, languages, type Lang } from "../i18n/ui";
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = ui[lang];
+const p = pages.moments[lang];
+const home = routes.home[lang];
+const otherLangs = Object.keys(languages) as Lang[];
+const items = moments.items;
+---
+<Base lang={lang} route="moments" title={p.metaTitle} description={p.metaDescription} immersive>
+  <div class="feed-bar">
+    <a class="feed-back" href={home} aria-label={t.back}>←</a>
+    <h1>{p.title}</h1>
+    <div class="lang" role="group" aria-label={t.langLabel}>
+      {otherLangs.map((l) => (
+        <a href={routes.moments[l]} hreflang={l} lang={l} aria-current={l === lang ? "true" : "false"}>{l.toUpperCase()}</a>
+      ))}
+    </div>
+  </div>
+
+  <div class="feed-rail">
+    <button type="button" class="feed-sound" aria-pressed="false" data-on={p.mute} data-off={p.sound} aria-label={p.sound}>
+      <span aria-hidden="true">🔇</span>
+    </button>
+    <button type="button" class="feed-share" aria-label={p.share} data-copied={p.copied}>
+      <span aria-hidden="true">↗</span>
+    </button>
+  </div>
+
+  <main class="feed" id="feed" tabindex="0" aria-label={p.title}>
+    {items.map((it, i) => (
+      <section class="slide" data-kind={it.type}>
+        {it.type === "video"
+          ? <video muted playsinline loop preload={i === 0 ? "auto" : "none"} poster={it.poster} data-src={it.src} src={i === 0 ? it.src : undefined} aria-label={it[lang].caption}></video>
+          : <img src={it.src} alt={it[lang].caption} loading={i === 0 ? "eager" : "lazy"} decoding="async" />}
+        <div class="slide-info">
+          {it[lang].place && <span class="slide-place">📍 {it[lang].place}</span>}
+          <p>{it[lang].caption}</p>
+          {i === 0 && <p class="slide-hint">{p.intro}</p>}
+          {i === 0 && moments.placeholder && <p class="slide-hint">{p.placeholder}</p>}
+        </div>
+      </section>
+    ))}
+    <section class="slide slide-end">
+      <div>
+        <h2>{p.end}</h2>
+        <p>{p.endText}</p>
+        <a class="btn" href={`${home}#reserver`}>{t.bookStay}</a>
+      </div>
+    </section>
+  </main>
+
+  <a class="btn feed-book" href={`${home}#reserver`}>{t.book}</a>
+</Base>
+
+<script>
+  const feed = document.getElementById("feed") as HTMLElement;
+  const soundBtn = document.querySelector<HTMLButtonElement>(".feed-sound")!;
+  const shareBtn = document.querySelector<HTMLButtonElement>(".feed-share")!;
+  const firstRound = Array.from(feed.children) as HTMLElement[];
+  const MAX_ROUNDS = 4; // le fil repart au début jusqu'à 4 fois, puis s'arrête
+  let rounds = 1;
+  let soundOn = false;
+
+  const videos = () => Array.from(feed.querySelectorAll("video"));
+
+  // Ne charge une vidéo qu'à l'approche, la lance quand elle est à l'écran, l'arrête sinon.
+  const loader = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      const v = e.target as HTMLVideoElement;
+      if (e.isIntersecting && !v.src) { v.src = v.dataset.src!; v.preload = "auto"; }
+    }
+  }, { root: feed, rootMargin: "100% 0px" });
+
+  const player = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      const v = e.target as HTMLVideoElement;
+      if (e.isIntersecting) { v.muted = !soundOn; v.play().catch(() => {}); }
+      else { v.pause(); }
+    }
+  }, { root: feed, threshold: 0.6 });
+
+  const watch = (v: HTMLVideoElement) => { loader.observe(v); player.observe(v); };
+  videos().forEach(watch);
+
+  // Défilement « infini » : arrivé à la fin, on rajoute un tour du fil.
+  const tail = new IntersectionObserver((entries) => {
+    if (!entries.some((e) => e.isIntersecting) || rounds >= MAX_ROUNDS) return;
+    rounds++;
+    tail.disconnect();
+    let last: HTMLElement | null = null;
+    for (const el of firstRound) {
+      const c = el.cloneNode(true) as HTMLElement;
+      c.querySelectorAll(".slide-hint").forEach((h) => h.remove());
+      c.querySelectorAll("video").forEach((v) => { v.removeAttribute("src"); v.preload = "none"; watch(v); });
+      c.querySelectorAll("img").forEach((img) => (img.loading = "lazy"));
+      feed.append(c);
+      last = c;
+    }
+    if (last) tail.observe(last);
+  }, { root: feed, threshold: 0.5 });
+  tail.observe(firstRound[firstRound.length - 1]);
+
+  // Toucher une vidéo la met en pause ou la relance.
+  feed.addEventListener("click", (e) => {
+    const v = (e.target as HTMLElement).closest("video");
+    if (v) v.paused ? v.play().catch(() => {}) : v.pause();
+  });
+
+  soundBtn.addEventListener("click", () => {
+    soundOn = !soundOn;
+    soundBtn.setAttribute("aria-pressed", String(soundOn));
+    soundBtn.setAttribute("aria-label", soundOn ? soundBtn.dataset.on! : soundBtn.dataset.off!);
+    soundBtn.querySelector("span")!.textContent = soundOn ? "🔊" : "🔇";
+    videos().forEach((v) => (v.muted = !soundOn || v.paused));
+  });
+
+  shareBtn.addEventListener("click", async () => {
+    const data = { title: document.title, url: location.href };
+    try {
+      if (navigator.share) await navigator.share(data);
+      else { await navigator.clipboard.writeText(location.href); shareBtn.setAttribute("aria-label", shareBtn.dataset.copied!); shareBtn.classList.add("done"); }
+    } catch {}
+  });
+
+  feed.focus({ preventScroll: true });
+</script>
