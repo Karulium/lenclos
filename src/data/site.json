@@ -2,7 +2,10 @@
   "name": "L'Enclos de Vieux-Habitants",
   "shortName": "L'Enclos",
   "address": "186 route de Grand-Croix, 97119 Vieux-Habitants, Guadeloupe",
-  "geo": { "lat": 16.051443, "lng": -61.742279 },
+  "geo": {
+    "lat": 16.051443,
+    "lng": -61.742279
+  },
   "whatsapp": "+590 690 50 58 68",
   "email": "[[contact@lenclos-guadeloupe.com]]",
   "priceFrom": "[[95 €]]",
@@ -12,15 +15,49 @@
     "legal": "[[forme juridique et SIRET à compléter]]",
     "url": ""
   },
-  "beds24": { "propId": "366789", "roomId": "755078" },
+  "beds24": {
+    "propId": "366789",
+    "roomId": "755078",
+    "minNights": 2
+  },
   "myMapsId": "",
-  "rating": { "airbnb": "4,93", "airbnbCount": 14, "booking": "9,6", "tripcom": "9,6", "tripcomCount": 27 },
+  "rating": {
+    "airbnb": "4,93",
+    "airbnbCount": 14,
+    "booking": "9,6",
+    "tripcom": "9,6",
+    "tripcomCount": 27
+  },
   "scores": [
-    { "fr": "Communication", "en": "Communication", "value": 4.9 },
-    { "fr": "Emplacement", "en": "Location", "value": 4.9 },
-    { "fr": "Qualité-prix", "en": "Value", "value": 4.9 },
-    { "fr": "Propreté", "en": "Cleanliness", "value": 4.8 },
-    { "fr": "Précision", "en": "Accuracy", "value": 4.7 },
-    { "fr": "Arrivée", "en": "Check-in", "value": 4.6 }
+    {
+      "fr": "Communication",
+      "en": "Communication",
+      "value": 4.9
+    },
+    {
+      "fr": "Emplacement",
+      "en": "Location",
+      "value": 4.9
+    },
+    {
+      "fr": "Qualité-prix",
+      "en": "Value",
+      "value": 4.9
+    },
+    {
+      "fr": "Propreté",
+      "en": "Cleanliness",
+      "value": 4.8
+    },
+    {
+      "fr": "Précision",
+      "en": "Accuracy",
+      "value": 4.7
+    },
+    {
+      "fr": "Arrivée",
+      "en": "Check-in",
+      "value": 4.6
+    }
   ]
 }
