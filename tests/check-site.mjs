@@ -47,10 +47,10 @@ for (const [path, html] of Object.entries(htmlByPath)) {
     if (url.startsWith("//")) continue;
     if (!resolves(url)) fail(`${path} : lien interne cassé ${url}`);
   }
-  for (const [, id] of html.matchAll(/href="(?:\/[^"#]*)?#([\w-]+)"/g)) {
-    // les ancres de la page d'accueil doivent exister sur l'accueil de la même langue
-    const home = path.startsWith("/en/") ? htmlByPath["/en/"] : htmlByPath["/"];
-    if (home && !home.includes(`id="${id}"`)) fail(`${path} : ancre #${id} introuvable sur l'accueil`);
+  for (const [, target, id] of html.matchAll(/href="(\/[^"#]*)?#([\w-]+)"/g)) {
+    // une ancre doit exister sur la page visée (la page elle-même si le lien commence par #)
+    const page = target ? htmlByPath[target] : html;
+    if (page && !page.includes(`id="${id}"`)) fail(`${path} : ancre #${id} introuvable sur ${target ?? "la page"}`);
   }
 }
 

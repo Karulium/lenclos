@@ -7,20 +7,57 @@ interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = ui[lang];
 const p = pages.history[lang];
+// Renvoi vers une source : petit numéro cliquable qui mène à la liste des sources en bas de page.
+const ref = (n?: number) => (n ? `<sup class="ref"><a href="#source-${n}" aria-label="Source ${n}">[${n}]</a></sup>` : "");
 ---
 <Base lang={lang} route="history" title={p.metaTitle} description={p.metaDescription}>
   <main id="top">
-    <article class="wrap page">
+    <article class="wrap page history">
       <a class="back" href={routes.home[lang]}>{t.back}</a>
       <span class="eyebrow">{p.eyebrow}</span>
       <h1>{p.title}</h1>
       <p class="lead">{p.intro}</p>
+
+      <figure class="h-hero">
+        <img src={p.heroImage.src} alt={p.heroImage.alt} width="1400" height="912" loading="eager" decoding="async" />
+        <figcaption>{p.heroImage.caption}</figcaption>
+      </figure>
+
+      <section>
+        <h2>{p.timelineTitle}</h2>
+        <ol class="timeline">
+          {p.timeline.map((e) => (
+            <li><span class="t-year">{e.year}</span><p>{e.text}<Fragment set:html={ref(e.source)} /></p></li>
+          ))}
+        </ol>
+      </section>
+
       {p.sections.map((s) => (
         <section>
           <h2>{s.title}</h2>
-          {s.text.map((para) => <p>{para}</p>)}
+          {s.text.map((para, i) => <p>{para}<Fragment set:html={i === s.text.length - 1 ? ref(s.source) : ""} /></p>)}
+          {s.images && (
+            <div class="h-gallery">
+              {s.images.map((im) => (
+                <figure>
+                  <img src={im.src} alt={im.alt} loading="lazy" decoding="async" />
+                  <figcaption>{im.caption}</figcaption>
+                </figure>
+              ))}
+            </div>
+          )}
         </section>
       ))}
+
+      <section class="sources" id="sources">
+        <h2>{p.sourcesTitle}</h2>
+        <p>{p.sourcesIntro}</p>
+        <ol>
+          {p.sources.map((s, i) => <li id={`source-${i + 1}`}>{s}</li>)}
+        </ol>
+        <p class="credit-photo">{p.photoCredit}</p>
+      </section>
+
       <a class="btn" href={`${routes.home[lang]}#reserver`}>{t.bookStay}</a>
     </article>
   </main>
