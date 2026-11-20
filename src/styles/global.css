@@ -152,10 +152,10 @@ details p{margin-top:8px;color:var(--muted)}
 .fruit{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px;display:grid;gap:4px;align-content:start}
 .around .go{grid-column:1;font-size:.85rem;font-weight:600;color:var(--sea);text-decoration:none;justify-self:start}
 .around .go:hover{text-decoration:underline}
-.mapbox{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--surface)}
-.mapbox iframe{display:block;width:100%;height:420px;border:0}
-.mapph{display:grid;gap:8px;justify-items:start;padding:24px;background:linear-gradient(135deg,color-mix(in srgb,var(--sea) 12%,var(--surface)),color-mix(in srgb,var(--leaf) 12%,var(--surface)))}
-.mapph span{color:var(--muted)}
+.mapcard{display:grid;gap:8px;justify-items:start;padding:24px;border:1px solid var(--line);border-radius:var(--r);color:var(--ink);text-decoration:none;background:linear-gradient(135deg,color-mix(in srgb,var(--sea) 12%,var(--surface)),color-mix(in srgb,var(--leaf) 12%,var(--surface)))}
+.mapcard strong{font-family:var(--display);font-size:1.2rem}
+.mapcard span:not(.btn){color:var(--muted)}
+.mapcard:hover{border-color:var(--leaf)}
 .credit a{color:inherit}
 .fimg{aspect-ratio:4/3;margin:-16px -16px 8px;border-radius:var(--r) var(--r) 0 0;background:linear-gradient(135deg,color-mix(in srgb,var(--fc) 70%,var(--surface)),color-mix(in srgb,var(--fc) 30%,var(--surface)))}
 .fimg.empty::after{color:color-mix(in srgb,var(--fc) 30%,#1a1a1a);font-weight:600}
@@ -261,3 +261,36 @@ figcaption{font-size:.88rem;color:var(--muted);margin-top:6px}
 .sources ol{margin:0;padding-left:1.4em;display:grid;gap:10px;color:var(--muted)}
 .sources li:target{color:var(--ink);background:color-mix(in srgb,var(--mango) 18%,transparent);border-radius:6px}
 .credit-photo{font-size:.85rem;color:var(--muted)}
+
+/* Page Carte : liste à gauche, carte à droite (empilées sur mobile) */
+.mappage{display:grid;grid-template-columns:380px 1fr;height:calc(100dvh - 61px)}
+.mp-side{overflow-y:auto;border-right:1px solid var(--line);background:var(--surface)}
+.mp-head{display:grid;gap:10px;padding:20px 16px 12px;position:sticky;top:0;background:var(--surface);z-index:2;border-bottom:1px solid var(--line)}
+.mp-head h1{font-size:1.7rem}
+.mp-head p{color:var(--muted);font-size:.95rem}
+.mp-chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.chip{flex:none;border:1px solid var(--line);background:transparent;color:var(--ink);font:600 .85rem var(--body);padding:7px 12px;border-radius:99px;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.chip[data-cat]:not([data-cat="all"])::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--c)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.mp-list{list-style:none;margin:0;padding:6px 8px 24px}
+.mp-list li{display:grid;grid-template-columns:1fr auto;align-items:start;gap:4px;border-bottom:1px solid var(--line)}
+.mp-item{display:flex;gap:10px;text-align:left;background:none;border:0;padding:12px 8px;cursor:pointer;color:var(--ink);font:inherit;border-radius:10px}
+.mp-item:hover:not(:disabled){background:var(--bg)}
+.mp-item:disabled{cursor:default}
+.mp-dot{flex:none;width:12px;height:12px;border-radius:50%;background:var(--c);margin-top:6px}
+.mp-txt{display:grid;gap:2px}
+.mp-txt span{color:var(--muted);font-size:.92rem}
+.mp-txt small{color:var(--muted);font-size:.8rem}
+.mp-go{font-size:.82rem;white-space:nowrap;padding:14px 8px 0}
+.mp-map{min-height:320px;z-index:1}
+.mp-pin span{display:block;width:22px;height:22px;margin:1px;border-radius:50% 50% 50% 0;background:var(--c);transform:rotate(-45deg);border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.35)}
+.mp-house span{width:24px;height:24px;margin:0;background:#14231C;border-color:var(--mango)}
+.leaflet-popup-content{font:400 .92rem/1.45 var(--body)}
+.leaflet-popup-content strong{font-weight:600}
+@media (max-width:860px){
+  .mappage{grid-template-columns:1fr;height:auto}
+  .mp-side{display:contents}
+  .mp-head{position:static;order:1;border-bottom:0}
+  .mp-map{order:2;height:62dvh;scroll-margin-top:70px}
+  .mp-list{order:3;background:var(--surface)}
+}

@@ -40,6 +40,7 @@ content:
           - { name: id, label: Identifiant (sans espace ni accent), type: string }
           - { name: fr, label: Titre FR, type: string }
           - { name: en, label: Titre EN, type: string }
+          - { name: color, label: Couleur sur la carte (ex. #1E6A4E), type: string }
           - name: places
             label: Adresses
             type: object
@@ -60,6 +61,8 @@ content:
                   - { name: text, label: Description, type: string }
                   - { name: where, label: Place or time, type: string }
               - { name: mapsQuery, label: Recherche Google Maps (nom + commune), type: string }
+              - { name: lat, label: Latitude (ex. 16.0514), type: number }
+              - { name: lng, label: Longitude (ex. -61.7423), type: number }
 
   - name: moments
     label: En images (photos et vidéos plein écran)

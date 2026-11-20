@@ -102,17 +102,11 @@ const ld = {
               ))}
             </ul>
           ))}
-          <div class="mapbox">
-            {site.myMapsId ? (
-              <iframe src={`https://www.google.com/maps/d/embed?mid=${encodeURIComponent(site.myMapsId)}`} title={t.mapTitle} loading="lazy"></iframe>
-            ) : (
-              <div class="mapph">
-                <strong>{t.mapTitle}</strong>
-                <span>{t.mapText}</span>
-                <a class="btn" target="_blank" rel="noopener" href={`https://www.google.com/maps/search/?api=1&query=${site.geo.lat},${site.geo.lng}`}>{t.mapButton}</a>
-              </div>
-            )}
-          </div>
+          <a class="mapcard" href={routes.map[lang]}>
+            <strong>{t.mapTitle}</strong>
+            <span>{t.mapText}</span>
+            <span class="btn">{t.mapPageLink}</span>
+          </a>
         </section>
 
         <section id="patrimoine">

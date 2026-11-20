@@ -16,7 +16,9 @@
             "text": "Convenience store, also open on Sundays",
             "where": "Town centre"
           },
-          "mapsQuery": "Carrefour Express Vieux-Habitants"
+          "mapsQuery": "Carrefour Express Vieux-Habitants",
+          "lat": null,
+          "lng": null
         },
         {
           "fr": {
@@ -29,7 +31,9 @@
             "text": "Boulevard des Habissois Souverains",
             "where": "Town centre"
           },
-          "mapsQuery": "Pharmacie Dindaine Vieux-Habitants"
+          "mapsQuery": "Pharmacie Dindaine Vieux-Habitants",
+          "lat": null,
+          "lng": null
         },
         {
           "fr": {
@@ -42,7 +46,9 @@
             "text": "The town's post office",
             "where": "Town centre"
           },
-          "mapsQuery": "La Poste Vieux-Habitants"
+          "mapsQuery": "La Poste Vieux-Habitants",
+          "lat": null,
+          "lng": null
         },
         {
           "fr": {
@@ -55,7 +61,9 @@
             "text": "Covered market, supermarkets, banks",
             "where": "Basse-Terre, ~20 min"
           },
-          "mapsQuery": "Marché couvert Basse-Terre Guadeloupe"
+          "mapsQuery": "Marché couvert Basse-Terre Guadeloupe",
+          "lat": null,
+          "lng": null
         },
         {
           "fr": {
@@ -68,7 +76,9 @@
             "text": "24-hour emergency department. Ambulance: 15",
             "where": "Basse-Terre, ~20 min"
           },
-          "mapsQuery": "Centre hospitalier de la Basse-Terre"
+          "mapsQuery": "Centre hospitalier de la Basse-Terre",
+          "lat": null,
+          "lng": null
         },
         {
           "fr": {
@@ -81,7 +91,9 @@
             "text": "Car rental desks on site",
             "where": "~1 h 15"
           },
-          "mapsQuery": "Aéroport Guadeloupe Pôle Caraïbes"
+          "mapsQuery": "Aéroport Guadeloupe Pôle Caraïbes",
+          "lat": 16.2653,
+          "lng": -61.5318
         },
         {
           "fr": {
@@ -94,9 +106,12 @@
             "text": "[[To be added by Gaël and Danie]]",
             "where": ""
           },
-          "mapsQuery": ""
+          "mapsQuery": "",
+          "lat": null,
+          "lng": null
         }
-      ]
+      ],
+      "color": "#4B5D67"
     },
     {
       "id": "marches",
@@ -114,7 +129,9 @@
             "text": "Local produce and crafts. Hours [[to be added]]",
             "where": "Wednesday · Vieux-Habitants"
           },
-          "mapsQuery": "Marché Assofwi Vieux-Habitants"
+          "mapsQuery": "Marché Assofwi Vieux-Habitants",
+          "lat": null,
+          "lng": null
         },
         {
           "fr": {
@@ -127,7 +144,9 @@
             "text": "Farmers' market. Hours [[to be added]]",
             "where": "Friday · Baillif"
           },
-          "mapsQuery": "Marché des Mornes Baillif"
+          "mapsQuery": "Marché des Mornes Baillif",
+          "lat": null,
+          "lng": null
         },
         {
           "fr": {
@@ -140,9 +159,12 @@
             "text": "Fruit, vegetables, spices and flavoured rums",
             "where": "Basse-Terre, ~20 min"
           },
-          "mapsQuery": "Marché couvert Basse-Terre Guadeloupe"
+          "mapsQuery": "Marché couvert Basse-Terre Guadeloupe",
+          "lat": null,
+          "lng": null
         }
-      ]
+      ],
+      "color": "#C77B12"
     },
     {
       "id": "restos",
@@ -160,7 +182,9 @@
             "text": "Creole food, grills",
             "where": "Town centre"
           },
-          "mapsQuery": "La Grillade Vieux-Habitants"
+          "mapsQuery": "La Grillade Vieux-Habitants",
+          "lat": null,
+          "lng": null
         },
         {
           "fr": {
@@ -173,7 +197,9 @@
             "text": "Creole, Cajun and French",
             "where": "Vieux-Habitants"
           },
-          "mapsQuery": "Les Alizés chez Va Vieux-Habitants"
+          "mapsQuery": "Les Alizés chez Va Vieux-Habitants",
+          "lat": null,
+          "lng": null
         },
         {
           "fr": {
@@ -186,7 +212,9 @@
             "text": "Creole food right on the sand",
             "where": "Simaho beach"
           },
-          "mapsQuery": "L'Arc en Ciel Tropical Vieux-Habitants"
+          "mapsQuery": "L'Arc en Ciel Tropical Vieux-Habitants",
+          "lat": null,
+          "lng": null
         },
         {
           "fr": {
@@ -199,7 +227,9 @@
             "text": "Beach restaurant",
             "where": "Simaho beach"
           },
-          "mapsQuery": "Relais Beach Simaho Vieux-Habitants"
+          "mapsQuery": "Relais Beach Simaho Vieux-Habitants",
+          "lat": null,
+          "lng": null
         },
         {
           "fr": {
@@ -212,7 +242,9 @@
             "text": "Creole food",
             "where": "Simaho beach"
           },
-          "mapsQuery": "Ô Lokal Vieux-Habitants"
+          "mapsQuery": "Ô Lokal Vieux-Habitants",
+          "lat": null,
+          "lng": null
         },
         {
           "fr": {
@@ -225,7 +257,9 @@
             "text": "Food by a Cuban chef",
             "where": "Vieux-Habitants"
           },
-          "mapsQuery": "La Casona Vieux-Habitants"
+          "mapsQuery": "La Casona Vieux-Habitants",
+          "lat": null,
+          "lng": null
         },
         {
           "fr": {
@@ -238,7 +272,9 @@
             "text": "Snack bar, home-made dishes",
             "where": "La Voûte beach"
           },
-          "mapsQuery": "Ti Lavoute Vieux-Habitants"
+          "mapsQuery": "Ti Lavoute Vieux-Habitants",
+          "lat": null,
+          "lng": null
         },
         {
           "fr": {
@@ -251,9 +287,12 @@
             "text": "Pizza",
             "where": "Vieux-Habitants"
           },
-          "mapsQuery": "Andiamo Pizza Vieux-Habitants"
+          "mapsQuery": "Andiamo Pizza Vieux-Habitants",
+          "lat": null,
+          "lng": null
         }
-      ]
+      ],
+      "color": "#C2410C"
     },
     {
       "id": "visiter",
@@ -271,7 +310,9 @@
             "text": "17th-century coffee estate, a listed historic monument, guided tours. Check opening times",
             "where": "Grande Rivière valley"
           },
-          "mapsQuery": "Habitation La Grivelière Vieux-Habitants"
+          "mapsQuery": "Habitation La Grivelière Vieux-Habitants",
+          "lat": null,
+          "lng": null
         },
         {
           "fr": {
@@ -284,7 +325,9 @@
             "text": "One of the oldest churches in Guadeloupe",
             "where": "Town centre"
           },
-          "mapsQuery": "Église Saint-Joseph Vieux-Habitants"
+          "mapsQuery": "Église Saint-Joseph Vieux-Habitants",
+          "lat": null,
+          "lng": null
         },
         {
           "fr": {
@@ -297,7 +340,9 @@
             "text": "History and tasting of leeward-coast coffee",
             "where": "Vieux-Habitants"
           },
-          "mapsQuery": "Musée du café Vieux-Habitants"
+          "mapsQuery": "Musée du café Vieux-Habitants",
+          "lat": null,
+          "lng": null
         },
         {
           "fr": {
@@ -310,7 +355,9 @@
             "text": "Coffee, vanilla and fruit on a family farm",
             "where": "Vieux-Habitants"
           },
-          "mapsQuery": "Domaine de Vanibel Vieux-Habitants"
+          "mapsQuery": "Domaine de Vanibel Vieux-Habitants",
+          "lat": null,
+          "lng": null
         },
         {
           "fr": {
@@ -323,7 +370,9 @@
             "text": "Pre-Columbian Amerindian carvings",
             "where": "Plessis river"
           },
-          "mapsQuery": "Roches gravées rivière du Plessis Vieux-Habitants"
+          "mapsQuery": "Roches gravées rivière du Plessis Vieux-Habitants",
+          "lat": null,
+          "lng": null
         },
         {
           "fr": {
@@ -336,9 +385,12 @@
             "text": "Fort, cathedral, market",
             "where": "~20 min"
           },
-          "mapsQuery": "Fort Delgrès Basse-Terre"
+          "mapsQuery": "Fort Delgrès Basse-Terre",
+          "lat": 15.9906,
+          "lng": -61.7263
         }
-      ]
+      ],
+      "color": "#7C3AED"
     },
     {
       "id": "plages",
@@ -356,7 +408,9 @@
             "text": "Black sand and pebbles, calm water, picnic shelters",
             "where": "< 10 min"
           },
-          "mapsQuery": "Plage de Rocroy Vieux-Habitants"
+          "mapsQuery": "Plage de Rocroy Vieux-Habitants",
+          "lat": null,
+          "lng": null
         },
         {
           "fr": {
@@ -369,7 +423,9 @@
             "text": "Beach with facilities in town, restaurants",
             "where": "Town centre"
           },
-          "mapsQuery": "Plage de Simaho Vieux-Habitants"
+          "mapsQuery": "Plage de Simaho Vieux-Habitants",
+          "lat": null,
+          "lng": null
         },
         {
           "fr": {
@@ -382,7 +438,9 @@
             "text": "Small beach by the sports ground",
             "where": "Vieux-Habitants"
           },
-          "mapsQuery": "Plage de la Voûte Vieux-Habitants"
+          "mapsQuery": "Plage de la Voûte Vieux-Habitants",
+          "lat": null,
+          "lng": null
         },
         {
           "fr": {
@@ -395,7 +453,9 @@
             "text": "Shady walk to freshwater pools",
             "where": "Vieux-Habitants"
           },
-          "mapsQuery": "Grande Rivière Vieux-Habitants"
+          "mapsQuery": "Grande Rivière Vieux-Habitants",
+          "lat": null,
+          "lng": null
         },
         {
           "fr": {
@@ -408,9 +468,12 @@
             "text": "Snorkel with turtles, dive at the Pigeon islets",
             "where": "Bouillante, ~20 min"
           },
-          "mapsQuery": "Plage de Malendure Bouillante"
+          "mapsQuery": "Plage de Malendure Bouillante",
+          "lat": null,
+          "lng": null
         }
-      ]
+      ],
+      "color": "#17607C"
     },
     {
       "id": "nature",
@@ -428,7 +491,9 @@
             "text": "Swimming pool under a waterfall framed by basalt columns, at the end of the Grande Rivière trail",
             "where": "Vieux-Habitants"
           },
-          "mapsQuery": "Cascade Paradis Vieux-Habitants"
+          "mapsQuery": "Cascade Paradis Vieux-Habitants",
+          "lat": null,
+          "lng": null
         },
         {
           "fr": {
@@ -441,7 +506,9 @@
             "text": "Guadeloupe's highest point, 1,467 m",
             "where": "~45 min"
           },
-          "mapsQuery": "La Soufrière Guadeloupe"
+          "mapsQuery": "La Soufrière Guadeloupe",
+          "lat": 16.0446,
+          "lng": -61.6642
         },
         {
           "fr": {
@@ -454,7 +521,9 @@
             "text": "The national park's famous waterfalls",
             "where": "~1 h"
           },
-          "mapsQuery": "Chutes du Carbet"
+          "mapsQuery": "Chutes du Carbet",
+          "lat": null,
+          "lng": null
         },
         {
           "fr": {
@@ -467,9 +536,12 @@
             "text": "Natural hot baths by the sea",
             "where": "~20 min"
           },
-          "mapsQuery": "Sources chaudes Bouillante"
+          "mapsQuery": "Sources chaudes Bouillante",
+          "lat": null,
+          "lng": null
         }
-      ]
+      ],
+      "color": "#1E6A4E"
     }
   ]
 }

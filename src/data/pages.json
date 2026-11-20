@@ -432,5 +432,29 @@
       "endText": "Book direct for the best price.",
       "placeholder": "Placeholder media, until the real photos and videos arrive."
     }
+  },
+  "map": {
+    "fr": {
+      "metaTitle": "Carte des bonnes adresses autour de L'Enclos · Vieux-Habitants",
+      "metaDescription": "Plages, rivières, restaurants, marchés, randonnées et adresses pratiques autour de la maison L'Enclos, à Vieux-Habitants en Guadeloupe, sur une carte interactive.",
+      "title": "Nos adresses sur la carte",
+      "intro": "Tout ce que nous vous conseillons autour de la maison. Touchez un lieu pour le voir sur la carte et obtenir l'itinéraire.",
+      "all": "Tout",
+      "house": "La maison",
+      "route": "Itinéraire ↗",
+      "notOnMap": "Bientôt sur la carte",
+      "listLabel": "Liste des lieux"
+    },
+    "en": {
+      "metaTitle": "Map of our favourite places around L'Enclos · Vieux-Habitants",
+      "metaDescription": "Beaches, rivers, restaurants, markets, hikes and practical addresses around L'Enclos in Vieux-Habitants, Guadeloupe, on an interactive map.",
+      "title": "Our places on the map",
+      "intro": "Everything we recommend around the house. Tap a place to see it on the map and get directions.",
+      "all": "All",
+      "house": "The house",
+      "route": "Directions ↗",
+      "notOnMap": "Coming soon on the map",
+      "listLabel": "List of places"
+    }
   }
 }
