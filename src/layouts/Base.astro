@@ -19,6 +19,7 @@ const navLinks = [
   { href: `${home}#avis`, label: t.navReviews },
   { href: routes.garden[lang], label: t.navGarden },
   { href: routes.history[lang], label: t.navHistory },
+  { href: routes.hosts[lang], label: t.navHosts },
   { href: routes.moments[lang], label: t.navMoments },
   { href: `${home}#faq`, label: t.navFaq },
 ];
@@ -78,11 +79,7 @@ const navLinks = [
   {!immersive && <footer>
     <div class="wrap">
       <span>{site.name} · {site.address}</span>
-      <span class="credit">
-        {t.offeredBy}{" "}
-        {company.url ? <a href={company.url}><strong>{company.name}</strong></a> : <strong>{company.name}</strong>}
-        {company.legal && <> · <Fragment set:html={rich(company.legal)} /></>}
-      </span>
+      <a class="credit" href={routes.hosts[lang]}>{t.navHosts}</a>
       <span>{t.registration} <Fragment set:html={rich(site.registrationNumber)} /></span>
     </div>
   </footer>}

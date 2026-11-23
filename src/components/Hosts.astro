@@ -1,0 +1,50 @@
+---
+// Page « Vos hôtes » : Gaël, Danie et l'entreprise Karulium. Textes dans src/data/pages.json (rubrique hosts).
+import Base from "../layouts/Base.astro";
+import pages from "../data/pages.json";
+import site from "../data/site.json";
+import { ui, routes, type Lang } from "../i18n/ui";
+import { rich } from "../lib/text";
+import { hasImage } from "../lib/images";
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = ui[lang];
+const p = pages.hosts[lang];
+const photoOk = hasImage(p.photo.src.replace(/^\//, ""));
+const company = site.company;
+---
+<Base lang={lang} route="hosts" title={p.metaTitle} description={p.metaDescription}>
+  <main id="top">
+    <article class="wrap page hosts">
+      <a class="back" href={routes.home[lang]}>{t.back}</a>
+      <span class="eyebrow">{p.eyebrow}</span>
+      <h1>{p.title}</h1>
+      <p class="lead">{p.intro}</p>
+      <figure class="hosts-photo">
+        {photoOk ? <img src={p.photo.src} alt={p.photo.alt} loading="eager" decoding="async" /> : <div class="ph">{t.photoSoon}</div>}
+      </figure>
+      {p.sections.map((s) => (
+        <section id={s.id}>
+          <h2>{s.title}</h2>
+          {s.text.map((para) => <p set:html={rich(para)} />)}
+          {s.id === "karulium" && company.url && <a class="more" href={company.url} target="_blank" rel="noopener">{company.url.replace(/^https?:\/\//, "").replace(/\/$/, "")} ↗</a>}
+        </section>
+      ))}
+      <section>
+        <h2>{p.contactTitle}</h2>
+        <p>{p.contactText}</p>
+        <p>WhatsApp : <a href={`https://wa.me/${site.whatsapp.replace(/\D/g, "")}`}>{site.whatsapp}</a> · E-mail : <Fragment set:html={rich(site.email)} /></p>
+      </section>
+      <a class="btn" href={`${routes.home[lang]}#reserver`}>{t.bookStay}</a>
+    </article>
+  </main>
+</Base>
+
+<style>
+  /* Mise en page minimale ; l'habillage relève du fil design. */
+  .hosts-photo { margin: 0; }
+  .hosts-photo img, .hosts-photo .ph { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 12px; }
+  .hosts-photo .ph { display: grid; place-items: center; }
+  .hosts section { display: grid; gap: 12px; }
+</style>

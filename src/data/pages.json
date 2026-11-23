@@ -456,5 +456,81 @@
       "notOnMap": "Coming soon on the map",
       "listLabel": "List of places"
     }
+  },
+  "hosts": {
+    "fr": {
+      "metaTitle": "Vos hôtes, Gaël et Danie · L'Enclos de Vieux-Habitants",
+      "metaDescription": "Gaël Tendon et Danie vous accueillent à L'Enclos de Vieux-Habitants, en Guadeloupe. Découvrez qui sont vos hôtes, l'histoire de la famille sur le domaine et l'entreprise Karulium.",
+      "eyebrow": "Vos hôtes",
+      "title": "Gaël et Danie, vos voisins pendant le séjour",
+      "intro": "Nous habitons la maison voisine, l'ancienne maison de L'Enclos. Nous vous accueillons à votre arrivée et restons disponibles pendant tout le séjour, sans jamais vous déranger. Nous parlons français, anglais et portugais.",
+      "photo": {
+        "src": "/img/hotes.jpg",
+        "alt": "Gaël et Danie, les hôtes de L'Enclos"
+      },
+      "sections": [
+        {
+          "id": "gael",
+          "title": "Gaël Tendon",
+          "text": [
+            "[[Quelques lignes sur Gaël : son parcours, son lien avec Vieux-Habitants et avec le domaine, ce qu'il aime faire découvrir aux voyageurs.]]"
+          ]
+        },
+        {
+          "id": "danie",
+          "title": "Danie",
+          "text": [
+            "[[Quelques lignes sur Danie.]]"
+          ]
+        },
+        {
+          "id": "karulium",
+          "title": "Karulium",
+          "text": [
+            "[[Ce que fait l'entreprise Karulium, ce que les visiteurs peuvent y découvrir ou y acheter, et quand venir.]]",
+            "Les voyageurs de L'Enclos y sont les bienvenus : demandez-nous, nous vous ferons visiter."
+          ]
+        }
+      ],
+      "contactTitle": "Nous écrire",
+      "contactText": "Une question avant de réserver ? Écrivez-nous, nous répondons en général en moins d'une heure."
+    },
+    "en": {
+      "metaTitle": "Your hosts, Gaël and Danie · L'Enclos de Vieux-Habitants",
+      "metaDescription": "Gaël Tendon and Danie welcome you to L'Enclos de Vieux-Habitants in Guadeloupe. Meet your hosts, learn about the family's history on the estate and the Karulium company.",
+      "eyebrow": "Your hosts",
+      "title": "Gaël and Danie, your neighbours during your stay",
+      "intro": "We live in the house next door, the old L'Enclos house. We welcome you on arrival and stay available throughout your stay, without ever disturbing you. We speak French, English and Portuguese.",
+      "photo": {
+        "src": "/img/hotes.jpg",
+        "alt": "Gaël and Danie, the hosts of L'Enclos"
+      },
+      "sections": [
+        {
+          "id": "gael",
+          "title": "Gaël Tendon",
+          "text": [
+            "[[A few lines about Gaël.]]"
+          ]
+        },
+        {
+          "id": "danie",
+          "title": "Danie",
+          "text": [
+            "[[A few lines about Danie.]]"
+          ]
+        },
+        {
+          "id": "karulium",
+          "title": "Karulium",
+          "text": [
+            "[[What Karulium does and what visitors can see or buy there.]]",
+            "Guests of L'Enclos are welcome there: just ask us and we will show you around."
+          ]
+        }
+      ],
+      "contactTitle": "Get in touch",
+      "contactText": "A question before booking? Write to us; we usually reply within an hour."
+    }
   }
 }
