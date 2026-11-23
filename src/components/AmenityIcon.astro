@@ -1,0 +1,13 @@
+---
+// Petite icône devant un équipement de la maison (voir src/lib/icons.ts).
+import { icons } from "../lib/icons";
+interface Props { name?: string }
+const path = Astro.props.name ? icons[Astro.props.name] : undefined;
+---
+{path && <svg class="amen-ic" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={path} />}
+
+<style>
+  .amen-ic { flex: none; width: 1.25em; height: 1.25em; color: var(--accent, var(--leaf, #5d7d6c)); vertical-align: -0.28em; margin-right: .45em; }
+  :global(.amen li:has(.amen-ic)::before) { display: none; }
+  :global(.amen li:has(.amen-ic)) { align-items: center; }
+</style>

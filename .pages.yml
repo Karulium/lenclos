@@ -184,6 +184,10 @@ content:
         type: object
         list: true
         fields:
+          - name: icon
+            label: Icône
+            type: select
+            options: { values: [view, garden, fruit, clock, kitchen, coffee, bed, tv, shirt, safety, wifi, car, sofa, baby, house, calm] }
           - { name: fr, label: Français, type: string }
           - { name: en, label: English, type: string }
 

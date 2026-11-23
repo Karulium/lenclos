@@ -390,6 +390,58 @@
         "text": "Ask Gaël and Danie to show it to you",
         "season": "all year round"
       }
+    },
+    {
+      "slug": "vanille",
+      "color": "#B39A5B",
+      "months": [],
+      "fr": {
+        "name": "Vanille",
+        "text": "À regarder, surtout pas à cueillir : les gousses mûrissent près de neuf mois sur la liane. Les fleurs s'ouvrent de janvier à avril, une seule matinée chacune.",
+        "season": "à admirer toute l'année"
+      },
+      "en": {
+        "name": "Vanilla",
+        "text": "For looking at only, please never pick it: the pods take about nine months to ripen on the vine. The flowers open from January to April, each for a single morning.",
+        "season": "to admire all year round"
+      }
+    },
+    {
+      "slug": "ackee",
+      "color": "#D9482B",
+      "months": [
+        1,
+        2,
+        3,
+        6,
+        7,
+        8
+      ],
+      "fr": {
+        "name": "Ackee",
+        "text": "Attention, toxique s'il n'est pas bien mûr. Il ne se mange que lorsque le fruit s'est ouvert tout seul sur l'arbre, seulement la chair jaune et cuite, jamais les graines noires ni la membrane rose. Demandez-nous avant d'y goûter.",
+        "season": "janv. → mars, juin → août"
+      },
+      "en": {
+        "name": "Ackee",
+        "text": "Warning: poisonous unless fully ripe. Only eat it once the fruit has split open by itself on the tree, and only the cooked yellow flesh, never the black seeds or the pink membrane. Ask us before you try it.",
+        "season": "Jan → Mar, Jun → Aug"
+      }
+    },
+    {
+      "slug": "chaya",
+      "color": "#3F7D3A",
+      "months": [],
+      "fr": {
+        "name": "Chaya",
+        "text": "L'« épinard en arbre » : ses jeunes feuilles se cuisinent comme des épinards. Toujours bien cuites, au moins 15 minutes, car elles sont toxiques crues.",
+        "season": "toute l'année"
+      },
+      "en": {
+        "name": "Chaya",
+        "text": "The \"tree spinach\": its young leaves are cooked like spinach. Always cook them well, for at least 15 minutes, as they are toxic raw.",
+        "season": "all year round"
+      }
     }
   ]
 }

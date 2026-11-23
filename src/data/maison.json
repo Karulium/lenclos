@@ -46,66 +46,82 @@
   ],
   "amenities": [
     {
+      "icon": "view",
       "fr": "Galerie vue mer et montagne",
       "en": "Veranda with sea and mountain view"
     },
     {
+      "icon": "garden",
       "fr": "Jardin avec arbres fruitiers",
       "en": "Garden with fruit trees"
     },
     {
+      "icon": "fruit",
       "fr": "Fruits du jardin offerts pendant le séjour",
       "en": "Fruit from the garden, free during your stay"
     },
     {
+      "icon": "clock",
       "fr": "Arrivée dès 8 h, départ jusqu'à 18 h, flexibles",
       "en": "Check-in from 8 am, check-out until 6 pm, flexible"
     },
     {
+      "icon": "kitchen",
       "fr": "Cuisine équipée : four, micro-ondes, induction, cuiseur à riz, grille-pain",
       "en": "Equipped kitchen: oven, microwave, induction hob, rice cooker, toaster"
     },
     {
+      "icon": "coffee",
       "fr": "Cafetière Dolce Gusto et cafetière filtre",
       "en": "Dolce Gusto and filter coffee makers"
     },
     {
+      "icon": "bed",
       "fr": "Linge de lit et serviettes fournis",
       "en": "Bed linen and towels provided"
     },
     {
+      "icon": "tv",
       "fr": "TV",
       "en": "TV"
     },
     {
+      "icon": "shirt",
       "fr": "Fer à repasser",
       "en": "Iron"
     },
     {
+      "icon": "safety",
       "fr": "Détecteur de fumée et extincteur",
       "en": "Smoke detector and fire extinguisher"
     },
     {
+      "icon": "wifi",
       "fr": "Wi-Fi",
       "en": "Wi-Fi"
     },
     {
+      "icon": "car",
       "fr": "Parking gratuit (4 places)",
       "en": "Free parking (4 spaces)"
     },
     {
+      "icon": "sofa",
       "fr": "Salon bien aéré avec canapé",
       "en": "Airy living room with sofa"
     },
     {
+      "icon": "baby",
       "fr": "Lit bébé disponible",
       "en": "Baby cot available"
     },
     {
+      "icon": "house",
       "fr": "Logement entièrement indépendant",
       "en": "Fully private house"
     },
     {
+      "icon": "calm",
       "fr": "Au bout d'une impasse, au calme",
       "en": "At the end of a quiet lane"
     }
