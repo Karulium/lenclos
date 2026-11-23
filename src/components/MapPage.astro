@@ -89,7 +89,7 @@ const mapData = {
 
   const pin = (color: string, cls = "") => L.divIcon({ className: `mp-pin ${cls}`, html: `<span style="--c:${color}"></span>`, iconSize: [26, 26], iconAnchor: [13, 26], popupAnchor: [0, -24] });
 
-  const house = L.marker([data.house.lat, data.house.lng], { icon: pin("#14231C", "mp-house"), zIndexOffset: 1000, title: data.house.name })
+  const house = L.marker([data.house.lat, data.house.lng], { icon: pin("#1E201E", "mp-house"), zIndexOffset: 1000, title: data.house.name })
     .bindPopup(`<strong>${esc(data.house.name)}</strong><br><span>${esc(data.house.label)}</span><br><a href="${data.house.url}" target="_blank" rel="noopener">${esc(data.route)}</a>`)
     .addTo(map);
 
