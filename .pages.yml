@@ -156,18 +156,29 @@ content:
         type: object
         list: true
         fields:
+          - { name: image, label: Photo, type: image }
           - name: fr
             label: Français
             type: object
             fields:
               - { name: title, label: Titre, type: string }
               - { name: text, label: Détail, type: string }
+              - { name: alt, label: Description de la photo, type: string }
           - name: en
             label: English
             type: object
             fields:
               - { name: title, label: Title, type: string }
               - { name: text, label: Details, type: string }
+              - { name: alt, label: Photo description, type: string }
+      - name: gallery
+        label: Photos de la maison (sous les chambres)
+        type: object
+        list: true
+        fields:
+          - { name: src, label: Photo, type: image }
+          - { name: fr, label: Légende (français), type: string }
+          - { name: en, label: Caption (English), type: string }
       - name: amenities
         label: Équipements
         type: object

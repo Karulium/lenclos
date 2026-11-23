@@ -1,26 +1,113 @@
 {
   "rooms": [
-    { "fr": { "title": "Chambre 1", "text": "1 lit double 140 × 190 · climatisation · salle de bain privée avec douche à l'italienne" },
-      "en": { "title": "Bedroom 1", "text": "1 double bed 140 × 190 · air conditioning · private bathroom with walk-in shower" } },
-    { "fr": { "title": "Chambre 2", "text": "1 lit double 140 × 190, 1 lit simple 90 × 190 et 1 lit bébé · climatisation · salle de bain privée avec douche à l'italienne" },
-      "en": { "title": "Bedroom 2", "text": "1 double bed 140 × 190, 1 single bed 90 × 190 and 1 cot · air conditioning · private bathroom with walk-in shower" } }
+    {
+      "fr": {
+        "title": "Chambre 1",
+        "text": "1 lit double 140 × 190 · climatisation · salle de bain privée avec douche à l'italienne",
+        "alt": "La chambre 1 et son lit double"
+      },
+      "en": {
+        "title": "Bedroom 1",
+        "text": "1 double bed 140 × 190 · air conditioning · private bathroom with walk-in shower",
+        "alt": "Bedroom 1 and its double bed"
+      },
+      "image": "/img/maison/chambre-1.jpg"
+    },
+    {
+      "fr": {
+        "title": "Chambre 2",
+        "text": "1 lit double 140 × 190, 1 lit simple 90 × 190 et 1 lit bébé · climatisation · salle de bain privée avec douche à l'italienne",
+        "alt": "La chambre 2 et son lit double"
+      },
+      "en": {
+        "title": "Bedroom 2",
+        "text": "1 double bed 140 × 190, 1 single bed 90 × 190 and 1 cot · air conditioning · private bathroom with walk-in shower",
+        "alt": "Bedroom 2 and its double bed"
+      },
+      "image": "/img/maison/chambre-2.jpg"
+    }
+  ],
+  "gallery": [
+    {
+      "src": "/img/maison/chambre-2-lit-simple.jpg",
+      "fr": "Le lit simple de la chambre 2",
+      "en": "The single bed in bedroom 2"
+    },
+    {
+      "src": "/img/maison/salle-de-bain-1.jpg",
+      "fr": "Douche à l'italienne",
+      "en": "Walk-in shower"
+    },
+    {
+      "src": "/img/maison/salle-de-bain-2.jpg",
+      "fr": "L'autre salle de bain",
+      "en": "The other bathroom"
+    }
   ],
   "amenities": [
-    { "fr": "Galerie vue mer et montagne", "en": "Veranda with sea and mountain view" },
-    { "fr": "Jardin avec arbres fruitiers", "en": "Garden with fruit trees" },
-    { "fr": "Fruits du jardin offerts pendant le séjour", "en": "Fruit from the garden, free during your stay" },
-    { "fr": "Arrivée dès 8 h, départ jusqu'à 18 h, flexibles", "en": "Check-in from 8 am, check-out until 6 pm, flexible" },
-    { "fr": "Cuisine équipée : four, micro-ondes, induction, cuiseur à riz, grille-pain", "en": "Equipped kitchen: oven, microwave, induction hob, rice cooker, toaster" },
-    { "fr": "Cafetière Dolce Gusto et cafetière filtre", "en": "Dolce Gusto and filter coffee makers" },
-    { "fr": "Linge de lit et serviettes fournis", "en": "Bed linen and towels provided" },
-    { "fr": "TV", "en": "TV" },
-    { "fr": "Fer à repasser", "en": "Iron" },
-    { "fr": "Détecteur de fumée et extincteur", "en": "Smoke detector and fire extinguisher" },
-    { "fr": "Wi-Fi", "en": "Wi-Fi" },
-    { "fr": "Parking gratuit (4 places)", "en": "Free parking (4 spaces)" },
-    { "fr": "Salon bien aéré avec canapé", "en": "Airy living room with sofa" },
-    { "fr": "Lit bébé disponible", "en": "Baby cot available" },
-    { "fr": "Logement entièrement indépendant", "en": "Fully private house" },
-    { "fr": "Au bout d'une impasse, au calme", "en": "At the end of a quiet lane" }
+    {
+      "fr": "Galerie vue mer et montagne",
+      "en": "Veranda with sea and mountain view"
+    },
+    {
+      "fr": "Jardin avec arbres fruitiers",
+      "en": "Garden with fruit trees"
+    },
+    {
+      "fr": "Fruits du jardin offerts pendant le séjour",
+      "en": "Fruit from the garden, free during your stay"
+    },
+    {
+      "fr": "Arrivée dès 8 h, départ jusqu'à 18 h, flexibles",
+      "en": "Check-in from 8 am, check-out until 6 pm, flexible"
+    },
+    {
+      "fr": "Cuisine équipée : four, micro-ondes, induction, cuiseur à riz, grille-pain",
+      "en": "Equipped kitchen: oven, microwave, induction hob, rice cooker, toaster"
+    },
+    {
+      "fr": "Cafetière Dolce Gusto et cafetière filtre",
+      "en": "Dolce Gusto and filter coffee makers"
+    },
+    {
+      "fr": "Linge de lit et serviettes fournis",
+      "en": "Bed linen and towels provided"
+    },
+    {
+      "fr": "TV",
+      "en": "TV"
+    },
+    {
+      "fr": "Fer à repasser",
+      "en": "Iron"
+    },
+    {
+      "fr": "Détecteur de fumée et extincteur",
+      "en": "Smoke detector and fire extinguisher"
+    },
+    {
+      "fr": "Wi-Fi",
+      "en": "Wi-Fi"
+    },
+    {
+      "fr": "Parking gratuit (4 places)",
+      "en": "Free parking (4 spaces)"
+    },
+    {
+      "fr": "Salon bien aéré avec canapé",
+      "en": "Airy living room with sofa"
+    },
+    {
+      "fr": "Lit bébé disponible",
+      "en": "Baby cot available"
+    },
+    {
+      "fr": "Logement entièrement indépendant",
+      "en": "Fully private house"
+    },
+    {
+      "fr": "Au bout d'une impasse, au calme",
+      "en": "At the end of a quiet lane"
+    }
   ]
 }
