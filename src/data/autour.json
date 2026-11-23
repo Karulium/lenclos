@@ -4,6 +4,8 @@
       "id": "pratique",
       "fr": "Pratique",
       "en": "Practical",
+      "color": "#4B5D67",
+      "icon": "bag",
       "places": [
         {
           "fr": {
@@ -185,13 +187,14 @@
           "lat": null,
           "lng": null
         }
-      ],
-      "color": "#4B5D67"
+      ]
     },
     {
       "id": "marches",
       "fr": "Marchés",
       "en": "Markets",
+      "color": "#C77B12",
+      "icon": "basket",
       "places": [
         {
           "fr": {
@@ -238,13 +241,14 @@
           "lat": 15.99313,
           "lng": -61.72973
         }
-      ],
-      "color": "#C77B12"
+      ]
     },
     {
       "id": "restos",
       "fr": "Où manger",
       "en": "Eat out",
+      "color": "#C2410C",
+      "icon": "utensils",
       "places": [
         {
           "fr": {
@@ -351,13 +355,14 @@
           "lat": 16.0799,
           "lng": -61.76298
         }
-      ],
-      "color": "#C2410C"
+      ]
     },
     {
       "id": "visiter",
       "fr": "À visiter",
       "en": "See",
+      "color": "#7C3AED",
+      "icon": "landmark",
       "places": [
         {
           "fr": {
@@ -449,13 +454,14 @@
           "lat": 15.9906,
           "lng": -61.7263
         }
-      ],
-      "color": "#7C3AED"
+      ]
     },
     {
       "id": "plages",
       "fr": "Plages et rivières",
       "en": "Beaches & rivers",
+      "color": "#17607C",
+      "icon": "waves",
       "places": [
         {
           "fr": {
@@ -532,13 +538,14 @@
           "lat": 16.17196,
           "lng": -61.77643
         }
-      ],
-      "color": "#17607C"
+      ]
     },
     {
       "id": "nature",
       "fr": "Nature et randonnées",
       "en": "Hiking",
+      "color": "#1E6A4E",
+      "icon": "trees",
       "places": [
         {
           "fr": {
@@ -600,8 +607,7 @@
           "lat": 16.1280493,
           "lng": -61.7701737
         }
-      ],
-      "color": "#1E6A4E"
+      ]
     }
   ]
 }

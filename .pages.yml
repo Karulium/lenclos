@@ -41,6 +41,7 @@ content:
           - { name: fr, label: Titre FR, type: string }
           - { name: en, label: Titre EN, type: string }
           - { name: color, label: Couleur sur la carte (ex. #1E6A4E), type: string }
+          - { name: icon, label: "Icône (bag, basket, utensils, landmark, waves, trees, pin)", type: string }
           - name: places
             label: Adresses
             type: object
