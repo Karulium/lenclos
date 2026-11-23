@@ -427,6 +427,21 @@
         "text": "Warning: poisonous unless fully ripe. Only eat it once the fruit has split open by itself on the tree, and only the cooked yellow flesh, never the black seeds or the pink membrane. Ask us before you try it.",
         "season": "Jan → Mar, Jun → Aug"
       }
+    },
+    {
+      "slug": "chaya",
+      "color": "#3F7D3A",
+      "months": [],
+      "fr": {
+        "name": "Chaya",
+        "text": "L'« épinard en arbre » : ses jeunes feuilles se cuisinent comme des épinards. Toujours bien cuites, au moins 15 minutes, car elles sont toxiques crues.",
+        "season": "toute l'année"
+      },
+      "en": {
+        "name": "Chaya",
+        "text": "The \"tree spinach\": its young leaves are cooked like spinach. Always cook them well, for at least 15 minutes, as they are toxic raw.",
+        "season": "all year round"
+      }
     }
   ]
 }
