@@ -47,6 +47,7 @@ content:
             type: object
             list: true
             fields:
+              - { name: icon, label: "Icône (ex. pill, cart, umbrella, fish, castle, pizza…, liste dans src/lib/icons.ts)", type: string }
               - name: fr
                 label: Français
                 type: object
