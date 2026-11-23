@@ -1,6 +1,8 @@
 ---
 import Base from "../layouts/Base.astro";
 import BookingCard from "./BookingCard.astro";
+import HouseRooms from "./HouseRooms.astro";
+import PhotoFigure from "./PhotoFigure.astro";
 import site from "../data/site.json";
 import pages from "../data/pages.json";
 import maison from "../data/maison.json";
@@ -14,6 +16,7 @@ interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = ui[lang];
 const p = pages.home[lang];
+const hist = pages.history[lang];
 
 // Photos principales : public/img/photo1.jpg à photo5.jpg
 const photos = [1, 2, 3, 4, 5].map((n) => ({ src: `/img/photo${n}.jpg`, ok: hasImage(`img/photo${n}.jpg`) }));
@@ -70,9 +73,7 @@ const ld = {
           <span class="eyebrow">{p.houseEyebrow}</span>
           <h2>{p.houseTitle}</h2>
           <p class="lead">{p.houseText}</p>
-          <div class="rooms">
-            {maison.rooms.map((r) => <div class="room"><h3>{r[lang].title}</h3><p>{r[lang].text}</p></div>)}
-          </div>
+          <HouseRooms lang={lang} />
           <a class="more" href={routes.garden[lang]}>{t.gardenLink}</a>
           <ul class="amen">
             {maison.amenities.map((a) => <li set:html={rich(a[lang])} />)}
@@ -112,6 +113,7 @@ const ld = {
         <section id="patrimoine">
           <span class="eyebrow">{p.heritageEyebrow}</span>
           <h2>{p.heritageTitle}</h2>
+          <PhotoFigure src={hist.heroImage.src} alt={hist.heroImage.alt} caption={hist.heroImage.caption} href={routes.history[lang]} />
           <p>{p.heritageText}</p>
           <a class="more" href={routes.history[lang]}>{t.historyLink}</a>
         </section>

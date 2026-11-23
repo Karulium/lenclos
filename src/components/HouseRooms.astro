@@ -1,0 +1,42 @@
+---
+// Chambres avec leur photo, puis un bandeau de photos (lit simple, salles de bain).
+// Photos et légendes : src/data/maison.json (champs image et gallery) ou Pages CMS.
+import maison from "../data/maison.json";
+import { hasImage } from "../lib/images";
+import type { Lang } from "../i18n/ui";
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+---
+<div class="rooms">
+  {maison.rooms.map((r) => (
+    <div class="room">
+      {r.image && hasImage(r.image) && <img class="room-img" src={r.image} alt={r[lang].alt ?? ""} width="1200" height="900" loading="lazy" />}
+      <h3>{r[lang].title}</h3>
+      <p>{r[lang].text}</p>
+    </div>
+  ))}
+</div>
+{maison.gallery?.length > 0 && (
+  <div class="strip">
+    {maison.gallery.filter((g) => hasImage(g.src)).map((g) => (
+      <figure>
+        <img src={g.src} alt={g[lang]} loading="lazy" />
+        <figcaption>{g[lang]}</figcaption>
+      </figure>
+    ))}
+  </div>
+)}
+
+<style>
+  .room-img { width: calc(100% + 36px); margin: -18px -18px 6px; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--r, 12px) var(--r, 12px) 0 0; display: block; height: auto; }
+  .room { overflow: hidden; }
+  .strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 14px; }
+  .strip figure { margin: 0; position: relative; aspect-ratio: 3 / 4; border-radius: var(--r, 12px); overflow: hidden; }
+  .strip img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .strip figcaption { position: absolute; left: 8px; bottom: 8px; right: 8px; font-size: .78rem; font-weight: 600; background: var(--surface, #fff); color: var(--ink, #14231c); padding: 3px 9px; border-radius: 99px; width: fit-content; }
+  @media (max-width: 640px) {
+    .strip { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 62%; overflow-x: auto; scroll-snap-type: x mandatory; }
+    .strip figure { scroll-snap-align: start; }
+  }
+</style>
