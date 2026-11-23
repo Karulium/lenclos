@@ -26,7 +26,10 @@
     "airbnbCount": 14,
     "booking": "9,6",
     "tripcom": "9,6",
-    "tripcomCount": 27
+    "tripcomCount": 27,
+    "bookingCount": 26,
+    "airbnbUrl": "https://www.airbnb.fr/rooms/701591431801340062",
+    "bookingUrl": "https://www.booking.com/hotel/gp/paisible-maison-a-vieux-habitants.fr.html"
   },
   "scores": [
     {
@@ -58,6 +61,88 @@
       "fr": "Arrivée",
       "en": "Check-in",
       "value": 4.6
+    }
+  ],
+  "bookingScores": [
+    {
+      "fr": "Personnel",
+      "en": "Staff",
+      "value": 10
+    },
+    {
+      "fr": "Équipements",
+      "en": "Facilities",
+      "value": 10
+    },
+    {
+      "fr": "Confort",
+      "en": "Comfort",
+      "value": 10
+    },
+    {
+      "fr": "Propreté",
+      "en": "Cleanliness",
+      "value": 9.1
+    },
+    {
+      "fr": "Rapport qualité/prix",
+      "en": "Value for money",
+      "value": 9.1
+    },
+    {
+      "fr": "Situation géographique",
+      "en": "Location",
+      "value": 9.0
+    }
+  ],
+  "reviews": [
+    {
+      "name": "Anta",
+      "source": "Booking.com",
+      "fr": {
+        "country": "France",
+        "text": "Superbe location, parfaitement équipée, très bon accueil des propriétaires, la vue est à couper le souffle."
+      },
+      "en": {
+        "country": "France",
+        "text": "Superb rental, perfectly equipped, a very warm welcome from the owners, and a breathtaking view."
+      }
+    },
+    {
+      "name": "Philippe",
+      "source": "Booking.com",
+      "fr": {
+        "country": "France",
+        "text": "Quand on pourra donner une note de 11/10, ce sera pour ce logement ! Qualité des hôtes, du logement, de la localisation, sans oublier un jardin extraordinaire."
+      },
+      "en": {
+        "country": "France",
+        "text": "When we can give 11/10, it will be for this place! Wonderful hosts, house and location, not to mention an extraordinary garden."
+      }
+    },
+    {
+      "name": "Geneviève",
+      "source": "Booking.com",
+      "fr": {
+        "country": "Canada",
+        "text": "Le côté campagne, secteur non touristique. Avoir pour seuls voisins les propriétaires ultra aimables."
+      },
+      "en": {
+        "country": "Canada",
+        "text": "The countryside feel, away from the tourist areas, with the extremely friendly owners as our only neighbours."
+      }
+    },
+    {
+      "name": "Jean-Philippe",
+      "source": "Booking.com",
+      "fr": {
+        "country": "France",
+        "text": "La tranquillité de la maison, son équipement et les attentions de nos hôtes."
+      },
+      "en": {
+        "country": "France",
+        "text": "The peace and quiet of the house, how well equipped it is, and our hosts' thoughtfulness."
+      }
     }
   ]
 }
