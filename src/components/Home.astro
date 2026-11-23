@@ -33,10 +33,15 @@ const ld = {
 <Base lang={lang} route="home" title={p.metaTitle} description={p.metaDescription}>
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(ld)} />
   <main id="top">
-    <div class="wrap hero">
-      <div class="hero-head">
+    <div class="hero-photo">
+      <img src="/img/hero-2400.jpg" srcset="/img/hero-1200.jpg 1200w, /img/hero-2400.jpg 2400w" sizes="100vw" width="2400" height="1166" alt={t.heroAlt} fetchpriority="high" />
+      <div class="wrap hero-over">
         <span class="eyebrow">{p.eyebrow}</span>
         <h1>{p.title}</h1>
+      </div>
+    </div>
+    <div class="wrap hero">
+      <div class="hero-head">
         <p class="hero-sub">{p.intro}</p>
         <ul class="facts">
           <li><span class="star">★</span><b>{site.rating.airbnb}</b> <span>{site.rating.airbnbCount} {t.facts.reviews}</span></li>
