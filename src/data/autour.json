@@ -47,8 +47,8 @@
             "where": "Town centre"
           },
           "mapsQuery": "La Poste Vieux-Habitants",
-          "lat": null,
-          "lng": null
+          "lat": 16.05994,
+          "lng": -61.7655
         },
         {
           "fr": {
@@ -62,8 +62,8 @@
             "where": "Basse-Terre, ~20 min"
           },
           "mapsQuery": "Marché couvert Basse-Terre Guadeloupe",
-          "lat": null,
-          "lng": null
+          "lat": 15.99313,
+          "lng": -61.72973
         },
         {
           "fr": {
@@ -77,8 +77,8 @@
             "where": "Basse-Terre, ~20 min"
           },
           "mapsQuery": "Centre hospitalier de la Basse-Terre",
-          "lat": null,
-          "lng": null
+          "lat": 16.00262,
+          "lng": -61.72951
         },
         {
           "fr": {
@@ -130,8 +130,8 @@
             "where": "Wednesday · Vieux-Habitants"
           },
           "mapsQuery": "Marché Assofwi Vieux-Habitants",
-          "lat": null,
-          "lng": null
+          "lat": 16.06641,
+          "lng": -61.76126
         },
         {
           "fr": {
@@ -145,8 +145,8 @@
             "where": "Friday · Baillif"
           },
           "mapsQuery": "Marché des Mornes Baillif",
-          "lat": null,
-          "lng": null
+          "lat": 16.01308,
+          "lng": -61.74621
         },
         {
           "fr": {
@@ -160,8 +160,8 @@
             "where": "Basse-Terre, ~20 min"
           },
           "mapsQuery": "Marché couvert Basse-Terre Guadeloupe",
-          "lat": null,
-          "lng": null
+          "lat": 15.99313,
+          "lng": -61.72973
         }
       ],
       "color": "#C77B12"
@@ -198,8 +198,8 @@
             "where": "Vieux-Habitants"
           },
           "mapsQuery": "Les Alizés chez Va Vieux-Habitants",
-          "lat": null,
-          "lng": null
+          "lat": 16.05827,
+          "lng": -61.76887
         },
         {
           "fr": {
@@ -213,8 +213,8 @@
             "where": "Simaho beach"
           },
           "mapsQuery": "L'Arc en Ciel Tropical Vieux-Habitants",
-          "lat": null,
-          "lng": null
+          "lat": 16.05809,
+          "lng": -61.76879
         },
         {
           "fr": {
@@ -243,8 +243,8 @@
             "where": "Simaho beach"
           },
           "mapsQuery": "Ô Lokal Vieux-Habitants",
-          "lat": null,
-          "lng": null
+          "lat": 16.05888,
+          "lng": -61.76877
         },
         {
           "fr": {
@@ -273,8 +273,8 @@
             "where": "La Voûte beach"
           },
           "mapsQuery": "Ti Lavoute Vieux-Habitants",
-          "lat": null,
-          "lng": null
+          "lat": 16.08365,
+          "lng": -61.76722
         },
         {
           "fr": {
@@ -288,8 +288,8 @@
             "where": "Vieux-Habitants"
           },
           "mapsQuery": "Andiamo Pizza Vieux-Habitants",
-          "lat": null,
-          "lng": null
+          "lat": 16.0799,
+          "lng": -61.76298
         }
       ],
       "color": "#C2410C"
@@ -311,8 +311,8 @@
             "where": "Grande Rivière valley"
           },
           "mapsQuery": "Habitation La Grivelière Vieux-Habitants",
-          "lat": null,
-          "lng": null
+          "lat": 16.0717,
+          "lng": -61.72881
         },
         {
           "fr": {
@@ -326,8 +326,8 @@
             "where": "Town centre"
           },
           "mapsQuery": "Église Saint-Joseph Vieux-Habitants",
-          "lat": null,
-          "lng": null
+          "lat": 16.06037,
+          "lng": -61.76526
         },
         {
           "fr": {
@@ -341,8 +341,8 @@
             "where": "Vieux-Habitants"
           },
           "mapsQuery": "Musée du café Vieux-Habitants",
-          "lat": null,
-          "lng": null
+          "lat": 16.06055,
+          "lng": -61.76014
         },
         {
           "fr": {
@@ -356,8 +356,8 @@
             "where": "Vieux-Habitants"
           },
           "mapsQuery": "Domaine de Vanibel Vieux-Habitants",
-          "lat": null,
-          "lng": null
+          "lat": 16.05467,
+          "lng": -61.7321
         },
         {
           "fr": {
@@ -371,8 +371,8 @@
             "where": "Plessis river"
           },
           "mapsQuery": "Roches gravées rivière du Plessis Vieux-Habitants",
-          "lat": null,
-          "lng": null
+          "lat": 16.04001,
+          "lng": -61.73735
         },
         {
           "fr": {
@@ -409,8 +409,8 @@
             "where": "< 10 min"
           },
           "mapsQuery": "Plage de Rocroy Vieux-Habitants",
-          "lat": null,
-          "lng": null
+          "lat": 16.04666,
+          "lng": -61.76101
         },
         {
           "fr": {
@@ -424,8 +424,8 @@
             "where": "Town centre"
           },
           "mapsQuery": "Plage de Simaho Vieux-Habitants",
-          "lat": null,
-          "lng": null
+          "lat": 16.05715,
+          "lng": -61.76857
         },
         {
           "fr": {
@@ -439,8 +439,8 @@
             "where": "Vieux-Habitants"
           },
           "mapsQuery": "Plage de la Voûte Vieux-Habitants",
-          "lat": null,
-          "lng": null
+          "lat": 16.08307,
+          "lng": -61.76753
         },
         {
           "fr": {
@@ -454,8 +454,8 @@
             "where": "Vieux-Habitants"
           },
           "mapsQuery": "Grande Rivière Vieux-Habitants",
-          "lat": null,
-          "lng": null
+          "lat": 16.06087,
+          "lng": -61.76856
         },
         {
           "fr": {
@@ -469,8 +469,8 @@
             "where": "Bouillante, ~20 min"
           },
           "mapsQuery": "Plage de Malendure Bouillante",
-          "lat": null,
-          "lng": null
+          "lat": 16.17196,
+          "lng": -61.77643
         }
       ],
       "color": "#17607C"
@@ -492,8 +492,8 @@
             "where": "Vieux-Habitants"
           },
           "mapsQuery": "Cascade Paradis Vieux-Habitants",
-          "lat": null,
-          "lng": null
+          "lat": 16.08875,
+          "lng": -61.72123
         },
         {
           "fr": {
@@ -522,8 +522,8 @@
             "where": "~1 h"
           },
           "mapsQuery": "Chutes du Carbet",
-          "lat": null,
-          "lng": null
+          "lat": 16.04423,
+          "lng": -61.6456
         },
         {
           "fr": {
@@ -537,8 +537,8 @@
             "where": "~20 min"
           },
           "mapsQuery": "Sources chaudes Bouillante",
-          "lat": null,
-          "lng": null
+          "lat": 16.12787,
+          "lng": -61.77013
         }
       ],
       "color": "#1E6A4E"
