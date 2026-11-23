@@ -7,33 +7,33 @@
       "places": [
         {
           "fr": {
-            "name": "Carrefour Express",
-            "text": "Supérette, ouverte aussi le dimanche",
+            "name": "Pharmacie Placide",
+            "text": "Pharmacie du bourg",
             "where": "Bourg"
           },
           "en": {
-            "name": "Carrefour Express",
-            "text": "Convenience store, also open on Sundays",
+            "name": "Placide pharmacy",
+            "text": "Pharmacy in the town centre",
             "where": "Town centre"
           },
-          "mapsQuery": "Carrefour Express Vieux-Habitants",
-          "lat": null,
-          "lng": null
+          "mapsQuery": "Pharmacie Placide Vieux-Habitants",
+          "lat": 16.0595,
+          "lng": -61.76385
         },
         {
           "fr": {
-            "name": "Pharmacie Dindaine",
-            "text": "Boulevard des Habissois Souverains",
+            "name": "Pharmacie du Stade",
+            "text": "Pharmacie du bourg",
             "where": "Bourg"
           },
           "en": {
-            "name": "Dindaine pharmacy",
-            "text": "Boulevard des Habissois Souverains",
+            "name": "Stade pharmacy",
+            "text": "Pharmacy in the town centre",
             "where": "Town centre"
           },
-          "mapsQuery": "Pharmacie Dindaine Vieux-Habitants",
-          "lat": null,
-          "lng": null
+          "mapsQuery": "Pharmacie du Stade Vieux-Habitants",
+          "lat": 16.06017,
+          "lng": -61.7638
         },
         {
           "fr": {
@@ -49,6 +49,81 @@
           "mapsQuery": "La Poste Vieux-Habitants",
           "lat": 16.05994,
           "lng": -61.7655
+        },
+        {
+          "fr": {
+            "name": "Marché Services",
+            "text": "Supérette du bourg",
+            "where": "Bourg"
+          },
+          "en": {
+            "name": "Marché Services",
+            "text": "Convenience store in the town centre",
+            "where": "Town centre"
+          },
+          "mapsQuery": "Marché Services Vieux-Habitants",
+          "lat": 16.0602045,
+          "lng": -61.7648215
+        },
+        {
+          "fr": {
+            "name": "Super U Baillif",
+            "text": "Supermarché, zone des Pères Blancs",
+            "where": "Baillif, ~15 min"
+          },
+          "en": {
+            "name": "Super U Baillif",
+            "text": "Supermarket, Pères Blancs area",
+            "where": "Baillif, ~15 min"
+          },
+          "mapsQuery": "Super U Baillif",
+          "lat": 16.0127402,
+          "lng": -61.7435546
+        },
+        {
+          "fr": {
+            "name": "Carrefour Market Baillif",
+            "text": "Supermarché, zone des Pères Blancs",
+            "where": "Baillif, ~15 min"
+          },
+          "en": {
+            "name": "Carrefour Market Baillif",
+            "text": "Supermarket, Pères Blancs area",
+            "where": "Baillif, ~15 min"
+          },
+          "mapsQuery": "Carrefour Market Baillif",
+          "lat": 16.0129026,
+          "lng": -61.745287
+        },
+        {
+          "fr": {
+            "name": "Leader Price Baillif",
+            "text": "Supermarché discount, chemin de Coton",
+            "where": "Baillif, ~15 min"
+          },
+          "en": {
+            "name": "Leader Price Baillif",
+            "text": "Discount supermarket, Chemin de Coton",
+            "where": "Baillif, ~15 min"
+          },
+          "mapsQuery": "Leader Price Baillif",
+          "lat": 16.0111363,
+          "lng": -61.7382314
+        },
+        {
+          "fr": {
+            "name": "Maximax Baillif",
+            "text": "Supermarché discount",
+            "where": "Baillif, ~15 min"
+          },
+          "en": {
+            "name": "Maximax Baillif",
+            "text": "Discount supermarket",
+            "where": "Baillif, ~15 min"
+          },
+          "mapsQuery": "Maximax Baillif",
+          "lat": null,
+          "lng": null
         },
         {
           "fr": {
@@ -130,8 +205,8 @@
             "where": "Wednesday · Vieux-Habitants"
           },
           "mapsQuery": "Marché Assofwi Vieux-Habitants",
-          "lat": 16.06641,
-          "lng": -61.76126
+          "lat": 16.0663082,
+          "lng": -61.7613433
         },
         {
           "fr": {
@@ -218,21 +293,6 @@
         },
         {
           "fr": {
-            "name": "Relais Beach",
-            "text": "Restaurant de plage",
-            "where": "Plage de Simaho"
-          },
-          "en": {
-            "name": "Relais Beach",
-            "text": "Beach restaurant",
-            "where": "Simaho beach"
-          },
-          "mapsQuery": "Relais Beach Simaho Vieux-Habitants",
-          "lat": null,
-          "lng": null
-        },
-        {
-          "fr": {
             "name": "Ô Lokal",
             "text": "Cuisine créole",
             "where": "Plage de Simaho"
@@ -258,8 +318,8 @@
             "where": "Vieux-Habitants"
           },
           "mapsQuery": "La Casona Vieux-Habitants",
-          "lat": null,
-          "lng": null
+          "lat": 16.0594588,
+          "lng": -61.7612006
         },
         {
           "fr": {
@@ -537,8 +597,8 @@
             "where": "~20 min"
           },
           "mapsQuery": "Sources chaudes Bouillante",
-          "lat": 16.12787,
-          "lng": -61.77013
+          "lat": 16.1280493,
+          "lng": -61.7701737
         }
       ],
       "color": "#1E6A4E"
