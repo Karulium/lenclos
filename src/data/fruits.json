@@ -1,0 +1,447 @@
+{
+  "fruits": [
+    {
+      "slug": "mangues",
+      "color": "#E8A33D",
+      "months": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "fr": {
+        "name": "Mangues",
+        "text": "Plusieurs variétés dans le jardin, à manger bien mûres",
+        "season": "mai → août"
+      },
+      "en": {
+        "name": "Mangoes",
+        "text": "Several varieties in the garden, best eaten very ripe",
+        "season": "May → August"
+      }
+    },
+    {
+      "slug": "quenettes",
+      "color": "#8DB34A",
+      "months": [
+        7,
+        8,
+        9
+      ],
+      "fr": {
+        "name": "Quenettes",
+        "text": "Petits fruits verts à la pulpe acidulée, qu'on suce autour du noyau",
+        "season": "juillet → septembre"
+      },
+      "en": {
+        "name": "Quenettes (Spanish lime)",
+        "text": "Small green fruit with tangy flesh you suck off the stone",
+        "season": "July → September"
+      }
+    },
+    {
+      "slug": "pommes-cannelle",
+      "color": "#9BBF7A",
+      "months": [
+        7,
+        8,
+        9,
+        10
+      ],
+      "fr": {
+        "name": "Pommes-cannelle",
+        "text": "Chair blanche très sucrée, à la cuillère",
+        "season": "juillet → octobre"
+      },
+      "en": {
+        "name": "Sugar apples",
+        "text": "Very sweet white flesh, eaten with a spoon",
+        "season": "July → October"
+      }
+    },
+    {
+      "slug": "corossols",
+      "color": "#6FA26B",
+      "months": [
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "fr": {
+        "name": "Corossols",
+        "text": "Gros fruit vert, parfait en jus ou en sorbet",
+        "season": "mars → juillet"
+      },
+      "en": {
+        "name": "Soursops",
+        "text": "Large green fruit, perfect for juice or sorbet",
+        "season": "March → July"
+      }
+    },
+    {
+      "slug": "cachimans",
+      "color": "#C98A5B",
+      "months": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "fr": {
+        "name": "Cachimans",
+        "text": "Cousin du corossol, chair crémeuse",
+        "season": "janvier → avril"
+      },
+      "en": {
+        "name": "Custard apples",
+        "text": "A cousin of the soursop, with creamy flesh",
+        "season": "January → April"
+      }
+    },
+    {
+      "slug": "avocats",
+      "color": "#5E8C3A",
+      "months": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "fr": {
+        "name": "Avocats",
+        "text": "Les avocats antillais, gros et doux",
+        "season": "juillet → décembre"
+      },
+      "en": {
+        "name": "Avocados",
+        "text": "Large, mild Caribbean avocados",
+        "season": "July → December"
+      }
+    },
+    {
+      "slug": "goyaves",
+      "color": "#E58A86",
+      "months": [
+        7,
+        8,
+        9,
+        10
+      ],
+      "fr": {
+        "name": "Goyaves",
+        "text": "Pour les jus, les confitures ou à croquer",
+        "season": "juillet → octobre"
+      },
+      "en": {
+        "name": "Guavas",
+        "text": "For juice, jam or eaten as they are",
+        "season": "July → October"
+      }
+    },
+    {
+      "slug": "caramboles",
+      "color": "#E9C43C",
+      "months": [
+        1,
+        9,
+        10,
+        11,
+        12
+      ],
+      "fr": {
+        "name": "Caramboles",
+        "text": "Tranchées en étoiles, légèrement acidulées",
+        "season": "septembre → janvier"
+      },
+      "en": {
+        "name": "Star fruit",
+        "text": "Sliced into stars, slightly tart",
+        "season": "September → January"
+      }
+    },
+    {
+      "slug": "malacas",
+      "color": "#D9566B",
+      "months": [
+        3,
+        4,
+        5,
+        6
+      ],
+      "fr": {
+        "name": "Malacas",
+        "text": "Fruit rose croquant et rafraîchissant",
+        "season": "mars → juin"
+      },
+      "en": {
+        "name": "Malay apples",
+        "text": "Crunchy, refreshing pink fruit",
+        "season": "March → June"
+      }
+    },
+    {
+      "slug": "tamarins",
+      "color": "#A07045",
+      "months": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "fr": {
+        "name": "Tamarins et tamarins des Indes",
+        "text": "Gousses aigres-douces, pour les jus et les sauces",
+        "season": "janvier → avril"
+      },
+      "en": {
+        "name": "Tamarinds and Manila tamarinds",
+        "text": "Sweet-and-sour pods, for juices and sauces",
+        "season": "January → April"
+      }
+    },
+    {
+      "slug": "prunes-cafe",
+      "color": "#9A4A6A",
+      "months": [
+        5,
+        6,
+        7
+      ],
+      "fr": {
+        "name": "Prunes-café",
+        "text": "Petites prunes sucrées des Antilles",
+        "season": "mai → juillet"
+      },
+      "en": {
+        "name": "Coffee plums",
+        "text": "Small sweet Caribbean plums",
+        "season": "May → July"
+      }
+    },
+    {
+      "slug": "cerises-de-ceylan",
+      "color": "#C8384A",
+      "months": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "fr": {
+        "name": "Cerises de Ceylan",
+        "text": "Petites baies rouges acidulées",
+        "season": "toute l'année"
+      },
+      "en": {
+        "name": "Ceylon cherries",
+        "text": "Small tangy red berries",
+        "season": "all year round"
+      }
+    },
+    {
+      "slug": "agrumes",
+      "color": "#F0A23A",
+      "months": [
+        1,
+        2,
+        10,
+        11,
+        12
+      ],
+      "fr": {
+        "name": "Agrumes et citrons",
+        "text": "Pour le ti-punch et les jus du matin",
+        "season": "octobre → février"
+      },
+      "en": {
+        "name": "Citrus and limes",
+        "text": "For ti-punch and morning juice",
+        "season": "October → February"
+      }
+    },
+    {
+      "slug": "bananes",
+      "color": "#E6CF4A",
+      "months": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "fr": {
+        "name": "Bananes",
+        "text": "Au jardin, toute l'année",
+        "season": "toute l'année"
+      },
+      "en": {
+        "name": "Bananas",
+        "text": "In the garden all year round",
+        "season": "all year round"
+      }
+    },
+    {
+      "slug": "cerises-pays",
+      "color": "#D9483B",
+      "months": [],
+      "fr": {
+        "name": "Cerises pays (acérolas)",
+        "text": "Petites cerises rouges acidulées, très riches en vitamine C",
+        "season": "plusieurs récoltes par an"
+      },
+      "en": {
+        "name": "West Indian cherries (acerolas)",
+        "text": "Small tangy red cherries, very rich in vitamin C",
+        "season": "several harvests a year"
+      }
+    },
+    {
+      "slug": "pitayas",
+      "color": "#D2457E",
+      "months": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "fr": {
+        "name": "Pitayas",
+        "text": "Le fruit du dragon, à la chair parsemée de petites graines",
+        "season": "juin → octobre"
+      },
+      "en": {
+        "name": "Dragon fruit",
+        "text": "Dragon fruit, with flesh dotted with tiny seeds",
+        "season": "June → October"
+      }
+    },
+    {
+      "slug": "noisettes-de-cayenne",
+      "color": "#8C6A3F",
+      "months": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "fr": {
+        "name": "Noisettes de Cayenne",
+        "text": "Les graines d'un grand arbre, à goûter grillées",
+        "season": "toute l'année"
+      },
+      "en": {
+        "name": "Cayenne nuts",
+        "text": "The seeds of a large tree, best tasted roasted",
+        "season": "all year round"
+      }
+    },
+    {
+      "slug": "kava",
+      "color": "#7A8F4A",
+      "months": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "fr": {
+        "name": "Kava",
+        "text": "Demandez à Gaël et Danie de vous le faire découvrir",
+        "season": "toute l'année"
+      },
+      "en": {
+        "name": "Kava",
+        "text": "Ask Gaël and Danie to show it to you",
+        "season": "all year round"
+      }
+    },
+    {
+      "slug": "vanille",
+      "color": "#B39A5B",
+      "months": [],
+      "fr": {
+        "name": "Vanille",
+        "text": "À regarder, surtout pas à cueillir : les gousses mûrissent près de neuf mois sur la liane. Les fleurs s'ouvrent de janvier à avril, une seule matinée chacune.",
+        "season": "à admirer toute l'année"
+      },
+      "en": {
+        "name": "Vanilla",
+        "text": "For looking at only, please never pick it: the pods take about nine months to ripen on the vine. The flowers open from January to April, each for a single morning.",
+        "season": "to admire all year round"
+      }
+    },
+    {
+      "slug": "ackee",
+      "color": "#D9482B",
+      "months": [
+        1,
+        2,
+        3,
+        6,
+        7,
+        8
+      ],
+      "fr": {
+        "name": "Ackee",
+        "text": "Attention, toxique s'il n'est pas bien mûr. Il ne se mange que lorsque le fruit s'est ouvert tout seul sur l'arbre, seulement la chair jaune et cuite, jamais les graines noires ni la membrane rose. Demandez-nous avant d'y goûter.",
+        "season": "janv. → mars, juin → août"
+      },
+      "en": {
+        "name": "Ackee",
+        "text": "Warning: poisonous unless fully ripe. Only eat it once the fruit has split open by itself on the tree, and only the cooked yellow flesh, never the black seeds or the pink membrane. Ask us before you try it.",
+        "season": "Jan → Mar, Jun → Aug"
+      }
+    },
+    {
+      "slug": "chaya",
+      "color": "#3F7D3A",
+      "months": [],
+      "fr": {
+        "name": "Chaya",
+        "text": "L'« épinard en arbre » : ses jeunes feuilles se cuisinent comme des épinards. Toujours bien cuites, au moins 15 minutes, car elles sont toxiques crues.",
+        "season": "toute l'année"
+      },
+      "en": {
+        "name": "Chaya",
+        "text": "The \"tree spinach\": its young leaves are cooked like spinach. Always cook them well, for at least 15 minutes, as they are toxic raw.",
+        "season": "all year round"
+      }
+    }
+  ]
+}

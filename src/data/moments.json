@@ -1,0 +1,80 @@
+{
+  "placeholder": true,
+  "items": [
+    {
+      "type": "video",
+      "src": "/media/moments/video-galerie.mp4",
+      "poster": "/media/moments/video-galerie-poster.jpg",
+      "fr": {
+        "caption": "Le petit-déjeuner sur la galerie, face à la mer",
+        "place": "L'Enclos"
+      },
+      "en": {
+        "caption": "Breakfast on the veranda, facing the sea",
+        "place": "L'Enclos"
+      }
+    },
+    {
+      "type": "photo",
+      "src": "/media/moments/photo-jardin.jpg",
+      "fr": {
+        "caption": "La cueillette du matin au jardin",
+        "place": "Le jardin"
+      },
+      "en": {
+        "caption": "Morning picking in the garden",
+        "place": "The garden"
+      }
+    },
+    {
+      "type": "video",
+      "src": "/media/moments/video-riviere.mp4",
+      "poster": "/media/moments/video-riviere-poster.jpg",
+      "fr": {
+        "caption": "Baignade dans la rivière, à quelques minutes",
+        "place": "Vieux-Habitants"
+      },
+      "en": {
+        "caption": "A swim in the river, a few minutes away",
+        "place": "Vieux-Habitants"
+      }
+    },
+    {
+      "type": "photo",
+      "src": "/media/moments/photo-coucher.jpg",
+      "fr": {
+        "caption": "Le coucher de soleil depuis la maison",
+        "place": "L'Enclos"
+      },
+      "en": {
+        "caption": "Sunset from the house",
+        "place": "L'Enclos"
+      }
+    },
+    {
+      "type": "video",
+      "src": "/media/moments/video-marche.mp4",
+      "poster": "/media/moments/video-marche-poster.jpg",
+      "fr": {
+        "caption": "Le marché de l'Assofwi, le mercredi",
+        "place": "Vieux-Habitants"
+      },
+      "en": {
+        "caption": "The Assofwi market, on Wednesdays",
+        "place": "Vieux-Habitants"
+      }
+    },
+    {
+      "type": "photo",
+      "src": "/media/moments/photo-cimetiere.jpg",
+      "fr": {
+        "caption": "Le vieux cimetière du domaine, à côté de la maison",
+        "place": "Le domaine"
+      },
+      "en": {
+        "caption": "The estate's old cemetery, next to the house",
+        "place": "The estate"
+      }
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+---
+// Rubrique « Autour » de l'accueil : onglets par catégorie, lieux présentés en cartes.
+// Cartes sur ordinateur et tablette, liste sur mobile (choix de Karulium, 23/11/2026).
+// Chaque lieu a sa propre icône (champ icon, voir src/lib/icons.ts) ; la couleur reste celle de la catégorie.
+// Les lieux se modifient dans src/data/autour.json ou dans Pages CMS.
+import autour from "../data/autour.json";
+import site from "../data/site.json";
+import pages from "../data/pages.json";
+import { icons } from "../lib/icons";
+import { rich } from "../lib/text";
+import { ui, routes, type Lang } from "../i18n/ui";
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = ui[lang];
+const route = pages.map[lang].route;
+const gmaps = (q: string) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
+
+// Distance à vol d'oiseau depuis la maison.
+function dist(lat?: number | null, lng?: number | null): string {
+  if (lat == null || lng == null) return "";
+  const R = 6371, rad = Math.PI / 180;
+  const dLat = (lat - site.geo.lat) * rad, dLng = (lng - site.geo.lng) * rad;
+  const a = Math.sin(dLat / 2) ** 2 + Math.cos(site.geo.lat * rad) * Math.cos(lat * rad) * Math.sin(dLng / 2) ** 2;
+  const km = 2 * R * Math.asin(Math.sqrt(a));
+  const v = km < 1 ? `${Math.round(km * 10) * 100} m` : `${km < 10 ? km.toFixed(1).replace(".", lang === "fr" ? "," : ".") : Math.round(km)} km`;
+  return lang === "fr" ? `à ${v}` : `${v} away`;
+}
+const svg = (name?: string) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${icons[name ?? "pin"] ?? icons.pin}</svg>`;
+---
+<div class="ac-wrap">
+  <div class="tabs" role="tablist" aria-label={t.navAround}>
+    {autour.tabs.map((tab, i) => (
+      <button type="button" role="tab" id={`tab-${tab.id}`} aria-controls={`panel-${tab.id}`} aria-selected={i === 0 ? "true" : "false"}>{tab[lang]}</button>
+    ))}
+  </div>
+  <div class="ac-panels">
+    {autour.tabs.map((tab, i) => (
+      <div class="ac-panel" role="tabpanel" id={`panel-${tab.id}`} aria-labelledby={`tab-${tab.id}`} hidden={i !== 0} style={`--c:${tab.color}`}>
+        <ul class="ac-list">
+          {tab.places.map((pl) => {
+            const d = dist(pl.lat, pl.lng);
+            const url = pl.lat != null && pl.lng != null ? gmaps(`${pl.lat},${pl.lng}`) : pl.mapsQuery ? gmaps(pl.mapsQuery) : "";
+            return (
+              <li class="ac">
+                <div class="ac-top">
+                  <span class="ac-ic" set:html={svg(pl.icon ?? tab.icon)} />
+                  {d && <span class="ac-dist" title={lang === "fr" ? "À vol d'oiseau" : "As the crow flies"}>{d}</span>}
+                </div>
+                <b set:html={rich(pl[lang].name)} />
+                <small set:html={rich(pl[lang].text)} />
+                <em set:html={rich(pl[lang].where)} />
+                {url && <a class="ac-go" target="_blank" rel="noopener" href={url}>{route}</a>}
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    ))}
+  </div>
+</div>
+
+<script>
+  // Onglets de la rubrique « Autour ».
+  const tabs = document.querySelectorAll<HTMLButtonElement>('.ac-wrap [role="tab"]');
+  tabs.forEach((tab) => tab.addEventListener("click", () => {
+    tabs.forEach((o) => {
+      o.setAttribute("aria-selected", String(o === tab));
+      document.getElementById(o.getAttribute("aria-controls")!)!.hidden = o !== tab;
+    });
+  }));
+</script>
+
+<style>
+  .ac-wrap { display: grid; gap: 18px; min-width: 0; }
+  .ac-panels, .ac-panel { min-width: 0; }
+  .ac-list { list-style: none; padding: 0; margin: 0; }
+  .ac b { font-weight: 600; line-height: 1.3; }
+  .ac small { color: var(--muted, #5b6b62); font-size: .9rem; line-height: 1.45; }
+  .ac em { font-style: normal; font-size: .85rem; font-weight: 600; color: var(--c); }
+  .ac-go { font-size: .85rem; font-weight: 600; color: var(--ink, #1e201e); text-decoration: none; justify-self: start; }
+  .ac-go:hover { text-decoration: underline; }
+  .ac-dist { font-size: .78rem; font-weight: 600; color: var(--muted, #5b6b62); white-space: nowrap; }
+
+  /* Mobile : liste, ligne par ligne. */
+  .ac-list { border-top: 1px solid var(--line, #e4e2dc); }
+  .ac { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 16px; padding: 14px 0; border-bottom: 1px solid var(--line, #e4e2dc); }
+  .ac-top { grid-column: 2; grid-row: 1 / span 2; align-self: center; }
+  .ac-top .ac-ic { display: none; }
+  .ac b, .ac small, .ac em, .ac-go { grid-column: 1; }
+
+  /* Ordinateur et tablette : cartes. */
+  @media (min-width: 641px) {
+    .ac-list { border-top: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 14px; }
+    .ac { display: flex; flex-direction: column; gap: 6px; padding: 16px; background: var(--surface, #fff); border: 1px solid var(--line, #e4e2dc); border-top: 3px solid var(--c); border-radius: var(--r, 12px); transition: transform .2s ease, box-shadow .2s ease; }
+    .ac:hover { transform: translateY(-2px); box-shadow: 0 10px 24px -14px rgba(0, 0, 0, .25); }
+    .ac-top { display: flex; align-self: stretch; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 4px; }
+    .ac-top .ac-ic { display: inline-grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: color-mix(in srgb, var(--c) 12%, transparent); color: var(--c); flex: none; }
+    .ac-ic :global(svg) { width: 20px; height: 20px; }
+    .ac b { font-size: 1.02rem; }
+    .ac-dist { border: 1px solid var(--line, #e4e2dc); border-radius: 99px; padding: 3px 10px; }
+    .ac-go { margin-top: auto; padding-top: 6px; }
+  }
+</style>

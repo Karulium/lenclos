@@ -1,0 +1,18 @@
+{
+  "items": [
+    { "fr": { "q": "À quelle heure arrive-t-on et part-on ?", "a": "Arrivée dès 8 h, départ jusqu'à 18 h. Ces horaires sont flexibles : dites-nous simplement votre heure, Gaël ou Danie vous accueilleront." },
+      "en": { "q": "What are the check-in and check-out times?", "a": "Check-in from 8 am, check-out until 6 pm. These times are flexible: just let us know when you plan to come and Gaël or Danie will welcome you." } },
+    { "fr": { "q": "Le paiement est-il sécurisé ?", "a": "Oui. Le paiement par carte passe par Stripe, via notre système de réservation Beds24. Nous ne voyons jamais votre numéro de carte." },
+      "en": { "q": "Is payment secure?", "a": "Yes. Card payments go through Stripe, via our Beds24 booking system. We never see your card number." } },
+    { "fr": { "q": "Quelles sont les conditions d'annulation ?", "a": "Les conditions d'annulation sont indiquées clairement avant le paiement. [[Politique en cours de définition]]" },
+      "en": { "q": "What is the cancellation policy?", "a": "The cancellation terms are shown clearly before you pay. [[Policy being finalised]]" } },
+    { "fr": { "q": "Faut-il une voiture ?", "a": "Oui, c'est fortement conseillé en Basse-Terre. La maison a 4 places de parking gratuites." },
+      "en": { "q": "Do I need a car?", "a": "Yes, it is strongly recommended in Basse-Terre. The house has 4 free parking spaces." } },
+    { "fr": { "q": "Quels fruits trouve-t-on dans le jardin ?", "a": "Plus de quinze fruits selon la saison, offerts à l'arrivée et en libre-service pendant le séjour. Voir la page du jardin." },
+      "en": { "q": "What fruit grows in the garden?", "a": "More than fifteen kinds depending on the season, offered on arrival and yours to pick during the stay. See the garden page." } },
+    { "fr": { "q": "Quelles sont les règles de la maison ?", "a": "Pas d'animaux ni de fêtes. Maison non-fumeur : on peut fumer uniquement à l'extérieur." },
+      "en": { "q": "What are the house rules?", "a": "No pets and no parties. Non-smoking house: smoking is allowed outside only." } },
+    { "fr": { "q": "Les bébés sont-ils acceptés ?", "a": "Oui, un lit bébé est disponible dans la chambre 2." },
+      "en": { "q": "Are babies welcome?", "a": "Yes, a baby cot is available in bedroom 2." } }
+  ]
+}

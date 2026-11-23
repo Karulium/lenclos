@@ -1,0 +1,92 @@
+---
+import Base from "../layouts/Base.astro";
+import pages from "../data/pages.json";
+import fruits from "../data/fruits.json";
+import { ui, routes, type Lang } from "../i18n/ui";
+import { rich } from "../lib/text";
+import { hasImage } from "../lib/images";
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = ui[lang];
+const p = pages.garden[lang];
+const months = Array.from({ length: 12 }, (_, i) => i + 1);
+
+// Chaque fruit est rangé automatiquement dans la saison où tombent la plupart de ses mois de récolte.
+// Sans mois, ou présent toute l'année : « Toute l'année ».
+type Fruit = (typeof fruits.fruits)[number];
+const seasons = pages.garden.seasons;
+function seasonOf(f: Fruit): string {
+  if (f.months.length === 0 || f.months.length === 12) return "annee";
+  const [best] = seasons
+    .filter((s) => s.months.length)
+    .map((s) => ({ id: s.id, n: f.months.filter((m) => s.months.includes(m)).length }))
+    .sort((a, b) => b.n - a.n);
+  return best.id;
+}
+const groups = seasons
+  .map((s) => ({
+    ...s,
+    fruits: fruits.fruits
+      .filter((f) => seasonOf(f) === s.id)
+      .sort((a, b) => (a.months[0] ?? 0) - (b.months[0] ?? 0)),
+  }))
+  .filter((g) => g.fruits.length);
+---
+<Base lang={lang} route="garden" title={p.metaTitle} description={p.metaDescription}>
+  <main id="top">
+    <article class="wrap page">
+      <a class="back" href={routes.home[lang]}>{t.back}</a>
+      <span class="eyebrow">{p.eyebrow}</span>
+      <h1>{p.title}</h1>
+      <p class="lead">{p.intro}</p>
+      <p class="legend">{p.legend}</p>
+      {groups.map((g) => (
+        <section class="season-group" id={`saison-${g.id}`}>
+          <h2>{g[lang].title}</h2>
+          <p>{g[lang].text}</p>
+          <div class="fruits">
+            {g.fruits.map((f) => {
+              const img = `img/fruits/${f.slug}.jpg`;
+              const ok = hasImage(img);
+              return (
+                <div class="fruit" style={`--fc:${f.color}`} data-months={f.months.join(",")}>
+                  <figure class:list={["ph", "fimg", { empty: !ok }]} data-label={t.photoSoon}>
+                    {ok && <img src={`/${img}`} alt={f[lang].name} loading="lazy" />}
+                    <span class="now-badge" hidden>{p.nowBadge}</span>
+                  </figure>
+                  <h3>{f[lang].name}</h3>
+                  <p>{f[lang].text}</p>
+                  <div class="season">
+                    {f.months.length > 0 && (
+                      <span class="months" aria-hidden="true">
+                        {months.map((m) => <i class:list={{ on: f.months.includes(m) }} data-m={m}></i>)}
+                      </span>
+                    )}
+                    <span set:html={rich(f[lang].season)} />
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      ))}
+      <section>
+        <h2>{p.extraTitle}</h2>
+        <p>{p.extraText}</p>
+      </section>
+      <a class="btn" href={`${routes.home[lang]}#reserver`}>{t.bookStay}</a>
+    </article>
+  </main>
+</Base>
+
+<script>
+  // Entoure le mois en cours sur le calendrier des fruits
+  const m = new Date().getMonth() + 1;
+  document.querySelectorAll(`.months i[data-m="${m}"]`).forEach((i) => i.classList.add("now"));
+  // Badge « De saison ce mois-ci » sur les fruits concernés (pas sur ceux de toute l'année)
+  document.querySelectorAll<HTMLElement>(".fruit[data-months]").forEach((f) => {
+    const ms = (f.dataset.months || "").split(",").filter(Boolean).map(Number);
+    if (ms.length > 0 && ms.length < 12 && ms.includes(m)) f.querySelector<HTMLElement>(".now-badge")!.hidden = false;
+  });
+</script>
