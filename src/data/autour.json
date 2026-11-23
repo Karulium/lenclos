@@ -20,7 +20,8 @@
           },
           "mapsQuery": "Pharmacie Placide Vieux-Habitants",
           "lat": 16.0595,
-          "lng": -61.76385
+          "lng": -61.76385,
+          "icon": "pill"
         },
         {
           "fr": {
@@ -35,7 +36,8 @@
           },
           "mapsQuery": "Pharmacie du Stade Vieux-Habitants",
           "lat": 16.06017,
-          "lng": -61.7638
+          "lng": -61.7638,
+          "icon": "cross"
         },
         {
           "fr": {
@@ -50,7 +52,8 @@
           },
           "mapsQuery": "La Poste Vieux-Habitants",
           "lat": 16.05994,
-          "lng": -61.7655
+          "lng": -61.7655,
+          "icon": "mail"
         },
         {
           "fr": {
@@ -65,7 +68,8 @@
           },
           "mapsQuery": "Marché Services Vieux-Habitants",
           "lat": 16.0602045,
-          "lng": -61.7648215
+          "lng": -61.7648215,
+          "icon": "store"
         },
         {
           "fr": {
@@ -80,7 +84,8 @@
           },
           "mapsQuery": "Super U Baillif",
           "lat": 16.0127402,
-          "lng": -61.7435546
+          "lng": -61.7435546,
+          "icon": "cart"
         },
         {
           "fr": {
@@ -95,7 +100,8 @@
           },
           "mapsQuery": "Carrefour Market Baillif",
           "lat": 16.0129026,
-          "lng": -61.745287
+          "lng": -61.745287,
+          "icon": "bag"
         },
         {
           "fr": {
@@ -110,7 +116,8 @@
           },
           "mapsQuery": "Leader Price Baillif",
           "lat": 16.0111363,
-          "lng": -61.7382314
+          "lng": -61.7382314,
+          "icon": "tag"
         },
         {
           "fr": {
@@ -125,7 +132,8 @@
           },
           "mapsQuery": "Maximax Baillif",
           "lat": null,
-          "lng": null
+          "lng": null,
+          "icon": "tag"
         },
         {
           "fr": {
@@ -140,7 +148,8 @@
           },
           "mapsQuery": "Marché couvert Basse-Terre Guadeloupe",
           "lat": 15.99313,
-          "lng": -61.72973
+          "lng": -61.72973,
+          "icon": "building"
         },
         {
           "fr": {
@@ -155,7 +164,8 @@
           },
           "mapsQuery": "Centre hospitalier de la Basse-Terre",
           "lat": 16.00262,
-          "lng": -61.72951
+          "lng": -61.72951,
+          "icon": "heart"
         },
         {
           "fr": {
@@ -170,7 +180,8 @@
           },
           "mapsQuery": "Aéroport Guadeloupe Pôle Caraïbes",
           "lat": 16.2653,
-          "lng": -61.5318
+          "lng": -61.5318,
+          "icon": "plane"
         },
         {
           "fr": {
@@ -185,7 +196,8 @@
           },
           "mapsQuery": "",
           "lat": null,
-          "lng": null
+          "lng": null,
+          "icon": "info"
         }
       ]
     },
@@ -209,7 +221,8 @@
           },
           "mapsQuery": "Marché Assofwi Vieux-Habitants",
           "lat": 16.0663082,
-          "lng": -61.7613433
+          "lng": -61.7613433,
+          "icon": "basket"
         },
         {
           "fr": {
@@ -224,7 +237,8 @@
           },
           "mapsQuery": "Marché des Mornes Baillif",
           "lat": 16.01308,
-          "lng": -61.74621
+          "lng": -61.74621,
+          "icon": "carrot"
         },
         {
           "fr": {
@@ -239,7 +253,8 @@
           },
           "mapsQuery": "Marché couvert Basse-Terre Guadeloupe",
           "lat": 15.99313,
-          "lng": -61.72973
+          "lng": -61.72973,
+          "icon": "fruit"
         }
       ]
     },
@@ -263,7 +278,8 @@
           },
           "mapsQuery": "La Grillade Vieux-Habitants",
           "lat": null,
-          "lng": null
+          "lng": null,
+          "icon": "flame"
         },
         {
           "fr": {
@@ -278,7 +294,8 @@
           },
           "mapsQuery": "Les Alizés chez Va Vieux-Habitants",
           "lat": 16.05827,
-          "lng": -61.76887
+          "lng": -61.76887,
+          "icon": "utensils"
         },
         {
           "fr": {
@@ -293,7 +310,8 @@
           },
           "mapsQuery": "L'Arc en Ciel Tropical Vieux-Habitants",
           "lat": 16.05809,
-          "lng": -61.76879
+          "lng": -61.76879,
+          "icon": "sun"
         },
         {
           "fr": {
@@ -308,7 +326,8 @@
           },
           "mapsQuery": "Ô Lokal Vieux-Habitants",
           "lat": 16.05888,
-          "lng": -61.76877
+          "lng": -61.76877,
+          "icon": "chef"
         },
         {
           "fr": {
@@ -323,7 +342,8 @@
           },
           "mapsQuery": "La Casona Vieux-Habitants",
           "lat": 16.0594588,
-          "lng": -61.7612006
+          "lng": -61.7612006,
+          "icon": "wine"
         },
         {
           "fr": {
@@ -338,7 +358,8 @@
           },
           "mapsQuery": "Ti Lavoute Vieux-Habitants",
           "lat": 16.08365,
-          "lng": -61.76722
+          "lng": -61.76722,
+          "icon": "soup"
         },
         {
           "fr": {
@@ -353,7 +374,8 @@
           },
           "mapsQuery": "Andiamo Pizza Vieux-Habitants",
           "lat": 16.0799,
-          "lng": -61.76298
+          "lng": -61.76298,
+          "icon": "pizza"
         }
       ]
     },
@@ -377,7 +399,8 @@
           },
           "mapsQuery": "Habitation La Grivelière Vieux-Habitants",
           "lat": 16.0717,
-          "lng": -61.72881
+          "lng": -61.72881,
+          "icon": "house"
         },
         {
           "fr": {
@@ -392,7 +415,8 @@
           },
           "mapsQuery": "Église Saint-Joseph Vieux-Habitants",
           "lat": 16.06037,
-          "lng": -61.76526
+          "lng": -61.76526,
+          "icon": "church"
         },
         {
           "fr": {
@@ -407,7 +431,8 @@
           },
           "mapsQuery": "Musée du café Vieux-Habitants",
           "lat": 16.06055,
-          "lng": -61.76014
+          "lng": -61.76014,
+          "icon": "coffee"
         },
         {
           "fr": {
@@ -422,7 +447,8 @@
           },
           "mapsQuery": "Domaine de Vanibel Vieux-Habitants",
           "lat": 16.05467,
-          "lng": -61.7321
+          "lng": -61.7321,
+          "icon": "garden"
         },
         {
           "fr": {
@@ -437,7 +463,8 @@
           },
           "mapsQuery": "Roches gravées rivière du Plessis Vieux-Habitants",
           "lat": 16.04001,
-          "lng": -61.73735
+          "lng": -61.73735,
+          "icon": "sparkles"
         },
         {
           "fr": {
@@ -452,7 +479,8 @@
           },
           "mapsQuery": "Fort Delgrès Basse-Terre",
           "lat": 15.9906,
-          "lng": -61.7263
+          "lng": -61.7263,
+          "icon": "castle"
         }
       ]
     },
@@ -476,7 +504,8 @@
           },
           "mapsQuery": "Plage de Rocroy Vieux-Habitants",
           "lat": 16.04666,
-          "lng": -61.76101
+          "lng": -61.76101,
+          "icon": "umbrella"
         },
         {
           "fr": {
@@ -491,7 +520,8 @@
           },
           "mapsQuery": "Plage de Simaho Vieux-Habitants",
           "lat": 16.05715,
-          "lng": -61.76857
+          "lng": -61.76857,
+          "icon": "sun"
         },
         {
           "fr": {
@@ -506,7 +536,8 @@
           },
           "mapsQuery": "Plage de la Voûte Vieux-Habitants",
           "lat": 16.08307,
-          "lng": -61.76753
+          "lng": -61.76753,
+          "icon": "waves"
         },
         {
           "fr": {
@@ -521,7 +552,8 @@
           },
           "mapsQuery": "Grande Rivière Vieux-Habitants",
           "lat": 16.06087,
-          "lng": -61.76856
+          "lng": -61.76856,
+          "icon": "droplets"
         },
         {
           "fr": {
@@ -536,7 +568,8 @@
           },
           "mapsQuery": "Plage de Malendure Bouillante",
           "lat": 16.17196,
-          "lng": -61.77643
+          "lng": -61.77643,
+          "icon": "fish"
         }
       ]
     },
@@ -560,7 +593,8 @@
           },
           "mapsQuery": "Cascade Paradis Vieux-Habitants",
           "lat": 16.08875,
-          "lng": -61.72123
+          "lng": -61.72123,
+          "icon": "droplet"
         },
         {
           "fr": {
@@ -575,7 +609,8 @@
           },
           "mapsQuery": "La Soufrière Guadeloupe",
           "lat": 16.0446,
-          "lng": -61.6642
+          "lng": -61.6642,
+          "icon": "view"
         },
         {
           "fr": {
@@ -590,7 +625,8 @@
           },
           "mapsQuery": "Chutes du Carbet",
           "lat": 16.04423,
-          "lng": -61.6456
+          "lng": -61.6456,
+          "icon": "trees"
         },
         {
           "fr": {
@@ -605,7 +641,8 @@
           },
           "mapsQuery": "Sources chaudes Bouillante",
           "lat": 16.1280493,
-          "lng": -61.7701737
+          "lng": -61.7701737,
+          "icon": "thermometer"
         }
       ]
     }

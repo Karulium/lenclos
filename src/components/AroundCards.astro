@@ -1,6 +1,7 @@
 ---
 // Rubrique « Autour » de l'accueil : onglets par catégorie, lieux présentés en cartes.
-// Trois présentations à l'essai, au choix par l'adresse : ?autour=cartes (par défaut), ?autour=tout, ?autour=liste.
+// Cartes sur ordinateur et tablette, liste sur mobile (choix de Karulium, 23/11/2026).
+// Chaque lieu a sa propre icône (champ icon, voir src/lib/icons.ts) ; la couleur reste celle de la catégorie.
 // Les lieux se modifient dans src/data/autour.json ou dans Pages CMS.
 import autour from "../data/autour.json";
 import site from "../data/site.json";
@@ -27,7 +28,7 @@ function dist(lat?: number | null, lng?: number | null): string {
 }
 const svg = (name?: string) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${icons[name ?? "pin"] ?? icons.pin}</svg>`;
 ---
-<div class="ac-wrap" data-v="cartes">
+<div class="ac-wrap">
   <div class="tabs" role="tablist" aria-label={t.navAround}>
     {autour.tabs.map((tab, i) => (
       <button type="button" role="tab" id={`tab-${tab.id}`} aria-controls={`panel-${tab.id}`} aria-selected={i === 0 ? "true" : "false"}>{tab[lang]}</button>
@@ -36,7 +37,6 @@ const svg = (name?: string) => `<svg viewBox="0 0 24 24" fill="none" stroke="cur
   <div class="ac-panels">
     {autour.tabs.map((tab, i) => (
       <div class="ac-panel" role="tabpanel" id={`panel-${tab.id}`} aria-labelledby={`tab-${tab.id}`} hidden={i !== 0} style={`--c:${tab.color}`}>
-        <h3 class="ac-cat"><span class="ac-ic" set:html={svg(tab.icon)} />{tab[lang]}</h3>
         <ul class="ac-list">
           {tab.places.map((pl) => {
             const d = dist(pl.lat, pl.lng);
@@ -44,7 +44,7 @@ const svg = (name?: string) => `<svg viewBox="0 0 24 24" fill="none" stroke="cur
             return (
               <li class="ac">
                 <div class="ac-top">
-                  <span class="ac-ic" set:html={svg(tab.icon)} />
+                  <span class="ac-ic" set:html={svg(pl.icon ?? tab.icon)} />
                   {d && <span class="ac-dist" title={lang === "fr" ? "À vol d'oiseau" : "As the crow flies"}>{d}</span>}
                 </div>
                 <b set:html={rich(pl[lang].name)} />
@@ -61,63 +61,44 @@ const svg = (name?: string) => `<svg viewBox="0 0 24 24" fill="none" stroke="cur
 </div>
 
 <script>
-  // Onglets + choix de la présentation à l'essai (?autour=cartes|tout|liste).
-  const wrap = document.querySelector<HTMLElement>(".ac-wrap");
-  if (wrap) {
-    const v = new URLSearchParams(location.search).get("autour");
-    if (v === "tout" || v === "liste") wrap.dataset.v = v;
-    if (v === "tout") wrap.querySelectorAll<HTMLElement>(".ac-panel").forEach((p) => (p.hidden = false));
-    const tabs = wrap.querySelectorAll<HTMLButtonElement>('[role="tab"]');
-    tabs.forEach((tab) => tab.addEventListener("click", () => {
-      tabs.forEach((o) => {
-        o.setAttribute("aria-selected", String(o === tab));
-        document.getElementById(o.getAttribute("aria-controls")!)!.hidden = o !== tab;
-      });
-    }));
-  }
+  // Onglets de la rubrique « Autour ».
+  const tabs = document.querySelectorAll<HTMLButtonElement>('.ac-wrap [role="tab"]');
+  tabs.forEach((tab) => tab.addEventListener("click", () => {
+    tabs.forEach((o) => {
+      o.setAttribute("aria-selected", String(o === tab));
+      document.getElementById(o.getAttribute("aria-controls")!)!.hidden = o !== tab;
+    });
+  }));
 </script>
 
 <style>
   .ac-wrap { display: grid; gap: 18px; min-width: 0; }
-  .ac-panels, .ac-panel { min-width: 0; contain: inline-size; }
+  .ac-panels, .ac-panel { min-width: 0; }
   .ac-list { list-style: none; padding: 0; margin: 0; }
-  .ac-ic { display: inline-grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: color-mix(in srgb, var(--c) 12%, transparent); color: var(--c); flex: none; }
-  .ac-ic :global(svg) { width: 20px; height: 20px; }
-  .ac-cat { display: none; }
-  .ac b { font-weight: 600; font-size: 1.02rem; line-height: 1.3; }
+  .ac b { font-weight: 600; line-height: 1.3; }
   .ac small { color: var(--muted, #5b6b62); font-size: .9rem; line-height: 1.45; }
   .ac em { font-style: normal; font-size: .85rem; font-weight: 600; color: var(--c); }
-  .ac-go { font-size: .85rem; font-weight: 600; color: var(--ink, #1e201e); text-decoration: none; justify-self: start; margin-top: auto; padding-top: 6px; }
+  .ac-go { font-size: .85rem; font-weight: 600; color: var(--ink, #1e201e); text-decoration: none; justify-self: start; }
   .ac-go:hover { text-decoration: underline; }
-  .ac-dist { font-size: .78rem; font-weight: 600; color: var(--muted, #5b6b62); border: 1px solid var(--line, #e4e2dc); border-radius: 99px; padding: 3px 10px; white-space: nowrap; }
+  .ac-dist { font-size: .78rem; font-weight: 600; color: var(--muted, #5b6b62); white-space: nowrap; }
 
-  /* 1. Cartes (par défaut) : une grille de cartes par catégorie ; défilement horizontal sur mobile. */
-  [data-v="cartes"] .ac-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 14px; }
-  [data-v="cartes"] .ac { display: flex; flex-direction: column; gap: 6px; padding: 16px; background: var(--surface, #fff); border: 1px solid var(--line, #e4e2dc); border-top: 3px solid var(--c); border-radius: var(--r, 12px); transition: transform .2s ease, box-shadow .2s ease; }
-  [data-v="cartes"] .ac:hover { transform: translateY(-2px); box-shadow: 0 10px 24px -14px rgba(0, 0, 0, .25); }
-  .ac-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 4px; }
-  @media (max-width: 640px) {
-    [data-v="cartes"] .ac-list { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 78%; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; scrollbar-width: none; }
-    [data-v="cartes"] .ac { scroll-snap-align: start; }
+  /* Mobile : liste, ligne par ligne. */
+  .ac-list { border-top: 1px solid var(--line, #e4e2dc); }
+  .ac { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 16px; padding: 14px 0; border-bottom: 1px solid var(--line, #e4e2dc); }
+  .ac-top { grid-column: 2; grid-row: 1 / span 2; align-self: center; }
+  .ac-top .ac-ic { display: none; }
+  .ac b, .ac small, .ac em, .ac-go { grid-column: 1; }
+
+  /* Ordinateur et tablette : cartes. */
+  @media (min-width: 641px) {
+    .ac-list { border-top: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 14px; }
+    .ac { display: flex; flex-direction: column; gap: 6px; padding: 16px; background: var(--surface, #fff); border: 1px solid var(--line, #e4e2dc); border-top: 3px solid var(--c); border-radius: var(--r, 12px); transition: transform .2s ease, box-shadow .2s ease; }
+    .ac:hover { transform: translateY(-2px); box-shadow: 0 10px 24px -14px rgba(0, 0, 0, .25); }
+    .ac-top { display: flex; align-self: stretch; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 4px; }
+    .ac-top .ac-ic { display: inline-grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: color-mix(in srgb, var(--c) 12%, transparent); color: var(--c); flex: none; }
+    .ac-ic :global(svg) { width: 20px; height: 20px; }
+    .ac b { font-size: 1.02rem; }
+    .ac-dist { border: 1px solid var(--line, #e4e2dc); border-radius: 99px; padding: 3px 10px; }
+    .ac-go { margin-top: auto; padding-top: 6px; }
   }
-
-  /* 2. Tout : toutes les catégories visibles d'un coup, en colonnes, sans onglets. */
-  [data-v="tout"] .tabs { display: none; }
-  [data-v="tout"] .ac-panels { display: block; columns: 2 280px; column-gap: 16px; }
-  [data-v="tout"] .ac-panel { break-inside: avoid; margin-bottom: 16px; contain: none; background: var(--surface, #fff); border: 1px solid var(--line, #e4e2dc); border-radius: var(--r, 12px); padding: 18px; }
-  [data-v="tout"] .ac-cat { display: flex; align-items: center; gap: 10px; margin: 0 0 8px; font-size: 1.15rem; }
-  [data-v="tout"] .ac { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 12px; padding: 10px 0; border-top: 1px solid var(--line, #e4e2dc); }
-  [data-v="tout"] .ac-top { display: contents; }
-  [data-v="tout"] .ac-top .ac-ic { display: none; }
-  [data-v="tout"] .ac-dist { grid-column: 2; grid-row: 1; align-self: start; }
-  [data-v="tout"] .ac b, [data-v="tout"] .ac small, [data-v="tout"] .ac em, [data-v="tout"] .ac-go { grid-column: 1; }
-  [data-v="tout"] .ac small { display: none; }
-  [data-v="tout"] .ac-go { display: none; }
-
-  /* 3. Liste : la présentation d'origine, ligne par ligne. */
-  [data-v="liste"] .ac-top .ac-ic { display: none; }
-  [data-v="liste"] .ac-list { border-top: 1px solid var(--line, #e4e2dc); }
-  [data-v="liste"] .ac { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 16px; padding: 14px 0; border-bottom: 1px solid var(--line, #e4e2dc); }
-  [data-v="liste"] .ac-top { grid-column: 2; grid-row: 1 / span 2; margin: 0; align-self: center; }
-  [data-v="liste"] .ac b, [data-v="liste"] .ac small, [data-v="liste"] .ac em, [data-v="liste"] .ac-go { grid-column: 1; }
 </style>
