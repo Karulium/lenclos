@@ -4,10 +4,10 @@ import BookingCard from "./BookingCard.astro";
 import HouseRooms from "./HouseRooms.astro";
 import PhotoFigure from "./PhotoFigure.astro";
 import AmenityIcon from "./AmenityIcon.astro";
+import AroundCards from "./AroundCards.astro";
 import site from "../data/site.json";
 import pages from "../data/pages.json";
 import maison from "../data/maison.json";
-import autour from "../data/autour.json";
 import faq from "../data/faq.json";
 import { ui, routes, type Lang } from "../i18n/ui";
 import { rich, plain } from "../lib/text";
@@ -85,25 +85,7 @@ const ld = {
           <span class="eyebrow">{p.aroundEyebrow}</span>
           <h2>{p.aroundTitle}</h2>
           <p>{p.aroundText}</p>
-          <div class="tabs" role="tablist" aria-label={t.navAround}>
-            {autour.tabs.map((tab, i) => (
-              <button type="button" role="tab" id={`tab-${tab.id}`} aria-controls={`panel-${tab.id}`} aria-selected={i === 0 ? "true" : "false"}>{tab[lang]}</button>
-            ))}
-          </div>
-          {autour.tabs.map((tab, i) => (
-            <ul class="around" role="tabpanel" id={`panel-${tab.id}`} aria-labelledby={`tab-${tab.id}`} hidden={i !== 0}>
-              {tab.places.map((pl) => (
-                <li>
-                  <b set:html={rich(pl[lang].name)} />
-                  <small set:html={rich(pl[lang].text)} />
-                  <em set:html={rich(pl[lang].where)} />
-                  {pl.mapsQuery && (
-                    <a class="go" target="_blank" rel="noopener" href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(pl.mapsQuery)}`}>{t.mapLink}</a>
-                  )}
-                </li>
-              ))}
-            </ul>
-          ))}
+          <AroundCards lang={lang} />
           <a class="mapcard" href={routes.map[lang]}>
             <strong>{t.mapTitle}</strong>
             <span>{t.mapText}</span>
@@ -170,16 +152,6 @@ const ld = {
   </main>
 </Base>
 
-<script>
-  // Onglets de la rubrique « Autour »
-  const tabs = document.querySelectorAll<HTMLButtonElement>('[role="tab"]');
-  tabs.forEach((tab) => tab.addEventListener("click", () => {
-    tabs.forEach((o) => {
-      o.setAttribute("aria-selected", String(o === tab));
-      document.getElementById(o.getAttribute("aria-controls")!)!.hidden = o !== tab;
-    });
-  }));
-</script>
 
 <style>
   /* Mise en page minimale des avis (deux plateformes côte à côte, citations en grille) ; l'habillage visuel relève du fil design. */
