@@ -183,15 +183,3 @@ const ld = {
   }));
 </script>
 
-<style>
-  /* Mise en page minimale des avis (deux plateformes côte à côte, citations en grille) ; l'habillage visuel relève du fil design. */
-  .platforms { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; }
-  .platform { display: grid; gap: 14px; align-content: start; }
-  .pf-score small { font-size: .5em; opacity: .7; }
-  .pf-name { margin-top: -8px; }
-  .platform .scores { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .quotes { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
-  .quote { margin: 0; padding: 18px; border: 1px solid color-mix(in srgb, currentColor 15%, transparent); border-radius: 12px; display: grid; gap: 10px; align-content: space-between; }
-  .quote blockquote { margin: 0; }
-  .quote figcaption { font-size: .88rem; opacity: .8; }
-</style>

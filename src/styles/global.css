@@ -319,3 +319,21 @@ figcaption{font-size:.88rem;color:var(--muted);margin-top:6px}
   .mp-map{order:2;height:62dvh;scroll-margin-top:70px}
   .mp-list{order:3;background:var(--surface)}
 }
+
+/* Avis : deux plateformes côte à côte séparées par un filet, citations en serif */
+.platforms{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border-top:1px solid var(--line)}
+@media (max-width:720px){.platforms{grid-template-columns:minmax(0,1fr)}}
+.platform{display:grid;gap:14px;align-content:start;padding:24px 28px 8px 0}
+.platform+.platform{padding-left:28px;border-left:1px solid var(--line)}
+@media (max-width:720px){.platform,.platform+.platform{padding:24px 0 8px;border-left:0}.platform+.platform{border-top:1px solid var(--line)}}
+.pf-score{font-size:clamp(2.2rem,4vw,3rem);display:flex;align-items:baseline;gap:8px}
+.pf-score .star{font-size:.55em}
+.pf-score small{font:400 .36em var(--body);color:var(--muted)}
+.pf-name{margin-top:-10px;font-size:.85rem;letter-spacing:.14em;text-transform:uppercase}
+.platform .scores{grid-template-columns:repeat(2,minmax(0,1fr))}
+.quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:8px}
+.quote{margin:0;padding:26px 24px 22px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);display:grid;gap:18px;align-content:space-between}
+.quote blockquote{margin:0}
+.quote blockquote p{font:300 1.08rem/1.6 var(--body);color:var(--ink)}
+.quote figcaption{font-size:.82rem;color:var(--muted);margin:0;padding-top:14px;border-top:1px solid var(--line)}
+.quote figcaption strong{color:var(--ink);font-weight:500}
