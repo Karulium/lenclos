@@ -30,7 +30,7 @@ const ld = {
   address: { "@type": "PostalAddress", streetAddress: "186 route de Grand-Croix", postalCode: "97119", addressLocality: "Vieux-Habitants", addressRegion: "Guadeloupe", addressCountry: "FR" },
   geo: { "@type": "GeoCoordinates", latitude: site.geo.lat, longitude: site.geo.lng },
   telephone: site.whatsapp,
-  containsPlace: { "@type": "Accommodation", additionalType: "EntirePlace", numberOfBedrooms: 2, numberOfBathroomsTotal: 2, occupancy: { "@type": "QuantitativeValue", maxValue: 5 }, floorSize: { "@type": "QuantitativeValue", value: 114, unitCode: "MTK" } },
+  containsPlace: { "@type": "Accommodation", additionalType: "EntirePlace", numberOfBedrooms: 2, numberOfBathroomsTotal: 2, occupancy: { "@type": "QuantitativeValue", maxValue: 5 }, floorSize: { "@type": "QuantitativeValue", value: 61, unitCode: "MTK" } },
   aggregateRating: { "@type": "AggregateRating", ratingValue: site.rating.airbnb.replace(",", "."), bestRating: 5, ratingCount: site.rating.airbnbCount },
 };
 ---
@@ -47,7 +47,8 @@ const ld = {
           <li><b>5</b> <span>{t.facts.guests}</span></li>
           <li><b>2</b> <span>{t.facts.rooms}</span></li>
           <li><b>2</b> <span>{t.facts.baths}</span></li>
-          <li><b>114</b> m²</li>
+          <li><b>61</b> m² <span>{t.facts.area}</span></li>
+          <li><b>+ 39</b> m² <span>{t.facts.porches}</span></li>
         </ul>
       </div>
       <div class="mosaic" aria-label="Photos">
