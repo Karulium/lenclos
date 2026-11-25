@@ -76,7 +76,7 @@ const i18n = { locale: lang === "fr" ? "fr-FR" : "en-GB", nights: [t.nights(1), 
           <h2>{b.reviewsTitle}</h2>
           <blockquote>
             <p>« {review[lang].text} »</p>
-            <footer>{review.name}, {review[lang].country} · {review.source}</footer>
+            <cite>{review.name}, {review[lang].country} · {review.source}</cite>
           </blockquote>
           <a class="more" href={`${home}#avis`}>{t.readReviews.replace(" ↗", "")} →</a>
         </section>
@@ -178,7 +178,7 @@ const i18n = { locale: lang === "fr" ? "fr-FR" : "en-GB", nights: [t.nights(1), 
     .bk-grid { grid-template-columns: minmax(0, 1fr); grid-template-areas: "recap" "engine" "trust"; }
   }
 
-  .bk-photo { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+  .bk-photo { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
   .bk-recap-body { padding: 18px 20px 20px; display: grid; gap: 10px; }
   .bk-name { font-family: var(--display); font-size: 1.35rem; line-height: 1.2; }
   .bk-rating { font-size: .9rem; color: var(--muted); }
@@ -205,7 +205,7 @@ const i18n = { locale: lang === "fr" ? "fr-FR" : "en-GB", nights: [t.nights(1), 
   .bk-points strong { color: var(--ink); font-weight: 600; }
   .bk-review blockquote { margin: 0; display: grid; gap: 8px; }
   .bk-review blockquote p { font-family: var(--display); font-size: 1.1rem; line-height: 1.45; }
-  .bk-review footer { font-size: .85rem; color: var(--muted); }
+  .bk-review cite { font-style: normal; font-size: .85rem; color: var(--muted); }
   .bk-ask p { font-size: .93rem; color: var(--muted); }
   .btn-line { background: transparent; color: var(--ink); border: 1px solid var(--line); width: 100%; }
   .btn-line:hover { border-color: var(--ink); filter: none; }
