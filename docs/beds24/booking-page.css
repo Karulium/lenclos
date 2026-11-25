@@ -17,6 +17,7 @@ html.lx-frame .lx-brand{display:none}
 .b24-prop-slider,.b24fullcontainer-proprow1,.b24fullcontainer-ownerrow1{display:none!important}
 #topofthebookingpage{position:relative!important;top:auto!important}
 html.lx-frame #topofthebookingpage{display:none!important}
+html.lx-frame .pull-left.hidden-md.hidden-lg,html.lx-frame .b24-bookingdetails img,html.lx-frame .ssi_makeabooking{display:none!important}
 .b24languagedropdown .btn{background:transparent;border:1px solid #E6E3DD;border-radius:99px;font-size:13px;padding:4px 14px}
 
 /* Dates : sur le site, elles sont choisies avant (calendrier du site) */
@@ -75,6 +76,6 @@ img[src*="comodo"]{opacity:.8}
   .b24-offer-select{float:none}
   .b24-offer-summary{width:100%!important}
   .at_roomofferprice{text-align:left!important}
-  .b24-roombuttondiv .btn,input[type=submit],button[type=submit]{width:100%}
+  .b24-roombuttondiv .btn,input[type=submit],button[type=submit]{width:100%;float:none!important;display:block;margin-top:8px}
   .questionrow>div:first-child{padding-top:4px}
 }
