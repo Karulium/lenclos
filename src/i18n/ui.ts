@@ -16,7 +16,7 @@ export const ui = {
   fr: {
     navHouse: "La maison", navAround: "Autour", navReviews: "Avis", navGarden: "Le jardin", navHistory: "Histoire", navMoments: "En images", navMap: "Carte", navHosts: "Vos hôtes", mapPageLink: "Voir toutes nos adresses sur la carte →", navFaq: "FAQ",
     book: "Réserver", bookStay: "Réserver votre séjour", back: "← Retour à la maison",
-    facts: { reviews: "avis Airbnb", guests: "voyageurs", rooms: "chambres climatisées", baths: "salles de bain" },
+    facts: { reviews: "avis Airbnb", guests: "voyageurs", rooms: "chambres climatisées", baths: "salles de bain", area: "habitables", porches: "de galeries couvertes" },
     captionGallery: "La galerie", photoSoon: "Photo à venir",
     gardenLink: "Découvrir les fruits du jardin →", historyLink: "Lire l'histoire du domaine →",
     mapLink: "Voir sur la carte ↗", mapTitle: "Carte interactive", mapText: "Plages, restaurants, marchés, randonnées : toutes nos adresses sur une seule carte.", mapButton: "Voir L'Enclos sur Google Maps",
@@ -31,7 +31,7 @@ export const ui = {
   en: {
     navHouse: "The house", navAround: "Around", navReviews: "Reviews", navGarden: "The garden", navHistory: "History", navMoments: "In pictures", navMap: "Map", navHosts: "Your hosts", mapPageLink: "See all our places on the map →", navFaq: "FAQ",
     book: "Book", bookStay: "Book your stay", back: "← Back to the house",
-    facts: { reviews: "Airbnb reviews", guests: "guests", rooms: "air-conditioned bedrooms", baths: "bathrooms" },
+    facts: { reviews: "Airbnb reviews", guests: "guests", rooms: "air-conditioned bedrooms", baths: "bathrooms", area: "living space", porches: "covered verandas" },
     captionGallery: "The veranda", photoSoon: "Photo coming soon",
     gardenLink: "Discover the garden fruit →", historyLink: "Read the estate's story →",
     mapLink: "Map ↗", mapTitle: "Interactive map", mapText: "Beaches, restaurants, markets, hikes: all our places on one map.", mapButton: "See L'Enclos on Google Maps",
