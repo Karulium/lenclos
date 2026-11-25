@@ -1,0 +1,212 @@
+---
+// Page « Réserver » : le moteur de réservation Beds24 affiché dans le site (iframe), avec autour
+// le récapitulatif du séjour et ce qui rassure (avis, hôtes joignables, pas de frais de service).
+// Les dates arrivent du calendrier de la page d'accueil : /reserver/?checkin=2027-01-20&nights=7&guests=2
+// L'habillage de la partie Beds24 (couleurs, polices, hauteur automatique) est dans docs/beds24/.
+import Base from "../layouts/Base.astro";
+import site from "../data/site.json";
+import { ui, routes, type Lang } from "../i18n/ui";
+import { rich } from "../lib/text";
+import { hasImage } from "../lib/images";
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = ui[lang];
+const b = t.bookPage;
+const home = routes.home[lang];
+const photo = ["/img/hero-1200.jpg", "/img/photo1.jpg"].find((p) => hasImage(p));
+const review = site.reviews[1] ?? site.reviews[0];
+const whatsapp = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
+const fallback = `https://beds24.com/booking2.php?propid=${site.beds24.propId}&lang=${lang}`;
+const i18n = { locale: lang === "fr" ? "fr-FR" : "en-GB", nights: [t.nights(1), t.nights(2)], guests: [b.guests(1), b.guests(2)] };
+---
+<Base lang={lang} route="book" title={b.metaTitle} description={b.metaDescription}>
+  <main id="top" class="wrap bk" data-propid={site.beds24.propId} data-lang={lang} data-i18n={JSON.stringify(i18n)}>
+    <a class="back" href={home}>{t.back}</a>
+
+    <header class="bk-head">
+      <span class="eyebrow">{b.eyebrow}</span>
+      <h1>{b.title}</h1>
+      <p class="bk-lead">{b.lead}</p>
+    </header>
+
+    <ol class="bk-steps" aria-label={b.title}>
+      {b.steps.map((s, i) => <li data-step={i + 1} aria-current={i === 0 ? "step" : undefined}><span>{i + 1}</span>{s}</li>)}
+    </ol>
+
+    <div class="bk-grid">
+      <section class="bk-recap bk-card" aria-label={b.stay}>
+        {photo && <img class="bk-photo" src={photo} alt="" width="1200" height="800" loading="eager" decoding="async" />}
+        <div class="bk-recap-body">
+          <p class="bk-name">{site.name}</p>
+          <p class="bk-rating"><span class="star" aria-hidden="true">★</span> {site.rating.airbnb} · {t.reviewCount(site.rating.airbnbCount)} Airbnb · {site.rating.booking}/10 Booking</p>
+          <div class="bk-stay" id="bk-stay" hidden>
+            <dl>
+              <div><dt>{t.checkin}</dt><dd id="bk-in"></dd></div>
+              <div><dt>{t.checkout}</dt><dd id="bk-out"></dd></div>
+            </dl>
+            <p class="bk-meta"><span id="bk-nights"></span> · <span id="bk-guests"></span> · <a href={`${home}#reserver`}>{b.change}</a></p>
+          </div>
+          <div class="bk-nodates" id="bk-nodates">
+            <p>{b.noDates}</p>
+            <a class="btn" href={`${home}#reserver`}>{b.chooseDates}</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="bk-engine" aria-label={t.bookStay}>
+        <div class="bk-frame bk-card">
+          <p class="bk-loading" id="bk-loading">{b.loading}</p>
+          <iframe id="bk-iframe" title={t.bookStay} loading="eager"></iframe>
+          <noscript><p class="bk-loading"><a href={fallback}>{b.fallbackLink}</a></p></noscript>
+        </div>
+        <p class="bk-pay">{b.payNote}</p>
+        <p class="bk-fallback">{b.fallback} <a id="bk-open" href={fallback} target="_blank" rel="noopener">{b.fallbackLink}</a></p>
+      </section>
+
+      <aside class="bk-trust">
+        <section class="bk-card">
+          <h2>{b.why}</h2>
+          <ul class="bk-points">
+            {b.points.map((p) => <li><strong>{p.title}</strong><span>{p.text}</span></li>)}
+          </ul>
+        </section>
+
+        <section class="bk-card bk-review">
+          <h2>{b.reviewsTitle}</h2>
+          <blockquote>
+            <p>« {review[lang].text} »</p>
+            <footer>{review.name}, {review[lang].country} · {review.source}</footer>
+          </blockquote>
+          <a class="more" href={`${home}#avis`}>{t.readReviews.replace(" ↗", "")} →</a>
+        </section>
+
+        <section class="bk-card bk-ask">
+          <h2>{b.ask}</h2>
+          <p>{t.hosts}</p>
+          <p><a class="btn btn-line" href={whatsapp}>WhatsApp · {site.whatsapp}</a></p>
+          <p>E-mail : <Fragment set:html={rich(site.email)} /></p>
+          <a class="more" href={`${home}#faq`}>{b.faqLink}</a>
+        </section>
+      </aside>
+    </div>
+  </main>
+</Base>
+
+<script>
+  // Lit les dates choisies sur la page d'accueil, affiche le récapitulatif et charge Beds24 dans le cadre.
+  const main = document.querySelector<HTMLElement>("main.bk");
+  if (main) {
+    const L = JSON.parse(main.dataset.i18n!);
+    const q = new URLSearchParams(location.search);
+    const checkin = q.get("checkin") ?? "";
+    const nights = Math.max(0, Math.min(365, parseInt(q.get("nights") ?? "", 10) || 0));
+    const guests = Math.max(1, Math.min(5, parseInt(q.get("guests") ?? "", 10) || 2));
+    const valid = /^\d{4}-\d{2}-\d{2}$/.test(checkin) && nights > 0;
+
+    const src = new URLSearchParams({ propid: main.dataset.propid!, hideheader: "yes", hidefooter: "yes", referer: "site", lang: main.dataset.lang! });
+    if (valid) {
+      const [y, m, d] = checkin.split("-").map(Number);
+      const start = new Date(y, m - 1, d, 12);
+      const end = new Date(y, m - 1, d + nights, 12);
+      const fmt = new Intl.DateTimeFormat(L.locale, { weekday: "short", day: "numeric", month: "long", year: "numeric" });
+      document.getElementById("bk-in")!.textContent = fmt.format(start);
+      document.getElementById("bk-out")!.textContent = fmt.format(end);
+      document.getElementById("bk-nights")!.textContent = L.nights[nights > 1 ? 1 : 0].replace(/^\d+/, String(nights));
+      document.getElementById("bk-guests")!.textContent = L.guests[guests > 1 ? 1 : 0].replace(/^\d+/, String(guests));
+      document.getElementById("bk-stay")!.hidden = false;
+      document.getElementById("bk-nodates")!.hidden = true;
+      src.set("checkin", checkin);
+      src.set("numnight", String(nights));
+      src.set("numadult", String(guests));
+    }
+
+    const url = "https://beds24.com/booking2.php?" + src.toString();
+    const frame = document.getElementById("bk-iframe") as HTMLIFrameElement;
+    const loading = document.getElementById("bk-loading")!;
+    (document.getElementById("bk-open") as HTMLAnchorElement).href = url;
+    frame.src = url;
+
+    // Étape en cours (1 prix, 2 coordonnées, 3 confirmation), envoyée par la page Beds24.
+    const steps = document.querySelectorAll<HTMLElement>(".bk-steps li");
+    let step = 1;
+    const setStep = (n: number) => {
+      steps.forEach((li) => {
+        const k = Number(li.dataset.step);
+        li.classList.toggle("done", k < n);
+        if (k === n) li.setAttribute("aria-current", "step"); else li.removeAttribute("aria-current");
+      });
+      if (n !== step) {
+        step = n;
+        // Nouvelle étape : on remonte en haut du module pour que le voyageur voie le début du formulaire.
+        const top = frame.closest(".bk-engine")!.getBoundingClientRect().top + scrollY - 90;
+        if (scrollY > top) scrollTo({ top, behavior: "smooth" });
+      }
+    };
+
+    // La page Beds24 envoie sa hauteur : le cadre s'ajuste, sans double barre de défilement.
+    addEventListener("message", (e) => {
+      if (!/^https:\/\/(www\.)?beds24\.com$/.test(e.origin)) return;
+      const data = e.data as { lenclos?: string; height?: number; step?: number };
+      if (data?.lenclos !== "beds24") return;
+      if (typeof data.height === "number" && data.height > 200 && data.height < 8000) frame.style.height = `${data.height}px`;
+      if (data.step === 1 || data.step === 2 || data.step === 3) setStep(data.step);
+      main.classList.add("bk-sized");
+    });
+    frame.addEventListener("load", () => loading.hidden = true);
+  }
+</script>
+
+<style>
+  .bk { display: grid; gap: 22px; padding-block: 28px 80px; }
+  .bk-head { display: grid; gap: 10px; }
+  .bk-lead { color: var(--muted); font-size: 1.05rem; }
+  .bk-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); }
+
+  .bk-steps { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: .9rem; color: var(--muted); }
+  .bk-steps li { display: flex; align-items: center; gap: 8px; }
+  .bk-steps span { width: 24px; height: 24px; border-radius: 50%; border: 1px solid var(--line); display: grid; place-items: center; font-size: .78rem; font-variant-numeric: tabular-nums; }
+  .bk-steps li[aria-current="step"] { color: var(--ink); font-weight: 600; }
+  .bk-steps li[aria-current="step"] span { background: var(--cta, var(--leaf)); border-color: var(--cta, var(--leaf)); color: var(--cta-ink, var(--leaf-ink)); }
+  .bk-steps li.done span { border-color: var(--accent, var(--leaf)); color: var(--accent, var(--leaf)); }
+
+  .bk-grid { display: grid; gap: 20px; grid-template-columns: minmax(0, 1fr) 360px; grid-template-areas: "engine recap" "engine trust"; align-items: start; }
+  .bk-recap { grid-area: recap; overflow: hidden; }
+  .bk-engine { grid-area: engine; display: grid; gap: 12px; min-width: 0; }
+  .bk-trust { grid-area: trust; display: grid; gap: 20px; }
+  @media (max-width: 960px) {
+    .bk-grid { grid-template-columns: minmax(0, 1fr); grid-template-areas: "recap" "engine" "trust"; }
+  }
+
+  .bk-photo { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+  .bk-recap-body { padding: 18px 20px 20px; display: grid; gap: 10px; }
+  .bk-name { font-family: var(--display); font-size: 1.35rem; line-height: 1.2; }
+  .bk-rating { font-size: .9rem; color: var(--muted); }
+  .bk-stay dl { margin: 0; display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--line); border-radius: var(--r); }
+  .bk-stay dl div { padding: 10px 12px; }
+  .bk-stay dl div + div { border-left: 1px solid var(--line); }
+  .bk-stay dt { font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  .bk-stay dd { margin: 2px 0 0; font-weight: 600; font-size: .95rem; }
+  .bk-meta { font-size: .9rem; color: var(--muted); margin-top: 8px; }
+  .bk-nodates { display: grid; gap: 12px; color: var(--muted); font-size: .95rem; }
+  .bk-nodates .btn { justify-self: start; }
+
+  .bk-frame { position: relative; overflow: hidden; }
+  .bk-frame iframe { display: block; width: 100%; height: 720px; border: 0; background: var(--surface); transition: height .2s ease; }
+  .bk-loading { position: absolute; inset: 0 0 auto; padding: 28px; text-align: center; color: var(--muted); font-size: .95rem; }
+  .bk-pay { font-size: .92rem; color: var(--muted); padding-left: 14px; border-left: 2px solid var(--accent, var(--leaf)); }
+  .bk-fallback { font-size: .85rem; color: var(--muted); }
+
+  .bk-trust .bk-card { padding: 22px 22px 24px; display: grid; gap: 14px; }
+  .bk-trust h2 { font-size: 1.35rem; }
+  .bk-points { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+  .bk-points li { display: grid; gap: 2px; padding-left: 28px; position: relative; font-size: .93rem; color: var(--muted); }
+  .bk-points li::before { content: ""; position: absolute; left: 0; top: 5px; width: 16px; height: 9px; border-left: 1.5px solid var(--accent, var(--leaf)); border-bottom: 1.5px solid var(--accent, var(--leaf)); transform: rotate(-45deg); }
+  .bk-points strong { color: var(--ink); font-weight: 600; }
+  .bk-review blockquote { margin: 0; display: grid; gap: 8px; }
+  .bk-review blockquote p { font-family: var(--display); font-size: 1.1rem; line-height: 1.45; }
+  .bk-review footer { font-size: .85rem; color: var(--muted); }
+  .bk-ask p { font-size: .93rem; color: var(--muted); }
+  .btn-line { background: transparent; color: var(--ink); border: 1px solid var(--line); width: 100%; }
+  .btn-line:hover { border-color: var(--ink); filter: none; }
+</style>

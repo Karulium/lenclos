@@ -9,7 +9,7 @@ const errors = [];
 const fail = (msg) => errors.push(msg);
 
 // 1. Pages attendues
-const pages = { "/": "fr", "/jardin/": "fr", "/histoire/": "fr", "/en-images/": "fr", "/carte/": "fr", "/vos-hotes/": "fr", "/en/": "en", "/en/garden/": "en", "/en/history/": "en", "/en/in-pictures/": "en", "/en/map/": "en", "/en/your-hosts/": "en" };
+const pages = { "/": "fr", "/jardin/": "fr", "/histoire/": "fr", "/en-images/": "fr", "/carte/": "fr", "/vos-hotes/": "fr", "/reserver/": "fr", "/en/": "en", "/en/garden/": "en", "/en/history/": "en", "/en/in-pictures/": "en", "/en/map/": "en", "/en/your-hosts/": "en", "/en/book/": "en" };
 const titles = new Set();
 const htmlByPath = {};
 for (const [path, lang] of Object.entries(pages)) {
