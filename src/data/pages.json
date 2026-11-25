@@ -1,5 +1,12 @@
 {
   "home": {
+    "photos": [
+      "/img/photo1.jpg",
+      "/img/photo2.jpg",
+      "/img/photo3.jpg",
+      "/img/photo4.jpg",
+      "/img/photo5.jpg"
+    ],
     "fr": {
       "metaTitle": "L'Enclos de Vieux-Habitants · Maison vue mer en Guadeloupe",
       "metaDescription": "Maison de 114 m² avec vue mer et montagne à Vieux-Habitants, Basse-Terre, Guadeloupe. 2 chambres climatisées avec salle de bain, jardin fruitier. Réservez en direct au meilleur prix.",

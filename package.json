@@ -8,7 +8,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "test": "astro build && node tests/check-site.mjs"
+    "test": "node tests/check-cms.mjs && astro build && node tests/check-site.mjs"
   },
   "dependencies": {
     "astro": "7.4.7",
@@ -16,5 +16,8 @@
   },
   "engines": {
     "node": ">=22.23.4"
+  },
+  "devDependencies": {
+    "yaml": "^2.9.1"
   }
 }

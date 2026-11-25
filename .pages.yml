@@ -1,98 +1,328 @@
-# Configuration de Pages CMS (https://pagescms.org) : formulaires pour modifier le contenu sans toucher au code.
+# Configuration de Pages CMS (https://pagescms.org) : formulaires pour modifier les textes et les photos du site
+# sans toucher au code ni au design. Mode d'emploi : docs/modifier-le-site.md
 # Astuce : écrire un texte entre [[doubles crochets]] le fait apparaître surligné « à compléter » sur le site.
+# Les prix, le calendrier et les réservations ne sont pas ici : ils restent dans Beds24 et PriceLabs.
+#
+# Règle pour les développeurs : chaque clé des fichiers src/data/*.json doit être décrite ici
+# (`npm test` le vérifie avec tests/check-cms.mjs), sinon elle n'apparaît pas dans l'éditeur.
+
+settings:
+  content:
+    # Enregistre seulement les champs du formulaire et garde le reste du fichier tel quel :
+    # plusieurs formulaires peuvent ainsi partager un même fichier (pages.json, site.json).
+    merge: true
+  commit:
+    identity: user
+
 media:
-  input: public/img
-  output: /img
+  - name: images
+    label: Photos du site
+    input: public/img
+    output: /img
+    extensions: [jpg, jpeg, png, webp]
+    rename: safe
+  - name: moments
+    label: Photos et vidéos « En images »
+    input: public/media/moments
+    output: /media/moments
+    extensions: [jpg, jpeg, png, webp, mp4]
+    rename: safe
 
 content:
-  - name: site
-    label: Infos générales (contact, prix, Beds24, carte)
+  # ───────────── Textes des pages ─────────────
+  - name: accueil
+    label: "Page : Accueil"
     type: file
-    path: src/data/site.json
+    path: src/data/pages.json
     format: json
     fields:
-      - { name: name, label: Nom, type: string }
-      - { name: address, label: Adresse, type: string }
-      - { name: whatsapp, label: WhatsApp, type: string }
-      - { name: email, label: E-mail, type: string }
-      - { name: priceFrom, label: Prix « à partir de », type: string }
-      - { name: registrationNumber, label: N° d'enregistrement du meublé, type: string }
-      - name: company
-        label: Entreprise
+      - name: home
+        label: Accueil
         type: object
         fields:
-          - { name: name, label: Nom, type: string }
-          - { name: legal, label: Forme juridique et SIRET, type: string }
-          - { name: url, label: Site web, type: string }
-      - { name: myMapsId, label: Identifiant de la carte Google My Maps (mid=…), type: string }
-
-  - name: autour
-    label: Autour (onglets et adresses)
-    type: file
-    path: src/data/autour.json
-    format: json
-    fields:
-      - name: tabs
-        label: Onglets
-        type: object
-        list: true
-        fields:
-          - { name: id, label: Identifiant (sans espace ni accent), type: string }
-          - { name: fr, label: Titre FR, type: string }
-          - { name: en, label: Titre EN, type: string }
-          - { name: color, label: Couleur sur la carte (ex. #1E6A4E), type: string }
-          - { name: icon, label: "Icône (bag, basket, utensils, landmark, waves, trees, pin)", type: string }
-          - name: places
-            label: Adresses
-            type: object
-            list: true
-            fields:
-              - { name: icon, label: "Icône (ex. pill, cart, umbrella, fish, castle, pizza…, liste dans src/lib/icons.ts)", type: string }
-              - name: fr
-                label: Français
-                type: object
-                fields:
-                  - { name: name, label: Nom, type: string }
-                  - { name: text, label: Description, type: string }
-                  - { name: where, label: Lieu ou durée, type: string }
-              - name: en
-                label: English
-                type: object
-                fields:
-                  - { name: name, label: Name, type: string }
-                  - { name: text, label: Description, type: string }
-                  - { name: where, label: Place or time, type: string }
-              - { name: mapsQuery, label: Recherche Google Maps (nom + commune), type: string }
-              - { name: lat, label: Latitude (ex. 16.0514), type: number }
-              - { name: lng, label: Longitude (ex. -61.7423), type: number }
-
-  - name: moments
-    label: En images (photos et vidéos plein écran)
-    type: file
-    path: src/data/moments.json
-    format: json
-    fields:
-      - { name: placeholder, label: Afficher « médias factices » (décocher avec les vrais médias), type: boolean }
-      - name: items
-        label: Photos et vidéos (dans l'ordre du fil)
-        type: object
-        list: true
-        fields:
-          - { name: type, label: Type, type: select, options: { values: [photo, video] } }
-          - { name: src, label: Fichier (photo ou vidéo verticale MP4, 720p, 25 Mo max), type: file, options: { path: public/media/moments } }
-          - { name: poster, label: Image d'attente (vidéos seulement), type: image, options: { path: public/media/moments } }
+          - name: photos
+            label: Photos du haut de page (5 photos, la 1re est la plus grande)
+            description: Format paysage, environ 1600 px de large. La 1re photo porte la légende « La galerie ».
+            type: image
+            options: { media: images, multiple: { max: 5 } }
           - name: fr
             label: Français
             type: object
-            fields:
-              - { name: caption, label: Légende, type: string }
-              - { name: place, label: Lieu, type: string }
+            fields: &homeFields
+              - { name: metaTitle, label: "Titre dans Google et l'onglet du navigateur", type: string }
+              - { name: metaDescription, label: "Description dans Google (2 phrases)", type: text }
+              - { name: eyebrow, label: "Petit texte au-dessus du titre", type: string }
+              - { name: title, label: "Grand titre", type: string }
+              - { name: intro, label: "Introduction", type: text }
+              - { name: directEyebrow, label: "« Pourquoi réserver ici » : petit texte", type: string }
+              - { name: directTitle, label: "« Pourquoi réserver ici » : titre", type: string }
+              - name: direct
+                label: "« Pourquoi réserver ici » : avantages"
+                type: object
+                list: true
+                fields:
+                  - { name: big, label: "Chiffre ou mot en gros (ex. −10 %)", type: string }
+                  - { name: text, label: "Explication", type: string }
+              - { name: houseEyebrow, label: "La maison : petit texte", type: string }
+              - { name: houseTitle, label: "La maison : titre", type: string }
+              - { name: houseText, label: "La maison : texte", type: text }
+              - { name: aroundEyebrow, label: "Autour : petit texte", type: string }
+              - { name: aroundTitle, label: "Autour : titre", type: string }
+              - { name: aroundText, label: "Autour : texte", type: text }
+              - { name: heritageEyebrow, label: "Histoire : petit texte", type: string }
+              - { name: heritageTitle, label: "Histoire : titre", type: string }
+              - { name: heritageText, label: "Histoire : texte", type: text }
+              - { name: reviewsEyebrow, label: "Avis : petit texte", type: string }
+              - { name: reviewsText, label: "Avis : texte", type: text }
+              - { name: faqTitle, label: "Titre des questions fréquentes", type: string }
           - name: en
             label: English
             type: object
+            fields: *homeFields
+
+  - name: jardin
+    label: "Page : Le jardin"
+    type: file
+    path: src/data/pages.json
+    format: json
+    fields:
+      - name: garden
+        label: Le jardin
+        type: object
+        fields:
+          - name: fr
+            label: Français
+            type: object
+            fields: &gardenFields
+              - { name: metaTitle, label: "Titre dans Google et l'onglet du navigateur", type: string }
+              - { name: metaDescription, label: "Description dans Google (2 phrases)", type: text }
+              - { name: eyebrow, label: "Petit texte au-dessus du titre", type: string }
+              - { name: title, label: "Grand titre", type: string }
+              - { name: intro, label: "Introduction", type: text }
+              - { name: legend, label: "Avertissement sur les saisons", type: text }
+              - { name: extraTitle, label: "Encadré final, titre", type: string }
+              - { name: extraText, label: "Encadré final, texte", type: text }
+              - { name: nowBadge, label: "Pastille « de saison ce mois-ci »", type: string }
+          - name: en
+            label: English
+            type: object
+            fields: *gardenFields
+          - name: seasons
+            label: Saisons (groupes de fruits)
+            type: object
+            list: true
             fields:
-              - { name: caption, label: Caption, type: string }
-              - { name: place, label: Place, type: string }
+              - { name: id, label: "Identifiant (ne pas modifier)", type: string, readonly: true }
+              - { name: months, label: "Mois de la saison (1 = janvier … 12 = décembre)", type: number, list: true }
+              - name: fr
+                label: Français
+                type: object
+                fields: &seasonFields
+                  - { name: title, label: "Titre", type: string }
+                  - { name: text, label: "Texte", type: text }
+              - name: en
+                label: English
+                type: object
+                fields: *seasonFields
+
+  - name: histoire
+    label: "Page : Histoire"
+    type: file
+    path: src/data/pages.json
+    format: json
+    fields:
+      - name: history
+        label: Histoire
+        type: object
+        fields:
+          - name: fr
+            label: Français
+            type: object
+            fields: &historyFields
+              - { name: metaTitle, label: "Titre dans Google et l'onglet du navigateur", type: string }
+              - { name: metaDescription, label: "Description dans Google (2 phrases)", type: text }
+              - { name: eyebrow, label: "Petit texte au-dessus du titre", type: string }
+              - { name: title, label: "Grand titre", type: string }
+              - { name: intro, label: "Introduction", type: text }
+              - name: heroImage
+                label: Grande photo
+                type: object
+                fields: &photoCaptionFields
+                  - { name: src, label: "Photo", type: image, options: { media: images } }
+                  - { name: alt, label: "Description de la photo (pour les malvoyants et Google)", type: string }
+                  - { name: caption, label: "Légende affichée", type: string }
+              - { name: timelineTitle, label: "Titre de la chronologie", type: string }
+              - name: timeline
+                label: Chronologie
+                type: object
+                list: true
+                fields:
+                  - { name: year, label: "Date", type: string }
+                  - { name: text, label: "Texte", type: text }
+                  - { name: source, label: "N° de la source citée (1, 2…)", type: number }
+              - name: sections
+                label: Chapitres
+                type: object
+                list: true
+                fields:
+                  - { name: title, label: "Titre", type: string }
+                  - { name: text, label: "Paragraphes", type: text, list: true }
+                  - name: images
+                    label: Photos du chapitre
+                    type: object
+                    list: true
+                    fields: *photoCaptionFields
+                  - { name: source, label: "N° de la source citée (facultatif)", type: number }
+              - { name: sourcesTitle, label: "Titre des sources", type: string }
+              - { name: sourcesIntro, label: "Introduction des sources", type: text }
+              - { name: sources, label: "Sources (dans l'ordre des numéros)", type: text, list: true }
+              - { name: photoCredit, label: "Crédit photo", type: string }
+          - name: en
+            label: English
+            type: object
+            fields: *historyFields
+
+  - name: hotes
+    label: "Page : Vos hôtes"
+    type: file
+    path: src/data/pages.json
+    format: json
+    fields:
+      - name: hosts
+        label: Vos hôtes
+        type: object
+        fields:
+          - name: fr
+            label: Français
+            type: object
+            fields: &hostsFields
+              - { name: metaTitle, label: "Titre dans Google et l'onglet du navigateur", type: string }
+              - { name: metaDescription, label: "Description dans Google (2 phrases)", type: text }
+              - { name: eyebrow, label: "Petit texte au-dessus du titre", type: string }
+              - { name: title, label: "Grand titre", type: string }
+              - { name: intro, label: "Introduction", type: text }
+              - name: photo
+                label: Photo des hôtes
+                type: object
+                fields:
+                  - { name: src, label: "Photo (format paysage 3/2)", type: image, options: { media: images } }
+                  - { name: alt, label: "Description de la photo", type: string }
+              - name: sections
+                label: Portraits
+                type: object
+                list: true
+                fields:
+                  - { name: id, label: "Identifiant (sans espace ni accent)", type: string }
+                  - { name: title, label: "Titre", type: string }
+                  - { name: text, label: "Paragraphes", type: text, list: true }
+              - { name: contactTitle, label: "« Nous écrire » : titre", type: string }
+              - { name: contactText, label: "« Nous écrire » : texte", type: text }
+          - name: en
+            label: English
+            type: object
+            fields: *hostsFields
+
+  - name: pageEnImages
+    label: "Page : En images (textes)"
+    type: file
+    path: src/data/pages.json
+    format: json
+    fields:
+      - name: moments
+        label: En images
+        type: object
+        fields:
+          - name: fr
+            label: Français
+            type: object
+            fields: &momentsFields
+              - { name: metaTitle, label: "Titre dans Google et l'onglet du navigateur", type: string }
+              - { name: metaDescription, label: "Description dans Google (2 phrases)", type: text }
+              - { name: title, label: "Titre", type: string }
+              - { name: intro, label: "Consigne (faire défiler)", type: string }
+              - { name: sound, label: "Bouton « activer le son »", type: string }
+              - { name: mute, label: "Bouton « couper le son »", type: string }
+              - { name: share, label: "Bouton « partager »", type: string }
+              - { name: copied, label: "Message « lien copié »", type: string }
+              - { name: end, label: "Écran final, titre", type: string }
+              - { name: endText, label: "Écran final, texte", type: string }
+              - { name: placeholder, label: "Avertissement « médias factices »", type: string }
+          - name: en
+            label: English
+            type: object
+            fields: *momentsFields
+
+  - name: pageCarte
+    label: "Page : Carte (textes)"
+    type: file
+    path: src/data/pages.json
+    format: json
+    fields:
+      - name: map
+        label: Carte
+        type: object
+        fields:
+          - name: fr
+            label: Français
+            type: object
+            fields: &mapFields
+              - { name: metaTitle, label: "Titre dans Google et l'onglet du navigateur", type: string }
+              - { name: metaDescription, label: "Description dans Google (2 phrases)", type: text }
+              - { name: title, label: "Titre", type: string }
+              - { name: intro, label: "Introduction", type: text }
+              - { name: all, label: "Filtre « Tout »", type: string }
+              - { name: house, label: "Repère « La maison »", type: string }
+              - { name: route, label: "Lien « Itinéraire »", type: string }
+              - { name: notOnMap, label: "Mention « bientôt sur la carte »", type: string }
+              - { name: listLabel, label: "Titre de la liste des lieux", type: string }
+          - name: en
+            label: English
+            type: object
+            fields: *mapFields
+
+  # ───────────── Maison, jardin, adresses ─────────────
+  - name: maison
+    label: La maison (chambres, photos, équipements)
+    type: file
+    path: src/data/maison.json
+    format: json
+    fields:
+      - name: rooms
+        label: Chambres
+        type: object
+        list: true
+        fields:
+          - { name: image, label: "Photo", type: image, options: { media: images, path: public/img/maison } }
+          - name: fr
+            label: Français
+            type: object
+            fields: &roomFields
+              - { name: title, label: "Titre", type: string }
+              - { name: text, label: "Détail", type: string }
+              - { name: alt, label: "Description de la photo", type: string }
+          - name: en
+            label: English
+            type: object
+            fields: *roomFields
+      - name: gallery
+        label: Photos de la maison (sous les chambres)
+        type: object
+        list: true
+        fields:
+          - { name: src, label: "Photo", type: image, options: { media: images, path: public/img/maison } }
+          - { name: fr, label: "Légende (français)", type: string }
+          - { name: en, label: "Caption (English)", type: string }
+      - name: amenities
+        label: Équipements
+        type: object
+        list: true
+        fields:
+          - name: icon
+            label: Icône
+            type: select
+            options: { values: [view, garden, fruit, clock, kitchen, coffee, bed, tv, shirt, safety, wifi, car, sofa, baby, house, calm] }
+          - { name: fr, label: "Français", type: string }
+          - { name: en, label: "English", type: string }
 
   - name: fruits
     label: Fruits du jardin
@@ -105,23 +335,84 @@ content:
         type: object
         list: true
         fields:
-          - { name: slug, label: "Nom de la photo (ex. mangues → public/img/fruits/mangues.jpg)", type: string }
+          - { name: image, label: "Photo (carrée de préférence)", type: image, options: { media: images, path: public/img/fruits } }
+          - { name: slug, label: "Identifiant (sans espace ni accent, ex. mangues)", type: string }
           - { name: color, label: "Couleur (ex. #E8A33D)", type: string }
           - { name: months, label: "Mois de récolte (1 = janvier … 12 = décembre)", type: number, list: true }
           - name: fr
             label: Français
             type: object
-            fields:
-              - { name: name, label: Nom, type: string }
-              - { name: text, label: Description, type: string }
-              - { name: season, label: Saison (texte), type: string }
+            fields: &fruitFields
+              - { name: name, label: "Nom", type: string }
+              - { name: text, label: "Description", type: text }
+              - { name: season, label: "Saison (texte)", type: string }
           - name: en
             label: English
             type: object
+            fields: *fruitFields
+
+  - name: autour
+    label: Autour (onglets et adresses)
+    type: file
+    path: src/data/autour.json
+    format: json
+    fields:
+      - name: tabs
+        label: Onglets
+        type: object
+        list: true
+        fields:
+          - { name: id, label: "Identifiant (sans espace ni accent)", type: string }
+          - { name: fr, label: "Titre FR", type: string }
+          - { name: en, label: "Titre EN", type: string }
+          - { name: color, label: "Couleur sur la carte (ex. #1E6A4E)", type: string }
+          - { name: icon, label: "Icône (bag, basket, utensils, landmark, waves, trees, pin)", type: string }
+          - name: places
+            label: Adresses
+            type: object
+            list: true
             fields:
-              - { name: name, label: Name, type: string }
-              - { name: text, label: Description, type: string }
-              - { name: season, label: Season (text), type: string }
+              - { name: icon, label: "Icône (ex. pill, cart, umbrella, fish, castle, pizza…, liste dans src/lib/icons.ts)", type: string }
+              - name: fr
+                label: Français
+                type: object
+                fields: &placeFields
+                  - { name: name, label: "Nom", type: string }
+                  - { name: text, label: "Description", type: text }
+                  - { name: where, label: "Lieu ou durée", type: string }
+              - name: en
+                label: English
+                type: object
+                fields: *placeFields
+              - { name: mapsQuery, label: "Recherche Google Maps (nom + commune)", type: string }
+              - { name: lat, label: "Latitude (ex. 16.0514)", type: number }
+              - { name: lng, label: "Longitude (ex. -61.7423)", type: number }
+
+  - name: moments
+    label: En images (photos et vidéos plein écran)
+    type: file
+    path: src/data/moments.json
+    format: json
+    fields:
+      - { name: placeholder, label: "Afficher « médias factices » (décocher avec les vrais médias)", type: boolean }
+      - name: items
+        label: Photos et vidéos (dans l'ordre du fil)
+        type: object
+        list: true
+        fields:
+          - { name: type, label: "Type", type: select, options: { values: [photo, video] } }
+          - { name: src, label: "Fichier (photo ou vidéo verticale MP4, 720p, 25 Mo max)", type: file, options: { media: moments } }
+          - { name: poster, label: "Image d'attente (vidéos seulement)", type: image, options: { media: moments } }
+          - name: fr
+            label: Français
+            type: object
+            fields: &momentFields
+              - { name: caption, label: "Légende", type: string }
+              - { name: place, label: "Lieu", type: string }
+          - name: en
+            label: English
+            type: object
+            fields: *momentFields
 
   - name: faq
     label: Questions fréquentes
@@ -137,59 +428,96 @@ content:
           - name: fr
             label: Français
             type: object
-            fields:
-              - { name: q, label: Question, type: string }
-              - { name: a, label: Réponse, type: text }
+            fields: &faqFields
+              - { name: q, label: "Question", type: string }
+              - { name: a, label: "Réponse", type: text }
           - name: en
             label: English
             type: object
-            fields:
-              - { name: q, label: Question, type: string }
-              - { name: a, label: Answer, type: text }
+            fields: *faqFields
 
-  - name: maison
-    label: La maison (chambres et équipements)
+  # ───────────── Infos générales et avis ─────────────
+  - name: site
+    label: Infos générales (contact, entreprise, carte)
     type: file
-    path: src/data/maison.json
+    path: src/data/site.json
     format: json
     fields:
-      - name: rooms
-        label: Chambres
+      - { name: name, label: "Nom", type: string }
+      - { name: shortName, label: "Nom court", type: string }
+      - { name: address, label: "Adresse", type: string }
+      - name: geo
+        label: Position GPS de la maison
+        type: object
+        fields:
+          - { name: lat, label: "Latitude", type: number }
+          - { name: lng, label: "Longitude", type: number }
+      - { name: whatsapp, label: "WhatsApp", type: string }
+      - { name: email, label: "E-mail", type: string }
+      - { name: priceFrom, label: "Prix « à partir de » (texte affiché ; les vrais prix sont dans Beds24)", type: string }
+      - { name: registrationNumber, label: "N° d'enregistrement du meublé", type: string }
+      - name: company
+        label: Entreprise
+        type: object
+        fields:
+          - { name: name, label: "Nom", type: string }
+          - { name: legal, label: "Forme juridique et SIRET", type: string }
+          - { name: url, label: "Site web", type: string }
+      - name: beds24
+        label: Beds24 (technique, ne pas modifier)
+        type: object
+        readonly: true
+        fields:
+          - { name: propId, label: "Propriété", type: string }
+          - { name: roomId, label: "Logement", type: string }
+          - { name: minNights, label: "Nuits minimum", type: number }
+      - { name: myMapsId, label: "Identifiant de la carte Google My Maps (mid=…)", type: string }
+
+  - name: avis
+    label: Notes et avis voyageurs
+    type: file
+    path: src/data/site.json
+    format: json
+    fields:
+      - name: rating
+        label: Notes globales
+        type: object
+        fields:
+          - { name: airbnb, label: "Note Airbnb (ex. 4,93)", type: string }
+          - { name: airbnbCount, label: "Nombre d'avis Airbnb", type: number }
+          - { name: airbnbUrl, label: "Lien de l'annonce Airbnb", type: string }
+          - { name: booking, label: "Note Booking (ex. 9,6)", type: string }
+          - { name: bookingCount, label: "Nombre d'avis Booking", type: number }
+          - { name: bookingUrl, label: "Lien de l'annonce Booking", type: string }
+          - { name: tripcom, label: "Note Trip.com", type: string }
+          - { name: tripcomCount, label: "Nombre d'avis Trip.com", type: number }
+      - name: scores
+        label: Notes détaillées Airbnb (sur 5)
+        type: object
+        list: true
+        fields: &scoreFields
+          - { name: fr, label: "Critère (français)", type: string }
+          - { name: en, label: "Criterion (English)", type: string }
+          - { name: value, label: "Note", type: number }
+      - name: bookingScores
+        label: Notes détaillées Booking (sur 10)
+        type: object
+        list: true
+        fields: *scoreFields
+      - name: reviews
+        label: Extraits d'avis
         type: object
         list: true
         fields:
-          - { name: image, label: Photo, type: image }
+          - { name: name, label: "Prénom du voyageur", type: string }
+          - { name: source, label: "Plateforme (ex. Booking.com)", type: string }
           - name: fr
             label: Français
             type: object
-            fields:
-              - { name: title, label: Titre, type: string }
-              - { name: text, label: Détail, type: string }
-              - { name: alt, label: Description de la photo, type: string }
+            fields: &reviewFields
+              - { name: country, label: "Pays", type: string }
+              - { name: text, label: "Avis", type: text }
           - name: en
             label: English
             type: object
-            fields:
-              - { name: title, label: Title, type: string }
-              - { name: text, label: Details, type: string }
-              - { name: alt, label: Photo description, type: string }
-      - name: gallery
-        label: Photos de la maison (sous les chambres)
-        type: object
-        list: true
-        fields:
-          - { name: src, label: Photo, type: image }
-          - { name: fr, label: Légende (français), type: string }
-          - { name: en, label: Caption (English), type: string }
-      - name: amenities
-        label: Équipements
-        type: object
-        list: true
-        fields:
-          - name: icon
-            label: Icône
-            type: select
-            options: { values: [view, garden, fruit, clock, kitchen, coffee, bed, tv, shirt, safety, wifi, car, sofa, baby, house, calm] }
-          - { name: fr, label: Français, type: string }
-          - { name: en, label: English, type: string }
-
+            fields: *reviewFields
