@@ -25,12 +25,12 @@ Tout le contenu est dans `src/data/`, séparé du design :
 
 Un texte écrit entre `[[doubles crochets]]` s'affiche surligné en orange : c'est un rappel de ce qui reste à compléter. `npm test` en donne la liste.
 
-**Sans code** : connecter le dépôt sur [Pages CMS](https://app.pagescms.org) avec son compte GitHub. Les formulaires sont décrits dans `.pages.yml`.
+**Sans code** : textes et photos se modifient dans [Pages CMS](https://app.pagescms.org), voir le mode d'emploi [docs/modifier-le-site.md](docs/modifier-le-site.md). Les formulaires sont décrits dans `.pages.yml` ; `npm test` vérifie qu'ils couvrent toutes les clés de `src/data/`.
 
 ## Photos
 
-- Photos principales : `public/img/photo1.jpg` à `photo5.jpg` (photo1 = la vue depuis la galerie, format paysage, environ 1600 px de large).
-- Fruits : `public/img/fruits/<slug>.jpg`, par exemple `mangues.jpg` (le `slug` de chaque fruit est dans `fruits.json`).
+- Photos principales : liste `home.photos` de `pages.json` (5 photos, la première = la vue depuis la galerie, format paysage, environ 1600 px de large).
+- Fruits : champ `image` de chaque fruit dans `fruits.json`, sinon `public/img/fruits/<slug>.jpg` (par exemple `mangues.jpg`).
 
 Tant qu'une photo manque, le site affiche « Photo à venir ».
 

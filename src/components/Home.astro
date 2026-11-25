@@ -19,8 +19,11 @@ const t = ui[lang];
 const p = pages.home[lang];
 const hist = pages.history[lang];
 
-// Photos principales : public/img/photo1.jpg à photo5.jpg
-const photos = [1, 2, 3, 4, 5].map((n) => ({ src: `/img/photo${n}.jpg`, ok: hasImage(`img/photo${n}.jpg`) }));
+// Photos principales : liste « photos » de pages.json (modifiable dans Pages CMS), toujours 5 emplacements
+const photos = Array.from({ length: 5 }, (_, i) => {
+  const src = pages.home.photos?.[i] || "";
+  return { src, ok: !!src && hasImage(src) };
+});
 
 const ld = {
   "@context": "https://schema.org",

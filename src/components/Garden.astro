@@ -47,7 +47,8 @@ const groups = seasons
           <p>{g[lang].text}</p>
           <div class="fruits">
             {g.fruits.map((f) => {
-              const img = `img/fruits/${f.slug}.jpg`;
+              // photo choisie dans Pages CMS, sinon public/img/fruits/<slug>.jpg
+              const img = ((f as { image?: string }).image || `img/fruits/${f.slug}.jpg`).replace(/^\//, "");
               const ok = hasImage(img);
               return (
                 <div class="fruit" style={`--fc:${f.color}`} data-months={f.months.join(",")}>
