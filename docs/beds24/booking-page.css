@@ -1,0 +1,81 @@
+/* L'Enclos de Vieux-Habitants : habillage de la page de réservation Beds24.
+   À coller dans Beds24 > Moteur de réservation > Page de réservation des propriété > Développeur > CSS personnalisé.
+   Mêmes couleurs et polices que le site : blanc cassé, encre, sauge, Marcellus + Figtree, boutons pilule. */
+
+body,.b24fullcontainer,.container.atcolor,#bookingpage{background:#FAF9F6!important;color:#1E201E!important}
+body{font-family:"Figtree","Segoe UI",system-ui,sans-serif!important;font-size:15px!important;line-height:1.6!important;-webkit-font-smoothing:antialiased}
+a{color:#3B6C7E}
+.container{max-width:960px}
+
+/* En-tête de marque (page ouverte seule, hors du site) */
+.lx-brand{text-align:center;padding:12px 16px 4px}
+.lx-brand b{display:block;font:400 30px/1.1 "Marcellus",Georgia,serif;letter-spacing:.01em}
+.lx-brand span{display:block;margin-top:6px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:#5D7D6C}
+html.lx-frame .lx-brand{display:none}
+
+/* Bandeau photo vide, langue et texte d'agence : retirés tant qu'aucune photo n'est chargée dans Beds24 */
+.b24-prop-slider,.b24fullcontainer-proprow1,.b24fullcontainer-ownerrow1{display:none!important}
+#topofthebookingpage{position:relative!important;top:auto!important}
+html.lx-frame #topofthebookingpage{display:none!important}
+html.lx-frame .pull-left.hidden-md.hidden-lg,html.lx-frame .b24-bookingdetails img,html.lx-frame .ssi_makeabooking{display:none!important}
+.b24languagedropdown .btn{background:transparent;border:1px solid #E6E3DD;border-radius:99px;font-size:13px;padding:4px 14px}
+
+/* Dates : sur le site, elles sont choisies avant (calendrier du site) */
+html.lx-dated #b24scroller-fullcontainer{display:none!important}
+.colorbookingstrip,.b24-bookingstrip{background:#FFFFFF!important;border:1px solid #E6E3DD!important;border-radius:4px;color:#1E201E!important}
+#b24scroller-container{position:static!important;top:auto!important;margin-top:16px}
+#b24scroller{padding:14px 10px 4px;margin-top:0!important}
+.control-label,label{font-weight:500!important;font-size:12px!important;letter-spacing:.08em;text-transform:uppercase;color:#6C706B!important}
+
+/* Cartes */
+.panel,.b24panel-room{background:#FFFFFF!important;border:1px solid #E6E3DD!important;border-radius:4px!important;box-shadow:0 30px 60px -45px rgba(20,24,22,.35)!important}
+.panel-heading,.b24-roompanel-heading{background:#FFFFFF!important;border-bottom:1px solid #E6E3DD!important;padding:18px 22px!important}
+.panel-body{padding:20px 22px!important}
+.at_roomnametext,.b24-roompanel-heading .at_roomnametext{font:400 24px/1.2 "Marcellus",Georgia,serif!important;color:#1E201E!important}
+.b24panel .at_roomnametext{font-size:19px!important}
+.b24-offer-pic{display:none!important}
+.b24-offer-summary{width:66%!important}
+.lx-sum{margin:0 0 10px;color:#1E201E;font-size:15px}
+.lx-inc{list-style:none;margin:0;padding:0;display:grid;gap:4px;color:#6C706B;font-size:14px}
+.lx-inc li::before{content:"✓";color:#5D7D6C;margin-right:8px}
+.at_roomofferprice,.at_roomofferprice *{font:400 28px/1.2 "Marcellus",Georgia,serif!important;color:#1E201E!important}
+.b24-offer-select{float:right}
+.b24-roomwarn{border-radius:4px}
+
+/* Champs */
+.form-control,.booktextinput,.booktextareainput,select{height:auto!important;min-height:44px;border:1px solid #D9D5CE!important;border-radius:4px!important;box-shadow:none!important;background:#FFFFFF!important;color:#1E201E!important;font:400 15px "Figtree",system-ui,sans-serif!important;padding:10px 12px!important}
+textarea.form-control,.booktextareainput{min-height:84px}
+.form-control:focus,.booktextinput:focus,.booktextareainput:focus{border-color:#5D7D6C!important;outline:2px solid rgba(93,125,108,.25)!important;outline-offset:0}
+.input-group-addon{background:#FAF9F6!important;border-color:#D9D5CE!important;border-radius:4px 0 0 4px!important}
+.questionrow{margin-bottom:6px}
+.questionrow>div:first-child{font-size:14px;color:#1E201E;padding-top:10px}
+.requiredfield{color:#5D7D6C!important}
+
+/* Photo du récapitulatif : bandeau bas plutôt qu'une grande image verticale */
+.b24-bookingdetails img{width:100%!important;max-height:200px;object-fit:cover;border-radius:4px;margin:6px 0 10px}
+
+/* Boutons : pilule noire comme sur le site */
+.btn-primary,.btn-success,.b24-roombuttondiv .btn,input[type=submit],button[type=submit],.button,.fakebutton,a.btn{background:#1E201E!important;border:1px solid #1E201E!important;color:#FFFFFF!important;border-radius:99px!important;font:500 15px "Figtree",system-ui,sans-serif!important;letter-spacing:.03em;padding:12px 28px!important;box-shadow:none!important;text-shadow:none!important;background-image:none!important;transition:background-color .15s}
+.btn-primary:hover,.btn-success:hover,.b24-roombuttondiv .btn:hover,input[type=submit]:hover,button[type=submit]:hover,.button:hover{background:#5D7D6C!important;border-color:#5D7D6C!important}
+.fakebutton,.book_bookingbackright .button{background:transparent!important;color:#1E201E!important;border:1px solid #D9D5CE!important;padding:7px 18px!important;font-size:13px!important}
+
+/* Étape « Vos coordonnées » */
+#selectorstripinfo{padding:18px 0 10px;border:0!important}
+.ssi_makeabooking,.ssi_propname{font:400 26px/1.2 "Marcellus",Georgia,serif!important;color:#1E201E!important}
+.b24-bookingdetails .row{padding:3px 0}
+.b24-bookingdetails .strong{font-weight:600}
+.occupancyadult{color:#5D7D6C}
+
+/* Mentions Beds24 discrètes */
+.b24poweredby,.poweredby,a[href*="beds24.com"][target]{opacity:.55;font-size:11px!important}
+img[src*="comodo"]{opacity:.8}
+
+@media (max-width:767px){
+  body{font-size:16px!important}
+  .panel-heading,.panel-body{padding:16px!important}
+  .b24-offer-select{float:none}
+  .b24-offer-summary{width:100%!important}
+  .at_roomofferprice{text-align:left!important}
+  .b24-roombuttondiv .btn,input[type=submit],button[type=submit]{width:100%;float:none!important;display:block;margin-top:8px}
+  .questionrow>div:first-child{padding-top:4px}
+}

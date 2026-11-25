@@ -9,6 +9,7 @@ export const routes = {
   moments: { fr: "/en-images/", en: "/en/in-pictures/" },
   map: { fr: "/carte/", en: "/en/map/" },
   hosts: { fr: "/vos-hotes/", en: "/en/your-hosts/" },
+  book: { fr: "/reserver/", en: "/en/book/" },
 } as const;
 export type RouteKey = keyof typeof routes;
 
@@ -27,6 +28,30 @@ export const ui = {
     hosts: "Vos hôtes : Gaël et Danie · français, anglais, português · réponse en moins d'une heure",
     registration: "Meublé de tourisme · n° d'enregistrement",
     langLabel: "Langue", menu: "Menu",
+    // Page « Réserver » : le moteur Beds24 intégré au site, entouré d'éléments de réassurance.
+    bookPage: {
+      metaTitle: "Réserver en direct · L'Enclos de Vieux-Habitants",
+      metaDescription: "Réservez L'Enclos de Vieux-Habitants en direct, sans frais de plateforme : calendrier en temps réel, réponse de vos hôtes Gaël et Danie en moins d'une heure.",
+      eyebrow: "Réservation directe",
+      title: "Finaliser votre réservation",
+      lead: "Vous réservez directement auprès de Gaël et Danie, sans intermédiaire.",
+      stay: "Votre séjour", change: "Modifier", guests: (n: number) => `${n} voyageur${n > 1 ? "s" : ""}`,
+      noDates: "Choisissez d'abord vos dates : le prix exact s'affiche ensuite ici.", chooseDates: "Choisir mes dates",
+      steps: ["Prix du séjour", "Vos coordonnées", "Confirmation"],
+      loading: "Chargement du calendrier en temps réel…",
+      fallback: "Le module de réservation ne s'affiche pas ?", fallbackLink: "Ouvrir la réservation dans une nouvelle page ↗",
+      why: "Réserver en direct",
+      points: [
+        { title: "Sans frais de service", text: "Le prix affiché est le prix du séjour, sans les frais ajoutés par les plateformes." },
+        { title: "Des hôtes joignables", text: "Une question ? Gaël et Danie répondent en général en moins d'une heure, avant et pendant le séjour." },
+        { title: "Calendrier en temps réel", text: "Les disponibilités sont synchronisées avec Airbnb et Booking : pas de double réservation." },
+        { title: "Paiement sécurisé", text: "Le paiement par carte passe par Stripe, chiffré de bout en bout : vos hôtes ne voient jamais votre numéro de carte. Vos coordonnées ne servent qu'à votre séjour." },
+      ],
+      payNote: "Paiement sécurisé par carte (Stripe) : 30 % à la réservation, puis le solde est prélevé automatiquement 30 jours avant l'arrivée. Si vous arrivez dans moins de 30 jours, la totalité est réglée à la réservation.",
+      reviewsTitle: "Ce qu'en disent nos voyageurs",
+      ask: "Une question avant de réserver ?",
+      faqLink: "Annulation, arrivée, équipements : questions fréquentes →",
+    },
   },
   en: {
     navHouse: "The house", navAround: "Around", navReviews: "Reviews", navGarden: "The garden", navHistory: "History", navMoments: "In pictures", navMap: "Map", navHosts: "Your hosts", mapPageLink: "See all our places on the map →", navFaq: "FAQ",
@@ -42,5 +67,28 @@ export const ui = {
     hosts: "Your hosts: Gaël and Danie · French, English, Portuguese · reply within an hour",
     registration: "Furnished tourist rental · registration no.",
     langLabel: "Language", menu: "Menu",
+    bookPage: {
+      metaTitle: "Book direct · L'Enclos de Vieux-Habitants",
+      metaDescription: "Book L'Enclos de Vieux-Habitants direct with no platform fees: live calendar, and your hosts Gaël and Danie reply within an hour.",
+      eyebrow: "Direct booking",
+      title: "Complete your booking",
+      lead: "You are booking directly with Gaël and Danie, with no middleman.",
+      stay: "Your stay", change: "Change", guests: (n: number) => `${n} guest${n > 1 ? "s" : ""}`,
+      noDates: "Choose your dates first: the exact price will then show here.", chooseDates: "Choose my dates",
+      steps: ["Price", "Your details", "Confirmation"],
+      loading: "Loading the live calendar…",
+      fallback: "The booking form is not showing?", fallbackLink: "Open the booking in a new page ↗",
+      why: "Why book direct",
+      points: [
+        { title: "No service fees", text: "The price shown is the price of your stay, without the fees platforms add on top." },
+        { title: "Hosts you can reach", text: "Any question? Gaël and Danie usually reply within an hour, before and during your stay." },
+        { title: "Live calendar", text: "Availability is synced with Airbnb and Booking, so there is no double booking." },
+        { title: "Secure payment", text: "Card payments go through Stripe, fully encrypted: your hosts never see your card number. Your details are only used for your stay." },
+      ],
+      payNote: "Secure card payment (Stripe): 30% when you book, then the balance is charged automatically 30 days before arrival. If you arrive within 30 days, the full amount is paid when you book.",
+      reviewsTitle: "What our guests say",
+      ask: "A question before booking?",
+      faqLink: "Cancellation, arrival, amenities: FAQ →",
+    },
   },
 } as const;

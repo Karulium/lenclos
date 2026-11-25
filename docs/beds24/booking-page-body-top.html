@@ -1,0 +1,6 @@
+<script>
+/* L'Enclos : résumé de la maison à côté du prix (case vide dans Beds24). */
+(function(){var en=/[?&]lang=en/.test(location.search);var h=en?'<p class="lx-sum">Entire house · sea and mountain view · 2 air-conditioned bedrooms · 2 bathrooms · up to 5 guests</p><ul class="lx-inc"><li>Bed linen and towels provided</li><li>Wi-Fi</li><li>Fruit garden open to guests</li><li>Your hosts live next door</li></ul>':'<p class="lx-sum">Maison entière · vue mer et montagne · 2 chambres climatisées · 2 salles de bain · jusqu’à 5 voyageurs</p><ul class="lx-inc"><li>Linge de lit et serviettes fournis</li><li>Wi-Fi</li><li>Jardin fruitier en accès libre</li><li>Vos hôtes habitent la maison voisine</li></ul>';
+function f(){var x=document.querySelectorAll(".at_offersummary");for(var i=0;i<x.length;i++)if(!x[i].textContent.trim())x[i].innerHTML=h}
+new MutationObserver(f).observe(document.documentElement,{childList:true,subtree:true})})();
+</script>

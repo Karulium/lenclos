@@ -1,6 +1,6 @@
 ---
 import site from "../data/site.json";
-import { ui, type Lang } from "../i18n/ui";
+import { ui, routes, type Lang } from "../i18n/ui";
 import { rich } from "../lib/text";
 interface Props { lang: Lang }
 const { lang } = Astro.props;
@@ -20,7 +20,7 @@ const i18n = {
 <aside class="book" id="reserver" aria-label={t.book}>
   <span class="badge">{t.badge}</span>
   <div class="price"><span>{t.from}</span><strong set:html={rich(site.priceFrom)} /><span>{t.night}</span></div>
-  <form class="fields" id="book-form" data-propid={site.beds24.propId} data-lang={lang} data-min={minNights} data-i18n={JSON.stringify(i18n)}>
+  <form class="fields" id="book-form" data-book={routes.book[lang]} data-min={minNights} data-i18n={JSON.stringify(i18n)}>
     <input type="hidden" name="checkin" id="d-in">
     <input type="hidden" name="checkout" id="d-out">
     <div class="full dp">
@@ -62,7 +62,7 @@ const i18n = {
 
 <script>
   // Calendrier de réservation : on choisit l'arrivée puis le départ sur un même calendrier.
-  // Jours passés grisés, séjour minimum respecté, nombre de nuits affiché, puis ouverture de Beds24.
+  // Jours passés grisés, séjour minimum respecté, nombre de nuits affiché, puis page « Réserver » du site.
   const form = document.getElementById("book-form") as HTMLFormElement | null;
   if (form) {
     const L = JSON.parse(form.dataset.i18n!);
@@ -219,14 +219,13 @@ const i18n = {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
       if (!start || !end) { open(); return; }
+      // Page « Réserver » du site : récapitulatif + moteur Beds24 intégré.
       const params = new URLSearchParams({
-        propid: form.dataset.propid!,
         checkin: iso(start),
-        numnight: String(nightsBetween(start, end)),
-        numadult: $<HTMLSelectElement>("#guests").value,
-        lang: form.dataset.lang!,
+        nights: String(nightsBetween(start, end)),
+        guests: $<HTMLSelectElement>("#guests").value,
       });
-      location.href = "https://beds24.com/booking2.php?" + params.toString();
+      location.href = form.dataset.book + "?" + params.toString();
     });
 
     sync();

@@ -1,0 +1,7 @@
+<script>
+/* L'Enclos : en-tête de marque ; dans le site (iframe), hauteur et étape envoyées au site. */
+(function(){var en=/[?&]lang=en/.test(location.search);var b=document.createElement("div");b.className="lx-brand";b.innerHTML="<b>L’Enclos de Vieux-Habitants</b><span>Guadeloupe · "+(en?"direct booking":"réservation directe")+"</span>";var t=document.getElementById("topofthebookingpage");if(t)t.parentNode.insertBefore(b,t.nextSibling);else document.body.insertBefore(b,document.body.firstChild);
+if(window.self===window.top)return;document.documentElement.className+=" lx-frame"+(/[?&]checkin(_hide)?=/.test(location.search)?" lx-dated":"");var l=0;
+function s(){var h=Math.ceil(document.body.getBoundingClientRect().height)+24;if(Math.abs(h-l)<4)return;l=h;var p=document.getElementById("formbook")?2:document.getElementById("formlook")?1:3;try{parent.postMessage({lenclos:"beds24",height:h,step:p},"*")}catch(e){}}
+s();addEventListener("load",s);addEventListener("resize",s);if(window.ResizeObserver)new ResizeObserver(s).observe(document.body);setInterval(s,1000)})();
+</script>
